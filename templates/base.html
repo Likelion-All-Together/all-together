@@ -1,0 +1,25 @@
+<body>
+    <span>
+        {% comment %} 로그인 된 상태 {% endcomment %}
+        {% if request.user.is_authenticated %}
+            로그인 상태 <br>
+            로그인 아이디 : {{ request.user.username }} <br>
+            로그인 이메일 : {{ request.user.email }} <br>
+            <button type="button" onclick="location.href='{% url 'accounts:logout' %}'">로그아웃</button>
+            {% comment %} 혹은 {% endcomment %}
+            {% comment %} <a href = "{% url 'accounts:logout' %}">로그아웃</a> {% endcomment %}
+        {% else %}
+            비로그인 상태 <br>
+            <button type="button" onclick="location.href='{% url 'accounts:login' %}'">로그인</button>
+            <button type="button" onclick="location.href='{% url 'accounts:signup' %}'">회원가입</button>
+            {% comment %} 혹은 {% endcomment %}
+            {% comment %} <a href = "{% url 'accounts:login' %}">로그인</a> {% endcomment %}
+            {% comment %} <a href = "{% url 'accounts:signup' %}">회원가입</a> {% endcomment %}
+        {% endif %}
+    </span>
+</body>
+
+{% block content %}
+
+{% endblock %}
+
