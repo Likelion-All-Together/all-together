@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
+from django.contrib.auth.decorators import login_required
 
 # 회원가입
 def signup_view(request):
@@ -45,3 +46,42 @@ def logout_view(request):
     if request.user.is_authenticated: # 데이터 유효성 검사
         logout(request) # 비즈니스 로직 처리
     return redirect('diamoyeo:home') # 응답
+
+# 마이페이지
+@login_required
+def mypage_view(request):
+    
+    # 일단 기존 데이터 조회
+    introduction = request.user.introduction
+    profile_image = request.user.profile_image
+    
+    if request.method == 'GET': # GET이면 홈페이지 보여주기
+        return render(request, 'accounts/mypage.html')
+    
+    else: # POST이면 유저 정보 업데이트
+        
+        # 새로운 정보 가져오기
+        new_introduction = request.POST.get('introduction')
+        new_profile_image = request.FILES.get('image')
+        
+        # 소개를 비교
+        if (introduction != new_introduction):
+            request.user.introduction = new_introduction
+        else:
+            request.user.introduction = introduction
+            
+        # 프로필 이미지를 비교
+        if (profile_image != new_profile_image):
+            # 프로필 이미지에 대한 업데이트
+            request.user.profile_image = new_profile_image
+        else:
+            request.user.profile_image = profile_image
+        
+        # 새 프로필 이미지를 제출하지 않는 경우 기존 이미지 값 넣어주기 - 중요!
+        if (new_profile_image == None):
+            request.user.profile_image = profile_image
+        
+        # 유저 업데이트
+        request.user.save()
+        
+        return redirect('accounts:mypage')

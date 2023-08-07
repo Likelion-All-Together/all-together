@@ -25,3 +25,6 @@ class UserManager(DjangoUserManager):
     
 class User(AbstractUser):
     objects = UserManager()
+    introduction = models.CharField(max_length = 200, blank = True, null = True)
+    profile_image = models.ImageField(upload_to = 'profile_images/', blank = True, null = True)
+    is_verified = models.BooleanField(default = False)
