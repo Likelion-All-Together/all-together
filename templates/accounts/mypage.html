@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}마이페이지{% endblock %}
+{% load static %}
+{% block content %}
+
+<h1>마이페이지</h1>
+<hr>
+[ 유저 정보 정상 출력 테스트 ]
+닉네임 : {{ request.user.username }} <br>
+이메일 : {{ request.user.email }} <br>
+소개 : {{ request.user.introduction }} <br>
+{% if request.user.profile_image %}
+    프로필 이미지 : <img class="mypage-img" src="{{ request.user.profile_image.url }}" width="50" height="50"><br>
+{% else %}
+    이미지 안넣음<br>
+{% endif %}
+
+인증 여부 : {{ request.user.is_verified }} <br>
+<hr>
+[ 수정 테스트 ]
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {% if request.user.profile_image %}
+        <label for="id_image">이미지</label>
+        기존 : {{ request.user.profile_image }}
+        <input type="file" name="image" accept="image/*" id="id_image">
+        {% else %}
+        기존 : 이미지 안넣음
+        <input type="file" name="image" accept="image/*" id="id_image">
+        {% endif %}
+    </div>
+    <div>
+        <label for="id_introduction">소개</label>
+        <textarea name="introduction" id="introduction" cols="30" rows="10">
+            {{ request.user.introduction }}
+        </textarea>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}

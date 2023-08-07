@@ -1,10 +1,18 @@
 <body>
+    <ul>
+        <li><a href = "{% url 'diamoyeo:home' %}">메인</a></li>
+        <li><a href = "#">과외하기</a></li>
+        <li><a href = "#">지역정보</a></li>
+        <li><a href = "#">게시판</a></li>
+        <li><a href = "{% url 'accounts:mypage' %}">마이페이지</a></li>
+    </ul>
+    
     <span>
         {% comment %} 로그인 된 상태 {% endcomment %}
         {% if request.user.is_authenticated %}
             로그인 상태 <br>
-            로그인 아이디 : {{ request.user.username }} <br>
-            로그인 이메일 : {{ request.user.email }} <br>
+            닉네임 : {{ request.user.username }} <br>
+            이메일 : {{ request.user.email }} <br>
             <button type="button" onclick="location.href='{% url 'accounts:logout' %}'">로그아웃</button>
             {% comment %} 혹은 {% endcomment %}
             {% comment %} <a href = "{% url 'accounts:logout' %}">로그아웃</a> {% endcomment %}
