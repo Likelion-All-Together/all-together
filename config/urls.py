@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace = 'accounts')),
     path('diamoyeo/', include('diamoyeo.urls', namespace = 'diamoyeo')),
+    path('posts/', include('posts.urls', namespace = 'posts')),
 ]
 
 # 사용자가 추가한 프로필 이미지 저장을 위한 urlpatterns
