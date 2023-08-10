@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}정보 메인 페이지{% endblock %}
+{% load static %}
+{% block content %}
+
+<h3>지역</h3>
+
+{% for region in region_list%}
+    제목 : {{ region.title }}<br>
+    내용 : {{ region.content }}<br>
+    문의처 : {{ region.phone }}<br>
+    지원 주기 : {{ region.support_cycle }}<br>
+    제공 유형 :{{ region.type }}<br>
+    담당 부서 : {{ region.department }}<br>
+    태그 : {{ region.tag }}<br>
+{% endfor %}
+
+<br>
+
+<hr>
+
+<br>
+
+<h3>다문화</h3>
+
+{% for multicultural in multicultural_list %}
+    제목 : {{ multicultural.title }}<br>
+    내용 : {{ multicultural.content }}<br>
+    문의처 : {{ multicultural.phone }}<br>
+    지원 주기 : {{ multicultural.support_cycle }}<br>
+    제공 유형 : {{ multicultural.type }}<br>
+    담당 부서 : {{ multicultural.department }}<br>
+    태그 : {{ multicultural.tag }}<br>
+{% endfor %}
+
+<br>
+
+<hr>
+
+<br>
+
+<h3>방과후</h3>
+
+{% for afterschool in afterschool_list %}
+    동명 : {{ afterschool.region }}<br>
+    프로그램명 : {{ afterschool.title }}<br>
+    접수일시 : {{ afterschool.receipt_start }} ~ {{ afterschool.receipt_end }}<br>
+    교육일시 : {{ afterschool.training_start }} ~ {{ afterschool.training_end }}<br>
+    요일 : {{ afterschool.day }}<br>
+    수강료 : {{ afterschool.tuition }}(원)<br>
+    정원 : {{ afterschool.number_of_member }}명<br>
+    상태 : {{ afterschool.status }}<br>
+{% endfor %}
+
+{% endblock %}
