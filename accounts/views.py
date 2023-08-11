@@ -9,7 +9,7 @@ def signup_view(request):
     
     # GET 요청 시 HTML 응답
     if request.method == 'GET':
-        form = SignUpForm
+        form = SignUpForm()
         context = { 'form' : form }
         return render(request, 'accounts/signup.html', context)
     
