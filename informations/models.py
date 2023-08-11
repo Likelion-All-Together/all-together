@@ -43,9 +43,11 @@ class RegionAndMulticultural(models.Model):
     support_cycle = models.CharField(verbose_name = '지원 주기', max_length = 20, choices = SUPPORT_CYCLE_CHOICES ,default = '일')
     type = models.CharField(verbose_name = '제공 유형', max_length = 20, null = False, blank = False)
     department = models.CharField(verbose_name = '담당 부서', max_length = 20, null = False, blank = False)
-    tag = models.CharField(verbose_name = '태그', max_length = 20, choices = TAG_CHOICES ,default = None) 
+    tag = models.CharField(verbose_name = '태그', max_length = 20, choices = TAG_CHOICES , default = None) 
     category = models.CharField(verbose_name = '지역/다문화 정보', max_length = 20, choices = INFORMATION_CATEGORY ,default = '일')
-    created_at = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(User,on_delete = models.CASCADE, null = True, blank = True)
+    scrap = models.ManyToManyField(User, related_name = 'scrap1', null = True, blank = True)
+    created_at = models.DateTimeField(default = timezone.now)
 
 class Afterschool(models.Model):
     region = models.CharField(verbose_name = '동 명', max_length = 20, null = False, blank = False)
@@ -58,4 +60,6 @@ class Afterschool(models.Model):
     tuition = models.IntegerField(verbose_name = '수강료')
     number_of_member = models.IntegerField(verbose_name = '정원')
     status = models.CharField(verbose_name = '상태', max_length = 20, choices = STATUS, default = '접수중')
+    user = models.ForeignKey(User,on_delete = models.CASCADE, null = True, blank = True) # 추가
+    scrap = models.ManyToManyField(User, related_name = 'scrap2', null = True, blank = True) # 추가
     created_at = models.DateTimeField(default=timezone.now)

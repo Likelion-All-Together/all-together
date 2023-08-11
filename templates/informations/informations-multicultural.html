@@ -3,6 +3,10 @@
 {% load static %}
 {% block content %}
 
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+
 <!-- 최신순/스크랩순 정렬 jquery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -33,16 +37,57 @@
     </select>
 </form>
 
-{% for multicultural in multicultural_list %}
-    제목 : {{ multicultural.title }}<br>
-    내용 : {{ multicultural.content }}<br>
-    문의처 : {{ multicultural.phone }}<br>
-    지원 주기 : {{ multicultural.support_cycle }}<br>
-    제공 유형 : {{ multicultural.type }}<br>
-    담당 부서 : {{ multicultural.department }}<br>
-    태그 : {{ multicultural.tag }}<br>
+{% for item in item_list %}
+    제목 : {{ item.title }}<br>
+    내용 : {{ item.content }}<br>
+    문의처 : {{ item.phone }}<br>
+    지원 주기 : {{ item.support_cycle }}<br>
+    제공 유형 : {{ item.type }}<br>
+    담당 부서 : {{ item.department }}<br>
+    태그 : {{ item.tag }}<br>
+    <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
+        {% if request.user in item.scrap.all %}
+        <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+        <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+        {%else%}
+        <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+        <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+        {%endif%}
+        <span id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+    </button>
+
     <br>
     <br>
 {% endfor %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function item_scrap(id) {
+        console.log("hi")
+        $.ajax({
+            url: "{%url 'informations:scrap'%}", // data를 전송할 url 입니다.
+            type: "GET",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            data: {
+                'item_id': id,
+                'item_name': '다문화',
+            }, // post_id 라는 name으로 id 값 전송
+            dataType: "json",
+            success: function (response) { // ajax 통신이 정상적으로 완료되었을 때
+                $('#scrap_count-' + id).html(response.scrap_count);
+                $('#message').html(response.message);
+                $('.toast').fadeIn(400).delay(100).fadeOut(400);
+                if (response.message === "좋아요") {
+                    $('#heart-' + id).attr("class", "fas fa-heart");
+                } else if (response.message === "좋아요 취소") {
+                    $('#heart-' + id).attr("class", "far fa-heart");
+                }
+            }
+        });
+    }
+</script>
 
 {% endblock %}
