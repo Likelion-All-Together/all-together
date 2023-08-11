@@ -8,14 +8,22 @@
     {% csrf_token %}
     <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
     <div>
+        <input type="submit" name="category" value="인기글">
         <input type="submit" name="category" value="전체">
         <input type="submit" name="category" value="알바">
         <input type="submit" name="category" value="과외">
         <input type="submit" name="category" value="취준">
         <input type="submit" name="category" value="경력단절">
+        <input type="submit" name="category" value="공지">
+        <input type="submit" name="category" value="이벤트">
         
     </div>
     {% for post in notice_list %}
+    <div>
+        <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a>
+    </div>
+    {% endfor %}
+    {% for post in event_list %}
     <div>
         <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a>
     </div>

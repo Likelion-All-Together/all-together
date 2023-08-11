@@ -20,9 +20,9 @@ class Post(models.Model):
     image = models.ImageField(verbose_name = '이미지',null=True, blank=True)
     content = models.TextField(verbose_name = '내용')
     created_at = models.DateTimeField(verbose_name = '작성일',default=timezone.now)
-    view_count = models.ImageField(verbose_name = '조회수',null=True, blank=True)
+    view_count = models.PositiveIntegerField(default=0, verbose_name='조회수')
     file = models.FileField(verbose_name = '파일',null=True, blank=True)
-    
+    like = models.ManyToManyField(User, related_name='likes',blank = True)
     
 class Comment(models.Model):
     content = models.TextField(verbose_name = '내용')
