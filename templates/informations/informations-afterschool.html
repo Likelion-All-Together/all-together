@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}방과후 수업 정보 페이지{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- 최신순/스크랩순 정렬 jquery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("select[name=align_mode]").change(function () {
+            $("#align_mode_form").submit();
+        });
+        var align_mode = "{{ request.GET.align_mode }}";  // Django 템플릿 태그로 파라미터 값 가져오기
+        if(align_mode === 'recently') { $("#align_mode option[value='recently']").prop("selected", true); }
+        else if (align_mode === 'scrap') { $("#align_mode option[value='scrap']").prop("selected", true); } 
+        else { $("#align_mode option[value='recently']").prop("selected", true); }
+    });
+</script>
+
+<br>
+<hr>
+<li><a href = "{% url 'informations:region' %}">지역 복지</a></li>
+<li><a href = "{% url 'informations:multicultural' %}">다문화 일자리</a></li>
+<li><a href = "{% url 'informations:afterschool' %}">방과후 수업</a></li>
+<br>
+
+<h3>방과후</h3>
+
+<form action="{% url 'informations:afterschool' %}" method="GET" id="align_mode_form">
+    <select name="align_mode" id="align_mode">
+        <option value="recently">recently</option>
+        <option value="scrap">scrap</option>
+    </select>
+</form>
+
+{% for afterschool in afterschool_list %}
+    동명 : {{ afterschool.region }}<br>
+    프로그램명 : {{ afterschool.title }}<br>
+    접수일시 : {{ afterschool.receipt_start }} ~ {{ afterschool.receipt_end }}<br>
+    교육일시 : {{ afterschool.training_start }} ~ {{ afterschool.training_end }}<br>
+    요일 : {{ afterschool.day }}<br>
+    수강료 : {{ afterschool.tuition }}(원)<br>
+    정원 : {{ afterschool.number_of_member }}명<br>
+    상태 : {{ afterschool.status }}<br>
+    <br>
+    <br>
+{% endfor %}
+
+{% endblock %}

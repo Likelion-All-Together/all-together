@@ -3,6 +3,12 @@
 {% load static %}
 {% block content %}
 
+<br>
+<hr>
+<li><a href = "{% url 'informations:region' %}">지역 복지</a></li>
+<li><a href = "{% url 'informations:multicultural' %}">다문화 일자리</a></li>
+<li><a href = "{% url 'informations:afterschool' %}">방과후 수업</a></li>
+<br>
 <h3>지역</h3>
 
 {% for region in region_list%}
@@ -13,6 +19,8 @@
     제공 유형 :{{ region.type }}<br>
     담당 부서 : {{ region.department }}<br>
     태그 : {{ region.tag }}<br>
+    <br>
+    <br>
 {% endfor %}
 
 <br>
@@ -31,6 +39,8 @@
     제공 유형 : {{ multicultural.type }}<br>
     담당 부서 : {{ multicultural.department }}<br>
     태그 : {{ multicultural.tag }}<br>
+    <br>
+    <br>
 {% endfor %}
 
 <br>
@@ -50,6 +60,8 @@
     수강료 : {{ afterschool.tuition }}(원)<br>
     정원 : {{ afterschool.number_of_member }}명<br>
     상태 : {{ afterschool.status }}<br>
+    <br>
+    <br>
 {% endfor %}
 
 {% endblock %}
