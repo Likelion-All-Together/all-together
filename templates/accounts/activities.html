@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}나의 활동{% endblock %}
+{% load static %}
+{% block content %}
+
+<h1>나의 활동</h1>
+
+<p>카테고리: {{ category }}</p>
+
+{% if item_list %}
+<ul>
+    {% for item in item_list %}
+    <li>
+        {% if category == 'posts' %}
+            <p>제목 : {{ item.title }}</p>
+            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
+            <p>조회 : {{ item.view_count }}</p>
+        {% elif category == 'comments' %}
+            <p>게시글 제목 : {{ item.post.title }}</p>  <!-- 댓글이 속한 게시글의 제목 -->
+            <p>댓글 내용: {{ item.content }}</p>  <!-- 댓글 내용 -->
+            <p>작성일: {{ item.created_at|date:"Y.m.d H:i" }}</p>
+        {% elif category == 'likes' %}
+            <p>제목 : {{ item.title }}</p>
+            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
+            <p>조회 : {{ item.view_count }}</p>
+        {% elif category == 'scraps' %}
+            <p>제목 : {{ item.title }}</p>
+        {% endif %}
+        
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>활동 내역이 없습니다.</p>
+{% endif %}
+
+
+{% endblock %}

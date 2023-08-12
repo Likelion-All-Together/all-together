@@ -2,10 +2,22 @@
 {% block title %}마이페이지{% endblock %}
 {% load static %}
 {% block content %}
-
+<head>
+    <style>
+        .icon-container {
+            display: flex;
+        }
+        
+        .icon {
+            text-align: center; /* 내부 요소들 가운데 정렬 */
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
 <h1>마이페이지</h1>
 <hr>
-[ 유저 정보 정상 출력 테스트 ]
+[ 유저 정보 정상 출력 테스트 ] <br>
 닉네임 : {{ request.user.username }} <br>
 이메일 : {{ request.user.email }} <br>
 소개 : {{ request.user.introduction }} <br>
@@ -32,13 +44,37 @@
     </div>
     <div>
         <label for="id_introduction">소개</label>
-        <textarea name="introduction" id="introduction" cols="30" rows="10">
-            {{ request.user.introduction }}
-        </textarea>
+        <textarea name="introduction" id="introduction" cols="30" rows="10">{{ request.user.introduction }}</textarea>
     </div>
     <div>
         <input type="submit">
     </div>
 </form>
+<br>
+<hr>
+[ 계정 활동 ] <br>
+
+<div class="icon-container">
+    <a href="{% url 'accounts:activities' %}?category=posts">
+        <span class="icon">
+            <br><img src="{% static 'image/post.png' %}" alt="내가 작성한 글"><br>작성글
+        </span>
+    </a>
+    <a href="{% url 'accounts:activities' %}?category=comments">
+        <span class="icon">
+            <br><img src="{% static 'image/comment.png' %}" alt="내가 작성한 댓글"><br>댓글
+        </span>
+    </a>
+    <a href="{% url 'accounts:activities' %}?category=likes">
+        <span class="icon">
+            <br><img src="{% static 'image/like.png' %}" alt="내가 좋아한 글"><br>좋아요
+        </span>
+    </a>
+    <a href="{% url 'accounts:activities' %}?category=scraps">
+        <span class="icon">
+            <br><img src="{% static 'image/like.png' %}" alt="내가 좋아한 글"><br>스크랩
+        </span>
+    </a>
+</div>
 
 {% endblock %}

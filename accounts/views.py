@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
 from django.contrib.auth.decorators import login_required
+from posts.models import Post, Comment
+from informations.models import RegionAndMulticultural, Afterschool
 
 # 회원가입
 def signup_view(request):
@@ -61,7 +63,7 @@ def mypage_view(request):
     else: # POST이면 유저 정보 업데이트
         
         # 새로운 정보 가져오기
-        new_introduction = request.POST.get('introduction')
+        new_introduction = request.POST.get('introduction').strip()
         new_profile_image = request.FILES.get('image')
         
         # 소개를 비교
@@ -85,3 +87,30 @@ def mypage_view(request):
         request.user.save()
         
         return redirect('accounts:mypage')
+    
+# 내 활동 보기
+def activities_view(request):
+    category = request.GET.get('category', 'posts')  # 기본 posts
+    
+    # 내가 작성한 글
+    if category == 'posts':
+        item_list = Post.objects.filter(writer=request.user).order_by('-created_at')
+    # 내가 작성한 댓글
+    elif category == 'comments':
+        item_list = Comment.objects.filter(writer=request.user).order_by('-created_at')
+    # 내가 좋아요 누른 글
+    elif category == 'likes':
+        item_list = Post.objects.filter(like=request.user).order_by('-created_at')
+    # 내가 스크랩 한 글
+    elif category == 'scraps':
+        region_and_multicultural_list = RegionAndMulticultural.objects.filter(scrap=request.user).order_by('-created_at')
+        afterschool_list = Afterschool.objects.filter(scrap=request.user).order_by('-created_at')
+        item_list = list(region_and_multicultural_list) + list(afterschool_list)
+        item_list.sort(key=lambda x: x.created_at, reverse=True)
+        
+    context = {
+        'category': category,
+        'item_list': item_list,
+    }
+    
+    return render(request, 'accounts/activities.html', context)
