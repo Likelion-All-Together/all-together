@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}수업신청서{% endblock %}
+{% load static %}
+{% block content %}
+    <h3>수업신청서</h3>
+    <div>선택한 선생님 정보 : {{teacher.id}}번, {{teacher.name}} </div>
+    <hr>
+    <div>아직 진행중</div>
+    <hr>
+
+{% endblock %}

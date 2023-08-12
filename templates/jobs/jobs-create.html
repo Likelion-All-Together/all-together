@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% block title %}수업등록하기{% endblock %}
+{% load static %}
+{% block content %}
+
+<h1> 수업 등록하기 페이지</h1>
+
+<hr>
+
+<form id ="my-form" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3> * 강사 정보 입력 </h3>
+    <div> 사진을 등록해주세요 
+        <input type="file" name="image">
+    </div>
+    <div> 이름 : <input type="text" name="name" placeholder="이름을 입력하세요"></div>
+    <div> 성별 : 
+        <input type="radio" name="gender" value="여">여 
+        <input type="radio" name="gender" value="남">남 
+    </div>
+    <div> 나이 : <input type="text" name="age" placeholder="나이을 입력하세요"></div>
+    <div> 학력 : 
+        <select name="education">
+            <option value="없음"> 해당사항없음 </option>
+            <option value="초등학교"> 초등학교</option>
+            <option value="중학교"> 중학교</option>
+            <option value="고등학교"> 고등학교</option>
+            <option value="대학교"> 대학교</option>
+        </select>
+    </div>
+    <hr>
+    <h3> * 수업 비용 </h3>
+    <div> 수업 비용 : 
+        <select name="cost">
+            <option value="10000"> 1시간/10000 </option>
+            <option value="20000"> 1시간/20000</option>
+            <option value="30000"> 1시간/30000</option>
+            <option value="40000"> 1시간/40000</option>
+            <option value="50000"> 1시간/50000</option>
+        </select>
+    </div>
+    <div> 계좌번호 : <input type="text" name="pay" placeholder="강의비를 입금받을 계좌번호를 입력해주세요"></div>
+
+    <hr>
+    <h3> * 수업 키워드 (중복선택이 가능합니다) </h3>
+    <div>수업 대상 : 
+        <input type="checkbox" name="student" value="초등학생">초등학생 
+        <input type="checkbox" name="student" value="중학생">중학생 
+        <input type="checkbox" name="student" value="고등학생">고등학생 
+        <input type="checkbox" name="student" value="대학생">대학생 
+        <input type="checkbox" name="student" value="직장인">직장인 
+        <input type="checkbox" name="student" value="기타">기타 
+    </div>
+    <div>수업 분류 : 
+        <input type="checkbox" name="class" value="회화">회화 
+        <input type="checkbox" name="class" value="비지니스">비지니스 영어 
+        <input type="checkbox" name="class" value="유학">유학 준비
+        <input type="checkbox" name="class" value="자격증">자격증 준비
+        <input type="checkbox" name="class" value="초급자">초급자 대상
+        <input type="checkbox" name="class" value="중급자">중급자 대상
+        <input type="checkbox" name="class" value="고급자">고급자 대상
+    </div>
+    <div>강사 정보 : 
+        <input type="checkbox" name="teacher" value="신입">신입 
+        <input type="checkbox" name="teacher" value="1년 이상">1년 이상 경력
+        <input type="checkbox" name="teacher" value="3년 이상">3년 이상 경력
+        <input type="checkbox" name="teacher" value="5년 이상">5년 이상 경력
+        <input type="checkbox" name="teacher" value="7년 이상">7년 이상 경력
+        <input type="checkbox" name="teacher" value="10년 이상">10년 이상 경력
+    </div>
+    <div>특이사항 : 
+        <input type="text" name="feature" placeholder="특이사항을 입력하세요">
+    </div>
+    <hr>
+    <h3> * 수업 시간 설정 </h3>
+    
+    <table id="schedule-table">
+        <tr>
+            <th> </th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th>토</th>
+            <th>일</th>
+        </tr>
+        <tr>
+            <th>9</th>
+            <td class="월9"></td>
+            <td class="화9"> </td>
+            <td class="수9"></td>
+            <td class="목9"></td>
+            <td class="금9"></td>
+            <td class="토9"></td>
+            <td class="일9"></td>
+        </tr>
+        <tr>
+            <th>10</th>
+            <td class="월10"></td>
+            <td class="화10"> </td>
+            <td class="수10"></td>
+            <td class="목10"></td>
+            <td class="금10"></td>
+            <td class="토10"></td>
+            <td class="일10"></td>
+        </tr>
+        <tr>
+            <th>11</th>
+            <td class="월11"></td>
+            <td class="화11"> </td>
+            <td class="수11"></td>
+            <td class="목11"></td>
+            <td class="금11"></td>
+            <td class="토11"></td>
+            <td class="일11"></td>
+        </tr>
+        <tr>
+            <th>12</th>
+            <td class="월12"></td>
+            <td class="화12"> </td>
+            <td class="수12"></td>
+            <td class="목12"></td>
+            <td class="금12"></td>
+            <td class="토12"></td>
+            <td class="일12"></td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td class="월1"></td>
+            <td class="화1"> </td>
+            <td class="수1"></td>
+            <td class="목1"></td>
+            <td class="금1"></td>
+            <td class="토1"></td>
+            <td class="일1"></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td class="월2"></td>
+            <td class="화2"> </td>
+            <td class="수2"></td>
+            <td class="목2"></td>
+            <td class="금2"></td>
+            <td class="토2"></td>
+            <td class="일2"></td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td class="월3"></td>
+            <td class="화3"> </td>
+            <td class="수3"></td>
+            <td class="목3"></td>
+            <td class="금3"></td>
+            <td class="토3"></td>
+            <td class="일3"></td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td class="월4"></td>
+            <td class="화4"> </td>
+            <td class="수4"></td>
+            <td class="목4"></td>
+            <td class="금4"></td>
+            <td class="토4"></td>
+            <td class="일4"></td>
+        </tr>
+    </table>
+
+    <input type="hidden" id="selected-cell" name="selected_cells" value="">
+
+    <hr>
+    <button type="submit">글 등록하기</button>
+</form>
+<style>
+    table{
+        border: 3px solid #4B2A0B;
+        border-collapse: collapse;
+        font-size: 0.9em;
+    }
+    th, td{
+        border: 3px solid #4B2A0B;
+        border-collapse: collapse;
+    }
+    th{
+        height: 5px;
+    }
+    td {
+        width: 75px;
+        height: 60px;
+    }
+    .clicked-cell {
+        background-color: #4B2A0B;
+    }
+    
+</style>
+<script>
+    const cells = document.querySelectorAll('#schedule-table td');
+    const selectedCellInput = document.getElementById('selected-cell');
+    const myForm = document.getElementById('my-form');
+    cells.forEach(cell => {
+        cell.addEventListener('click', () => {
+            cell.classList.toggle('clicked-cell');
+        });
+    });
+
+    myForm.addEventListener('submit', () => {
+        const selectedCells = Array.from(cells).filter(cell => cell.classList.contains('clicked-cell'));
+        //const selectedValues = selectedCells.map(cell => cell.className); 
+        const selectedValues = selectedCells.map(cell => cell.className.replace('clicked-cell', '').trim());
+        selectedCellInput.value = JSON.stringify(selectedValues);
+    });
+</script>
+
+
+{% endblock %}
