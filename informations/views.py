@@ -32,7 +32,7 @@ def region_view(request):
         if align_mode == 'recently': # 최신순 정렬
             region = region.order_by('-created_at')
         else: # 인기순(스크랩순) 정렬
-            pass # **아직 스크랩 기능 안만들어서 일단 오래된순으로 보이게 해놓음**
+            region = region.order_by('-scrap')
             
         context = {
             'item_list' : region,
@@ -50,7 +50,7 @@ def multicultural_view(request):
         if align_mode == 'recently': # 최신순 정렬
             multicultural = multicultural.order_by('-created_at')
         else: # 인기순(스크랩순) 정렬
-            pass # **아직 스크랩 기능 안만들어서 일단 오래된순으로 보이게 해놓음**
+            multicultural = multicultural.order_by('-scrap')
         
         context = {
             'item_list' : multicultural,
@@ -68,7 +68,7 @@ def afterschool_view(request):
         if align_mode == 'recently': # 최신순 정렬
             afterschool = afterschool.order_by('-created_at')
         else: # 인기순(스크랩순) 정렬
-            pass # **아직 스크랩 기능 안만들어서 일단 오래된순으로 보이게 해놓음**
+            afterschool = afterschool.order_by('-scrap')
         
         context = {
             'item_list' : afterschool,

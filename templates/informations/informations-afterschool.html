@@ -32,34 +32,38 @@
 
 <form action="{% url 'informations:afterschool' %}" method="GET" id="align_mode_form">
     <select name="align_mode" id="align_mode">
-        <option value="recently">recently</option>
-        <option value="scrap">scrap</option>
+        <option value="recently">최신순</option>
+        <option value="scrap">스크랩순</option>
     </select>
 </form>
 
-{% for item in item_list %}
-    동명 : {{ item.region }}<br>
-    프로그램명 : {{ item.title }}<br>
-    접수일시 : {{ item.receipt_start }} ~ {{ item.receipt_end }}<br>
-    교육일시 : {{ item.training_start }} ~ {{ item.training_end }}<br>
-    요일 : {{ item.day }}<br>
-    수강료 : {{ item.tuition }}(원)<br>
-    정원 : {{ item.number_of_member }}명<br>
-    상태 : {{ item.status }}<br>
-    <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-        {% if request.user in item.scrap.all %}
-        <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-        <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-        {%else%}
-        <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-        <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-        {%endif%}
-        <span id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-    </button>
+<div id="item-container">
+    {% for item in item_list %}
+        <div class="item">
+            동명 : {{ item.region }}<br>
+            프로그램명 : {{ item.title }}<br>
+            접수일시 : {{ item.receipt_start }} ~ {{ item.receipt_end }}<br>
+            교육일시 : {{ item.training_start }} ~ {{ item.training_end }}<br>
+            요일 : {{ item.day }}<br>
+            수강료 : {{ item.tuition }}(원)<br>
+            정원 : {{ item.number_of_member }}명<br>
+            상태 : {{ item.status }}<br>
+            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
+                {% if request.user in item.scrap.all %}
+                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                {%else%}
+                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                {%endif%}
+                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+            </button>
 
-    <br>
-    <br>
-{% endfor %}
+            <br>
+            <br>
+        </div>
+    {% endfor %}
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -78,13 +82,42 @@
             }, // post_id 라는 name으로 id 값 전송
             dataType: "json",
             success: function (response) { // ajax 통신이 정상적으로 완료되었을 때
+                // $('#scrap_count-' + id).html(response.scrap_count);
+                // $('#message').html(response.message);
+                // if (response.message === "좋아요") {
+                //     $('#heart-' + id).attr("class", "fas fa-heart");
+                // } else if (response.message === "좋아요 취소") {
+                //     $('#heart-' + id).attr("class", "far fa-heart");
+                // }
+
                 $('#scrap_count-' + id).html(response.scrap_count);
                 $('#message').html(response.message);
-                $('.toast').fadeIn(400).delay(100).fadeOut(400);
+                
+                // 해당 항목의 좋아요 수만 업데이트
+                $('#scrap_count-' + id).html(response.scrap_count);
+                
+                // 좋아요 버튼 아이콘 변경
+                var heartIcon = $('#heart-' + id);
                 if (response.message === "좋아요") {
-                    $('#heart-' + id).attr("class", "fas fa-heart");
+                    heartIcon.removeClass("far fa-heart").addClass("fas fa-heart");
                 } else if (response.message === "좋아요 취소") {
-                    $('#heart-' + id).attr("class", "far fa-heart");
+                    heartIcon.removeClass("fas fa-heart").addClass("far fa-heart");
+                }
+                
+                // 좋아요 수에 따라 항목을 정렬 (jQuery 이용)
+                var itemContainer = $('#item-container');  // 항목을 감싸는 컨테이너의 ID
+                var alignMode = $('#align_mode').val(); // 선택된 정렬 모드 가져오기
+    
+                if (alignMode === 'scrap') {
+                    var items = itemContainer.children('.item');  // 항목들을 선택
+        
+                    items.sort(function(a, b) {
+                        var aScrapCount = parseInt($(a).find('.scrap-count').text());
+                        var bScrapCount = parseInt($(b).find('.scrap-count').text());
+                        return bScrapCount - aScrapCount;  // 내림차순 정렬
+                    });
+                    
+                    itemContainer.html(items);  // 정렬된 항목을 컨테이너에 적용
                 }
             }
         });
