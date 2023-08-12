@@ -9,6 +9,7 @@ urlpatterns = [
     path('informations/', include('informations.urls', namespace = 'informations')),
     path('diamoyeo/', include('diamoyeo.urls', namespace = 'diamoyeo')),
     path('posts/', include('posts.urls', namespace = 'posts')),
+    path('jobs/',include('jobs.urls',namespace = 'jobs')),
 ]
 
 # 사용자가 추가한 프로필 이미지 저장을 위한 urlpatterns
