@@ -25,6 +25,8 @@
             <p>조회 : {{ item.view_count }}</p>
         {% elif category == 'scraps' %}
             <p>제목 : {{ item.title }}</p>
+            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
+            <p>스크랩 수 : {{ item.scrap.count }}</p>
         {% endif %}
         
     </li>
