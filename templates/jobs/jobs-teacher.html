@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}선생님 만나러가기{% endblock %}
+{% load static %}
+{% block content %}
+    <h3>선생님 만나러가기 페이지</h3>
+    <div>더 많은 원어민 선생님을 만나보세요.</div>
+    <hr>
+
+    {% for teacher in teacher_list %}
+    <div>
+        <a href="{% url 'jobs:teacher_detail' teacher.id %}">{{teacher.name }}</a>  
+        {{teacher.feature}}
+    </div>
+    {% endfor%}
+{% endblock %}
