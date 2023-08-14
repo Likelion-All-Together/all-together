@@ -3,13 +3,16 @@ from django.shortcuts import render
 from .models import RegionAndMulticultural, Afterschool
 from django.http import HttpResponse
 import json
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # 정보 보여주기
 def information_view(request):
     
-    # tab과 align_mode 가져오기
+    # tab, align_mode, page 가져오기
     tab = request.GET.get('tab', 'region') # 기본은 지역 탭
     align_mode = request.GET.get('align_mode', 'recently') # 기본 최신순 정렬
+    page = request.GET.get('page')
+    print(page)
     
     # [지역] 탭인 경우
     if tab == 'region':
@@ -45,10 +48,26 @@ def information_view(request):
         elif align_mode == 'scrap':
             item_list = item_list.order_by('-scrap')
     
+    # 페이지 처리
+    paginator = Paginator(item_list, 2) # 일단 한 페이지에 2개씩 보여주기
+    
+    # 페이지 번호가 들어오지 않았다면 1로 처리
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+    except EmptyPage:
+        page = 1
+        page_obj = paginator.page(page)
+
     # 보낼 context
     context = {
             'item_list' : item_list,
             'tab' : tab,
+            'align_mode' : align_mode,
+            'page_obj' : page_obj,
+            'paginator' : paginator,
     }
     
     return render(request, 'informations/informations.html', context)
