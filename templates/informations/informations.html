@@ -26,13 +26,12 @@
 
 <br>
 <hr>
-<li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently">지역</a></li>
-<li><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently">다문화</a></li>
-<li><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently">방과후</a></li>
+<li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1">지역</a></li>
+<li><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1">다문화</a></li>
+<li><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1">방과후</a></li>
 <br>
 
 <h3>정보</h3>
-
 <form action="{% url 'informations:information' %}" method="GET" id="align_mode_form">
         <select name="align_mode" id="align_mode">
             <option value="recently">최신순</option>
@@ -42,9 +41,11 @@
 
 {% comment %} 지역 탭 {% endcomment %}
 {% if tab == 'region' %}
+{% if page_obj %}
 <hr>지역<hr>
 <div id="item-container">
-    {% for item in item_list %}
+    {% comment %} {% for item in item_list %} {% endcomment %}
+    {% for item in page_obj %}
         <div class="item">
             제목 : {{ item.title }}<br>
             내용 : {{ item.content }}<br>
@@ -68,6 +69,7 @@
             <br>
         </div>
     {% endfor %}
+    {%endif%}
 </div>
 
 {% comment %} 다문화 탭 {% endcomment %}
@@ -133,6 +135,41 @@
 {% endif %}
 
 
+{% comment %} pagination 관련 코드 {% endcomment %}
+<div>
+    {% comment %} 1 페이지만 있을 때 pagination 기능 없애기 {% endcomment %}
+    {% if page_obj.has_other_pages %}
+        <ul style="display:flex;list-style:none;">
+
+            {% comment %} 이전 페이지가 있다면 {% endcomment %}
+            {% if page_obj.has_previous %}
+                <li style="margin:3px;">
+                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}">
+                        <img src="{% static 'image/previous.png' %}" alt="이전 페이지로">
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for page in paginator.page_range %}
+                {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
+                    <li style="margin:3px;"><a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
+                {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
+                    <li style="margin:3px;"><a style="text-decoration:none; color:blue;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} 다음 페이지가 있다면 {% endcomment %}
+            {% if page_obj.has_next %}
+                <li style="margin:3px;">
+                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}">
+                        <img src="{% static 'image/next.png' %}" alt="다음 페이지로">
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    {% endif %}
+</div>
 
 {% comment %} 스크랩 기능 {% endcomment %}
 <script src="https://code.jquery.com/jquery-3.5.1.js"
