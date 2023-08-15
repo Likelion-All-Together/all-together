@@ -28,6 +28,8 @@
             <option value="대학교"> 대학교</option>
         </select>
     </div>
+    <div> 국적 : <input type="text" name="nationality" placeholder="국적을 입력하세요"> </div>
+    <div> 사용가능언어 : <input type="text" name="language" placeholder="사용가능 언어를 입력하세요"> </div>
     <hr>
     <h3> * 수업 비용 </h3>
     <div> 수업 비용 : 
@@ -72,7 +74,7 @@
         <input type="text" name="feature" placeholder="특이사항을 입력하세요">
     </div>
     <hr>
-    <h3> * 수업 시간 설정 </h3>
+    <h2> 수업이 가능한 시간을 선택해주세요 </h2>
     
     <table id="schedule-table">
         <tr>
@@ -126,44 +128,44 @@
             <td class="일12"></td>
         </tr>
         <tr>
-            <th>1</th>
-            <td class="월1"></td>
-            <td class="화1"> </td>
-            <td class="수1"></td>
-            <td class="목1"></td>
-            <td class="금1"></td>
-            <td class="토1"></td>
-            <td class="일1"></td>
+            <th>13</th>
+            <td class="월13"></td>
+            <td class="화13"> </td>
+            <td class="수13"></td>
+            <td class="목13"></td>
+            <td class="금13"></td>
+            <td class="토13"></td>
+            <td class="일13"></td>
         </tr>
         <tr>
-            <th>2</th>
-            <td class="월2"></td>
-            <td class="화2"> </td>
-            <td class="수2"></td>
-            <td class="목2"></td>
-            <td class="금2"></td>
-            <td class="토2"></td>
-            <td class="일2"></td>
+            <th>14</th>
+            <td class="월14"></td>
+            <td class="화14"> </td>
+            <td class="수14"></td>
+            <td class="목14"></td>
+            <td class="금14"></td>
+            <td class="토14"></td>
+            <td class="일14"></td>
         </tr>
         <tr>
-            <th>3</th>
-            <td class="월3"></td>
-            <td class="화3"> </td>
-            <td class="수3"></td>
-            <td class="목3"></td>
-            <td class="금3"></td>
-            <td class="토3"></td>
-            <td class="일3"></td>
+            <th>15</th>
+            <td class="월15"></td>
+            <td class="화15"> </td>
+            <td class="수15"></td>
+            <td class="목15"></td>
+            <td class="금15"></td>
+            <td class="토15"></td>
+            <td class="일15"></td>
         </tr>
         <tr>
-            <th>4</th>
-            <td class="월4"></td>
-            <td class="화4"> </td>
-            <td class="수4"></td>
-            <td class="목4"></td>
-            <td class="금4"></td>
-            <td class="토4"></td>
-            <td class="일4"></td>
+            <th>16</th>
+            <td class="월16"></td>
+            <td class="화16"> </td>
+            <td class="수16"></td>
+            <td class="목16"></td>
+            <td class="금16"></td>
+            <td class="토16"></td>
+            <td class="일16"></td>
         </tr>
     </table>
 
@@ -174,9 +176,12 @@
 </form>
 <style>
     table{
-        border: 3px solid #4B2A0B;
-        border-collapse: collapse;
         font-size: 0.9em;
+        background-color: #F7F6EE;
+        border-collapse: collapse;
+        border-radius: 10px;
+        border-style: hidden;
+        box-shadow: 0 0 0 3px #4B2A0B;
     }
     th, td{
         border: 3px solid #4B2A0B;
@@ -186,7 +191,7 @@
         height: 5px;
     }
     td {
-        width: 75px;
+        width: 100px;
         height: 60px;
     }
     .clicked-cell {
