@@ -12,55 +12,31 @@ def information_view(request):
     tab = request.GET.get('tab', 'region') # 기본은 지역 탭
     align_mode = request.GET.get('align_mode', 'recently') # 기본 최신순 정렬
     page = request.GET.get('page')
-    print(page)
     
     # [지역] 탭인 경우
     if tab == 'region':
         item_list = RegionAndMulticultural.objects.filter(category='지역') # 지역만 가져오기
         tab = 'region'
-        
-        # 정렬 기준 처리
-        if align_mode == 'recently':
-            item_list = item_list.order_by('-created_at')
-        elif align_mode == 'scrap':
-            item_list = item_list.order_by('-scrap')
-    
-    
+
     # [다문화] 탭인 경우
     elif tab == 'multicultural':
         item_list = RegionAndMulticultural.objects.filter(category='다문화') # 다문화만 가져오기
         tab = 'multicultural'
     
-        # 정렬 기준 처리
-        if align_mode == 'recently':
-            item_list = item_list.order_by('-created_at')
-        elif align_mode == 'scrap':
-            item_list = item_list.order_by('-scrap')
-    
     # [방과후] 탭인 경우
     elif tab == 'afterschool':
         item_list = Afterschool.objects.all()
-        tab = 'afterschool'
-        
-            # 정렬 기준 처리
-        if align_mode == 'recently':
-            item_list = item_list.order_by('-created_at')
-        elif align_mode == 'scrap':
-            item_list = item_list.order_by('-scrap')
+        tab = 'afterschool'        
     
+    # 정렬을 반영한 item_list
+    item_list = reflect_alignment(item_list, align_mode)
+    
+    # 페이지 처리
+    page_obj, paginator = make_page_obj(item_list, page, 2) # 일단 한 페이지에 2개씩 보여주기
+
     # 페이지 처리
     paginator = Paginator(item_list, 2) # 일단 한 페이지에 2개씩 보여주기
     
-    # 페이지 번호가 들어오지 않았다면 1로 처리
-    try:
-        page_obj = paginator.page(page)
-    except PageNotAnInteger:
-        page = 1
-        page_obj = paginator.page(page)
-    except EmptyPage:
-        page = 1
-        page_obj = paginator.page(page)
-
     # 보낼 context
     context = {
             'item_list' : item_list,
@@ -94,3 +70,25 @@ def scrap(request):
     
     context = {'scrap_count' : item.scrap.count(),"message":message}
     return HttpResponse(json.dumps(context), content_type='application/json')  
+
+# 정렬 처리
+def reflect_alignment(item_list, align_mode):
+    if align_mode == 'recently':
+        return item_list.order_by('-created_at')
+    elif align_mode == 'scrap':
+        return item_list.order_by('-scrap')
+    
+# 만들 리스트, 현재 페이지, 한 페이지당 보여줄 포스트 개수
+def make_page_obj(item_list, page, num_of_post,):
+    paginator = Paginator(item_list, num_of_post)
+    try:
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except EmptyPage:
+        page = paginator.num_pages
+        page_obj = paginator.page(page)
+        return page_obj, paginator

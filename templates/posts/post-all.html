@@ -18,21 +18,80 @@
         <input type="submit" name="category" value="이벤트">
         
     </div>
-    {% for post in notice_list %}
-    <div>
-        <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a>
-    </div>
-    {% endfor %}
-    {% for post in event_list %}
-    <div>
-        <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a>
-    </div>
-    {% endfor %}
-    {% for post in post_list %}
-    <div>
-        <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a>
-    </div>
-    {% endfor %}
-
+    <br>
 </form>
+    <br>
+
+    {% if category == '공지' or category == '이벤트' or category == '인기글'%}
+        {% for post in page_obj %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
+            <br>
+        {% endfor %}
+
+    {% else %} 
+        {% for post in notice_list %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
+            <br>
+        {% endfor %}
+        <hr>
+        {% for post in page_obj %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
+            <br>
+        {% endfor %}
+    {% endif %}
+
+{% comment %} pagination 관련 코드 {% endcomment %}
+<div>
+    {% comment %} 1 페이지만 있을 때 pagination 기능 없애기 {% endcomment %}
+    {% if page_obj.has_other_pages %}
+        <ul style="display:flex;list-style:none;">
+
+            {% comment %} 이전 페이지가 있다면 {% endcomment %}
+            {% if page_obj.has_previous %}
+                <li style="margin:3px;">
+                    <a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page_obj.previous_page_number}}">
+                        <img src="{% static 'image/previous.png' %}" alt="이전 페이지로">
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for page in paginator.page_range %}
+                {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
+                    <li style="margin:3px;"><a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page}}">{{page}}</a></li>
+                {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
+                    <li style="margin:3px;"><a style="text-decoration:none; color:blue;" href="?category={{category}}&page={{page}}">{{page}}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} 다음 페이지가 있다면 {% endcomment %}
+            {% if page_obj.has_next %}
+                <li style="margin:3px;">
+                    <a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page_obj.next_page_number}}">
+                        <img src="{% static 'image/next.png' %}" alt="다음 페이지로">
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    {% endif %}
+</div>
+
 {% endblock %}
