@@ -3,44 +3,79 @@ from .models import Post,Comment
 from .forms import PostCreateForm , CommentForm
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
+from itertools import chain
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-
-# Create your views here.
 def post_list_view(request):
     
     if request.method=='GET':
-        selected_category = request.GET.get("category")
+        selected_category = request.GET.get('category')
+        page = request.GET.get('page')
+        
         if selected_category  is None:
             selected_category  = '전체'
-        notice_list = Post.objects.filter(category='공지') #공지사항 글
-        event_list = Post.objects.filter(category= '이벤트')
-        filter_list = Post.objects.exclude(writer__username='alltogether') # 일반 사용자들 글
+        
+        notice_list = Post.objects.filter(category = '공지').order_by('-created_at') #공지사항 글
+        event_list = Post.objects.filter(category = '이벤트').order_by('-created_at')
+        filter_list = Post.objects.exclude(writer__username = '관리자').order_by('-created_at') # 일반 사용자들 글
+        
+        if selected_category  == '전체': # 전체글 (완료)
             
-        if selected_category  == '전체': # 전체글 : 공지, 이벤트, 나머지
+            notice_list = notice_list[:5] # 공지 5개
+            
+            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            
             context = {
-                'notice_list' : notice_list,
-                'event_list': event_list,
-                'post_list' : filter_list,
+                'notice_list' : notice_list, # 공지글 5개
+                'page_obj' : page_obj,
+                'paginator' : paginator,
+                'category' : selected_category,
             }
-        elif selected_category == '공지':
+        elif selected_category == '공지': # 공지 글만 보이게 (완료)
+            
+            page_obj, paginator = make_page_obj(notice_list, page, 6)
+            
             context = {
-                'notice_list' : notice_list,
+                'page_obj' : page_obj,
+                'paginator' : paginator,
+                'category' : selected_category,
             }
-        elif selected_category == '이벤트':
+        elif selected_category == '이벤트': # 이벤트 글만 보이게 (완료)
+            
+            page_obj, paginator = make_page_obj(event_list, page, 6)
+            
             context = {
-                'event_list' : event_list,
+                'page_obj' : page_obj,
+                'paginator' : paginator,
+                'category' : selected_category,
             }
-        elif selected_category == '인기글':
+            
+        elif selected_category == '인기글': # 인기글만 보이게
+            
             filter_list = filter_list.order_by('-view_count')
+            
+            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            
             context = {
-                'post_list':filter_list,
+                'post_list': filter_list,
+                'page_obj' : page_obj,
+                'paginator' : paginator,
+                'category' : selected_category,
             }
             
-        else:
-            filter_list = filter_list.filter(category=selected_category) 
+        else: # 공지 5개, 선택된 카테고리에 해당하는 글 14개
+            
+            notice_list = notice_list[:5] # 공지 5개
+            filter_list = filter_list.filter(category=selected_category) # 선택된 카테고리 글
+            
+            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            
             context = {
-                'post_list' : filter_list,
+                'notice_list' : notice_list,
+                'page_obj' : page_obj,
+                'paginator' : paginator,
+                'category' : selected_category,
             }
         return render(request,'posts/post-all.html',context)
     
@@ -111,4 +146,18 @@ def like_view(request, bid):
     else:
         post.like.add(user)
         return JsonResponse({'message':'ok','like_count':post.like.count()})
-    
+
+# 만들 리스트, 현재 페이지, 한 페이지당 보여줄 포스트 개수
+def make_page_obj(post_list, page, num_of_post,):
+    paginator = Paginator(post_list, num_of_post)
+    try:
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except EmptyPage:
+        page = paginator.num_pages
+        page_obj = paginator.page(page)
+        return page_obj, paginator
