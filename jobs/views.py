@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Class
+from .models import Class, Register
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 import json
@@ -27,6 +27,10 @@ def jobs_creat_view(request):
         feature = request.POST.get('feature')#특이사항
         group = request.POST.getlist('class') #수업 분류
         selected_cells = request.POST.get('selected_cells') #선택된 시간 (리스트형태)
+        nationality = request.POST.get('nationality') #국적
+        language = request.POST.get('language') #언어
+        account = request.POST.get('pay') #계좌
+        
         if selected_cells:
             selected_cells = json.loads(selected_cells)
         #테스트용 출력
@@ -48,6 +52,9 @@ def jobs_creat_view(request):
             feature = feature,
             group = group,
             times = selected_cells,
+            language = language,
+            nationality = nationality,
+            account = account,
         )
         return redirect('jobs:jobs_main')
     return render(request, 'jobs/jpbs-create.html')
@@ -75,10 +82,74 @@ def jobs_teacher_detail_view(request,id): #선생님 상세 페이지
 def class_apply_view(request, id):
     teacher = get_object_or_404(Class, id=id)
     if request.method == 'GET':
+        time_lists = (teacher.times).split("'")
+        remove_list = {', ','[',']'}
+        time_lists = [i for i in time_lists if i not in remove_list]
+        
+        date_list9 = ['월9','화9','수9','목9','금9','토9','일9']
+        date_list10 = ['월10','화10','수10','목10','금10','토10','일10']
+        date_list11 = ['월11','화11','수11','목11','금11','토11','일11']
+        date_list12 = ['월12','화12','수12','목12','금12','토12','일12']
+        date_list13 = ['월13','화13','수13','목13','금13','토13','일13']
+        date_list14 = ['월14','화14','수14','목14','금14','토14','일14']
+        date_list15 = ['월15','화15','수15','목15','금15','토15','일15']
+        date_list16 = ['월16','화16','수16','목16','금16','토16','일16']
+        
         context = {
-            'teacher':teacher
+            'time_lists' : time_lists,
+            'teacher':teacher,
+            'date_list9':date_list9,
+            'date_list10':date_list10,
+            'date_list11':date_list11,
+            'date_list12':date_list12,
+            'date_list13':date_list13,
+            'date_list14':date_list14,
+            'date_list15':date_list15,
+            'date_list16':date_list16,
         }
         return render(request, 'jobs/jobs-apply.html', context)
+    elif request.method == 'POST':
+        class_name = Class.objects.get(id=id)
+        writer = request.user
+        student_name = request.POST.get('name')
+        student_age = request.POST.get('age')
+        student_phone = request.POST.get('phone')
+        student_email = request.POST.get('email')
+        pay = request.POST.get('pay')
+        student_image = request.FILES.get('image')
+        times = request.POST.get('selected_cells') #선택된 시간 (리스트형태)
+
+        if times:
+            times = json.loads(times)
+        #테스트용 출력
+        print(times)
+        cost = teacher.cost * len(times)
+        
+        if student_image :     # 수업 비용 추가해야 함
+            Register.objects.create(
+                class_name=class_name,
+                writer = writer,
+                student_name=student_name,
+                student_age = student_age,
+                student_phone = student_phone,
+                student_image = student_image,
+                student_email = student_email,
+                pay = pay,
+                times = times,
+                cost = cost,
+            )
+        else:
+            Register.objects.create(
+                class_name=class_name,
+                writer = writer,
+                student_name=student_name,
+                student_age = student_age,
+                student_phone = student_phone,
+                pay = pay,
+                times = times,
+                cost = cost,
+            )
+        return redirect('jobs:jobs_main')
     return render(request, 'jobs/jobs-apply.html', context)
 
 

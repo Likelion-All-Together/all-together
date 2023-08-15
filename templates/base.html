@@ -2,7 +2,7 @@
 <body>
     <ul>
         <li><a href = "{% url 'diamoyeo:home' %}">메인</a></li>
-        <li><a href = "#">과외하기</a></li>
+      <li><a href = "{% url 'jobs:jobs_main'%}">과외하기</a></li>
         <li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1">지역정보</a></li>
         <li><a href = "{% url 'posts:post-list-all'%}?page=1">게시판</a></li>
         <li><a href = "{% url 'accounts:mypage' %}">마이페이지</a></li>

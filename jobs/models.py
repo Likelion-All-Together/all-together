@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 class Class (models.Model):
     writer = models.ForeignKey(to=User,on_delete=models.CASCADE)
     name = models.TextField(verbose_name='이름') 
@@ -18,17 +17,23 @@ class Class (models.Model):
     student = models.TextField(verbose_name='수업 대상',null=True, blank=True) 
     feature = models.TextField(verbose_name='특이사항', null=True, blank=True) 
     group = models.TextField(verbose_name='수업분류', null=True, blank=True) 
+    nationality = models.TextField(verbose_name='국적',null=True, blank=True)
+    language = models.TextField(verbose_name='언어',null=True, blank=True)
+    account = models.IntegerField(verbose_name='계좌번호', default=0,null=True, blank=True) 
+    
     # 지불방식
     
     
 class Register(models.Model):
     class_name = models.ForeignKey(to = 'Class', on_delete=models.CASCADE)
-    student_name = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    writer = models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=True)
+    student_name = models.TextField(verbose_name='이름') 
     student_age = models.IntegerField(verbose_name='나이')
     student_phone = models.CharField(verbose_name='전화번호',max_length=50)
     student_image = models.ImageField(verbose_name='프로필',null=True,blank = True)
     student_email = models.EmailField(verbose_name='이메일')
     pay = models.TextField(verbose_name='지불방식')
-    time = models.IntegerField(verbose_name='시간대')
+    times =models.TextField(verbose_name='시간대', null=True, blank=True) 
+    cost = models.IntegerField(verbose_name='수업비용', default=10000) 
     
     
