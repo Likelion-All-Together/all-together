@@ -1,0 +1,21 @@
+.number-nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.number-nav__list {
+    list-style: none;
+}
+.number-nav__list a {
+    text-decoration: none;
+    font-size: 21px;
+}
+#right-btn {
+    rotate: 180deg;
+}
+#left-btn,
+#right-btn {
+    width: 21px;
+    height: 21px;
+}

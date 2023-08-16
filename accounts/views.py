@@ -1,7 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from posts.models import Post, Comment
 from informations.models import RegionAndMulticultural, Afterschool
@@ -31,10 +30,12 @@ def login_view(request):
     
     # GET 요청 시 HTML 응답
     if request.method == 'GET':
-        return render(request, 'accounts/login.html', {'form' : AuthenticationForm()}) # 로그인 HTML 응답
+        # return render(request, 'accounts/login.html', {'form' : AuthenticationForm()}) # 로그인 HTML 응답
+        return render(request, 'accounts/login.html', {'form' : CustomAuthenticationForm()}) # 로그인 HTML 응답
     else:
         # 데이터 유효성 검사
-        form = AuthenticationForm(request, data = request.POST)
+        # form = AuthenticationForm(request, data = request.POST)
+        form = CustomAuthenticationForm(request, data = request.POST)
         if form.is_valid(): # 비즈니스 로직 처리 - 로그인 처리
             login(request, form.user_cache)
             return redirect('diamoyeo:home') # 응답

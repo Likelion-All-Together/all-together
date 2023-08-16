@@ -1,17 +1,54 @@
 {% extends 'base.html' %}
-{% block title %}로그인{% endblock %}
 {% load static %}
+{% block title %}로그인{% endblock %}
 {% block content %}
 
-<h1>로그인</h1>
-<form action = "" method = "POST" enctype = "multipart/form-data">
-    {% csrf_token %}
-    <div>
-        {{ form.as_p }}
-    </div>
-    <div>
-        <input type="submit">
-    </div>
-</form>
+<head>
+    <link rel="stylesheet" href="{% static 'css/screens/login.css' %}">
+</head>
 
-{% endblock %}
+<body>
+    <div id="header"></div>
+    <script src="/static/js/header.js"></script>
+    <main class="login-main">
+        <div class="login__title">
+            로그인
+            <div class="login-title-line"></div>
+        </div>
+        <form method="POST" action="" class="login__form" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <div class="login">
+                <div class="login__img"><img src="{% static 'image/lion.png' %}"></div>
+                <div>
+                    <div>
+                        
+                        <p class="login__form-column login__form-column--margin18">
+                            <label for="login-username"><img src="{% static 'image/user.svg' %}"></label>
+                            {{ form.username }}
+                            
+                        </p>
+                        <p class="login__form-column">
+                            <label for="login-pw"><img src="{% static 'image/password.svg' %}"></label>
+                            {{ form.password }}
+                        </p>
+                    </div>
+                    <div class="login__bottom-content">
+                        <label for="login-auto" class="login__auto">
+                            <input id="login-auto" type="checkbox">
+                            <span>자동 로그인</span>
+                        </label>
+                        <div class="login__search"><a href="#">아이디/비밀번호 찾기</a></div>
+                    </div>
+                </div>
+                <div class="login__form-btns">
+                    <input class="login-btn" type="submit" value="로그인">
+                    <button class="signup-btn">회원가입</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
+
+{% endblock%}
