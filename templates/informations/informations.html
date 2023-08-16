@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}정보 페이지{% endblock %}
 {% load static %}
+{% block title %}정보{% endblock %}
 {% block content %}
 
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/screens/informations.css' %}">
     <!-- 최신순/스크랩순 정렬 jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -24,152 +25,479 @@
     </script>
 </head>
 
-<br>
-<hr>
-<li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1">지역</a></li>
-<li><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1">다문화</a></li>
-<li><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1">방과후</a></li>
-<br>
-
-<h3>정보</h3>
-<form action="{% url 'informations:information' %}" method="GET" id="align_mode_form">
-        <select name="align_mode" id="align_mode">
-            <option value="recently">최신순</option>
-            <option value="scrap">스크랩순</option>
-        </select>
-</form>
-
-{% comment %} 지역 탭 {% endcomment %}
-{% if tab == 'region' %}
-{% if page_obj %}
-<hr>지역<hr>
-<div id="item-container">
-    {% comment %} {% for item in item_list %} {% endcomment %}
-    {% for item in page_obj %}
-        <div class="item">
-            제목 : {{ item.title }}<br>
-            내용 : {{ item.content }}<br>
-            문의처 : {{ item.phone }}<br>
-            지원 주기 : {{ item.support_cycle }}<br>
-            제공 유형 :{{ item.type }}<br>
-            담당 부서 : {{ item.department }}<br>
-            태그 : {{ item.tag }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
-
-            <br>
-            <br>
+<body id="info-body">
+    <div id="header"></div>
+    <script src="/static/js/header.js"></script>
+    <div class="info-title">
+        <div>
+            <h1>000지역 / 000복지</h1>
+            <p>000지역 000복지에 관한 설명 000복지에는 무엇이 들어가면 좋을까요<br>
+                대상도 나눠서 볼 수 있거나 자신한테 맞는 복지를 검색을 통해 찾는 기능이 추가
+                된다면 더욱 좋을 것 같습니다.
+            </p>
         </div>
-    {% endfor %}
-    {%endif%}
-</div>
+        
+    </div>
 
-{% comment %} 다문화 탭 {% endcomment %}
-{% elif tab == 'multicultural' %}
-<hr>다문화<hr>
-<div id="item-container">
-    {% for item in item_list %}
-        <div class="item">
-            제목 : {{ item.title }}<br>
-            내용 : {{ item.content }}<br>
-            문의처 : {{ item.phone }}<br>
-            지원 주기 : {{ item.support_cycle }}<br>
-            제공 유형 :{{ item.type }}<br>
-            담당 부서 : {{ item.department }}<br>
-            태그 : {{ item.tag }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
+    <main class="info-main">
+        <div class="info-main-content">
+            <div class="info-main-content__top">
+                <nav class="info-main-content__nav">
+                    <ul>
+                        {% if tab == 'region'%}
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="font-size: 20px;">복지제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="color: #977F6A;">방과후 & 교육</a></li>
+                        {% elif tab == 'multicultural'%}
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="font-size: 20px;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="color: #977F6A;">방과후 & 교육</a></li>
+                        {% elif tab == 'afterschool'%}
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="font-size: 20px;">방과후 & 교육</a></li>
+                        {% endif%}
+                    </ul>
+                </nav>
+                <form action="{% url 'informations:information' %}" method="GET" id="align_mode_form" class="align_mode_form">
+                    <select name="align_mode" id="align_mode" class="align_mode-info">
+                        <option value="recently">최신순</option>
+                        <option value="scrap">인기순</option>
+                    </select>
+                </form>
+            </div>
+            {% if tab == 'region'%}
+            <div class="item-container" id="item-container">
+                <div class="item-container__column">
+                    {% for item in first_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in second_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in third_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% elif tab == 'multicultural'%}
+            <div class="item-container" id="item-container">
+                <div class="item-container__column">
+                    {% for item in first_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in second_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in third_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.content }}
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">문의처</td>
+                                <td class="item__table-ctgory-data">{{ item.phone }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">지원주기</td>
+                                <td class="item__table-ctgory-data">{{ item.support_cycle }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">제공유형</td>
+                                <td class="item__table-ctgory-data">{{ item.type }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">담당부처</td>
+                                <td class="item__table-ctgory-data">{{ item.department }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% elif tab == 'afterschool'%}
+            <div class="item-container" id="item-container">
+                <div class="item-container__column">
+                    {% for item in first_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.region }}동 | 
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">접수일시</td>
+                                <td class="item__table-ctgory-data">{{ item.receipt_start|date:"m월 d일" }} ~ {{ item.receipt_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">교육일시</td>
+                                <td class="item__table-ctgory-data">{{ item.training_start|date:"m월 d일" }} ~ {{ item.training_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">수강료</td>
+                                <td class="item__table-ctgory-data">{{ item.tuition }}(원)</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">상태</td>
+                                <td class="item__table-ctgory-data">{{ item.status }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in second_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.region }}동 | 
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">접수일시</td>
+                                <td class="item__table-ctgory-data">{{ item.receipt_start|date:"m월 d일" }} ~ {{ item.receipt_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">교육일시</td>
+                                <td class="item__table-ctgory-data">{{ item.training_start|date:"m월 d일" }} ~ {{ item.training_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">수강료</td>
+                                <td class="item__table-ctgory-data">{{ item.tuition }}(원)</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">상태</td>
+                                <td class="item__table-ctgory-data">{{ item.status }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="item-container__column">
+                    {% for item in third_obj %}
+                    <div class="item">
+                        <div class="item__ct">서민금융</div>
+                        <div class="item__ct">청년</div>
+                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        <div class="item__topic">{{ item.title }}</div>
+                        <div class="item__description">
+                            <div>
+                                {{ item.region }}동 | 
+                            </div>
+                        </div>
+                        <table class="item__table">
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">접수일시</td>
+                                <td class="item__table-ctgory-data">{{ item.receipt_start|date:"m월 d일" }} ~ {{ item.receipt_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">교육일시</td>
+                                <td class="item__table-ctgory-data">{{ item.training_start|date:"m월 d일" }} ~ {{ item.training_end|date:"m월 d일" }}</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">수강료</td>
+                                <td class="item__table-ctgory-data">{{ item.tuition }}(원)</td>
+                            </tr>
+                            <tr class="item__table-tr">
+                                <td class="item__table-ctgory">상태</td>
+                                <td class="item__table-ctgory-data">{{ item.status }}</td>
+                            </tr>
+                        </table>
+                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                            자세히 보기
+                            {% if request.user in item.scrap.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
+                            {% else %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
+                            {% endif %}
+                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
-            <br>
-            <br>
-        </div>
-    {% endfor %}
-</div>
-
-{% elif tab == 'afterschool' %}
-<hr>방과후<hr>
-<div id="item-container">
-    {% for item in item_list %}
-        <div class="item">
-            동명 : {{ item.region }}<br>
-            프로그램명 : {{ item.title }}<br>
-            접수일시 : {{ item.receipt_start }} ~ {{ item.receipt_end }}<br>
-            교육일시 : {{ item.training_start }} ~ {{ item.training_end }}<br>
-            요일 : {{ item.day }}<br>
-            수강료 : {{ item.tuition }}(원)<br>
-            정원 : {{ item.number_of_member }}명<br>
-            상태 : {{ item.status }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
-
-            <br>
-            <br>
-        </div>
-    {% endfor %}
-</div>
-
-{% endif %}
-
-
-{% comment %} pagination 관련 코드 {% endcomment %}
-<div>
-    {% comment %} 1 페이지만 있을 때 pagination 기능 없애기 {% endcomment %}
-    {% if page_obj.has_other_pages %}
-        <ul style="display:flex;list-style:none;">
-
-            {% comment %} 이전 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_previous %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}">
-                        <img src="{% static 'image/previous.png' %}" alt="이전 페이지로">
-                    </a>
-                </li>
             {% endif %}
+            <div class="information-footer">
+                {% if page_obj.has_other_pages %}
+                <ul class="number-nav">
+                    {% if page_obj.has_previous %}
+                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                    {% endif %}
 
-            {% for page in paginator.page_range %}
-                {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
-                {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:blue;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
-                {% endif %}
-            {% endfor %}
+                    {% for page in paginator.page_range %}
+                        {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
+                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
+                        {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
+                        <li class="number-nav__list" style="color:#977F6A;" ><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
 
-            {% comment %} 다음 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_next %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}">
-                        <img src="{% static 'image/next.png' %}" alt="다음 페이지로">
-                    </a>
-                </li>
-            {% endif %}
+                    {% if page_obj.has_next %}
+                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                    {% endif %}
+                </ul>
+                {% endif%}
+            </div>
+        </div>
+    </main>
 
-        </ul>
-    {% endif %}
-</div>
+</body>
 
 {% comment %} 스크랩 기능 {% endcomment %}
 <script src="https://code.jquery.com/jquery-3.5.1.js"

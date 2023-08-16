@@ -32,10 +32,12 @@ def information_view(request):
     item_list = reflect_alignment(item_list, align_mode)
     
     # 페이지 처리
-    page_obj, paginator = make_page_obj(item_list, page, 2) # 일단 한 페이지에 2개씩 보여주기
-
-    # 페이지 처리
-    paginator = Paginator(item_list, 2) # 일단 한 페이지에 2개씩 보여주기
+    page_obj, paginator = make_page_obj(item_list, page, 9) # 일단 한 페이지에 2개씩 보여주기
+    
+    # 그룹으로 나누기
+    first_obj = page_obj[:3]
+    second_obj = page_obj[3:6]
+    third_obj = page_obj[6:9]
     
     # 보낼 context
     context = {
@@ -43,6 +45,9 @@ def information_view(request):
             'tab' : tab,
             'align_mode' : align_mode,
             'page_obj' : page_obj,
+            'first_obj' : first_obj,
+            'second_obj' : second_obj,
+            'third_obj' : third_obj,
             'paginator' : paginator,
     }
     
