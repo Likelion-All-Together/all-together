@@ -1,225 +1,86 @@
 {% extends 'base.html' %}
-{% block title %}정보 페이지{% endblock %}
+{% block title %}게시판{% endblock %}
 {% load static %}
 {% block content %}
 
 <head>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <!-- 최신순/스크랩순 정렬 jquery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#align_mode").change(function () {
-                var selectedMode = $(this).val(); // 선택된 모드 값 가져오기
-                var currentTab = "{{ request.GET.tab }}"; // 현재 선택된 탭
-                var url = "{% url 'informations:information' %}?tab=" + currentTab + "&align_mode=" + selectedMode;
-                window.location.href = url; // 페이지 이동
-            });
-            var tab = "{{ request.GET.tab }}";  // Django 템플릿 태그로 파라미터 값 가져오기
-            var align_mode = "{{ request.GET.align_mode }}";  // Django 템플릿 태그로 파라미터 값 가져오기
-            if(align_mode === 'recently') { $("#align_mode option[value='recently']").prop("selected", true); }
-            else if (align_mode === 'scrap') { $("#align_mode option[value='scrap']").prop("selected", true); } 
-            else { $("#align_mode option[value='recently']").prop("selected", true); }
-        });
-    </script>
+    <link rel="stylesheet" href="{% static 'css/screens/post-all.css' %}">
 </head>
-
-<br>
-<hr>
-<li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1">지역</a></li>
-<li><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1">다문화</a></li>
-<li><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1">방과후</a></li>
-<br>
-
-<h3>정보</h3>
-<form action="{% url 'informations:information' %}" method="GET" id="align_mode_form">
-        <select name="align_mode" id="align_mode">
-            <option value="recently">최신순</option>
-            <option value="scrap">스크랩순</option>
-        </select>
+<h1>게시판 페이지</h1>
+<form action = "" method = "GET" enctype = "multipart/form-data">
+    {% csrf_token %}
+    <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
+    <div>
+        <input type="submit" name="category" value="인기글">
+        <input type="submit" name="category" value="전체">
+        <input type="submit" name="category" value="알바">
+        <input type="submit" name="category" value="과외">
+        <input type="submit" name="category" value="취준">
+        <input type="submit" name="category" value="경력단절">
+        <input type="submit" name="category" value="공지">
+        <input type="submit" name="category" value="이벤트">
+    </div>
+    <br>
 </form>
+    <br>
 
-{% comment %} 지역 탭 {% endcomment %}
-{% if tab == 'region' %}
-{% if page_obj %}
-<hr>지역<hr>
-<div id="item-container">
-    {% comment %} {% for item in item_list %} {% endcomment %}
-    {% for item in page_obj %}
-        <div class="item">
-            제목 : {{ item.title }}<br>
-            내용 : {{ item.content }}<br>
-            문의처 : {{ item.phone }}<br>
-            지원 주기 : {{ item.support_cycle }}<br>
-            제공 유형 :{{ item.type }}<br>
-            담당 부서 : {{ item.department }}<br>
-            태그 : {{ item.tag }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
-
+    {% if category == '공지' or category == '이벤트' or category == '인기글'%}
+        {% for post in page_obj %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
             <br>
+        {% endfor %}
+
+    {% else %} 
+        {% for post in notice_list %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
             <br>
-        </div>
-    {% endfor %}
-    {%endif%}
-</div>
-
-{% comment %} 다문화 탭 {% endcomment %}
-{% elif tab == 'multicultural' %}
-<hr>다문화<hr>
-<div id="item-container">
-    {% for item in item_list %}
-        <div class="item">
-            제목 : {{ item.title }}<br>
-            내용 : {{ item.content }}<br>
-            문의처 : {{ item.phone }}<br>
-            지원 주기 : {{ item.support_cycle }}<br>
-            제공 유형 :{{ item.type }}<br>
-            담당 부서 : {{ item.department }}<br>
-            태그 : {{ item.tag }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
-
+        {% endfor %}
+        <hr>
+        {% for post in page_obj %}
+            <div>
+                카테고리 : {{ post.category }}<br>
+                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
+                작성자 : {{ post.writer }}<br>
+                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
+                조회수 : {{ post.view_count }}<br>
+            </div>
             <br>
-            <br>
-        </div>
-    {% endfor %}
-</div>
-
-{% elif tab == 'afterschool' %}
-<hr>방과후<hr>
-<div id="item-container">
-    {% for item in item_list %}
-        <div class="item">
-            동명 : {{ item.region }}<br>
-            프로그램명 : {{ item.title }}<br>
-            접수일시 : {{ item.receipt_start }} ~ {{ item.receipt_end }}<br>
-            교육일시 : {{ item.training_start }} ~ {{ item.training_end }}<br>
-            요일 : {{ item.day }}<br>
-            수강료 : {{ item.tuition }}(원)<br>
-            정원 : {{ item.number_of_member }}명<br>
-            상태 : {{ item.status }}<br>
-            <button id="scrap-btn-{{ item.id }}" onclick="item_scrap({{ item.id }})">
-                {% if request.user in item.scrap.all %}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                {%else%}
-                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                {%endif%}
-                <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
-            </button>
-
-            <br>
-            <br>
-        </div>
-    {% endfor %}
-</div>
-
-{% endif %}
-
+        {% endfor %}
+    {% endif %}
 
 {% comment %} pagination 관련 코드 {% endcomment %}
-<div>
-    {% comment %} 1 페이지만 있을 때 pagination 기능 없애기 {% endcomment %}
+<div class="posts-footer">
     {% if page_obj.has_other_pages %}
         <ul style="display:flex;list-style:none;">
-
-            {% comment %} 이전 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_previous %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}">
-                        <img src="{% static 'image/previous.png' %}" alt="이전 페이지로">
-                    </a>
-                </li>
-            {% endif %}
-
-            {% for page in paginator.page_range %}
-                {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
-                {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:blue;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{page}}</a></li>
+                {% if page_obj.has_previous %}
+                    <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
                 {% endif %}
-            {% endfor %}
 
-            {% comment %} 다음 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_next %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}">
-                        <img src="{% static 'image/next.png' %}" alt="다음 페이지로">
-                    </a>
-                </li>
-            {% endif %}
+                {% for page in paginator.page_range %}
+                    {% if page == page_obj.number %}
+                        <li class="number-nav__list"><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
+                    {% else %}
+                        <li class="number-nav__list" style="color:#977F6A;" ><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
+                    {% endif %}
+                {% endfor %}
 
+                {% if page_obj.has_next %}
+                <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                {% endif %}
         </ul>
     {% endif %}
 </div>
-
-{% comment %} 스크랩 기능 {% endcomment %}
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function item_scrap(id) {
-        var currentTab = "{{ request.GET.tab }}"; // 현재 선택된 탭
-        console.log(currentTab)
-        $.ajax({
-            url: "{%url 'informations:scrap'%}",
-            type: "GET",
-            headers: {
-                "X-Requested-With": "XMLHttpRequest",
-            },
-            data: {
-                'item_id': id,
-                'item_name': currentTab,
-            },
-            dataType: "json",
-            success: function (response) { 
-                
-                // 해당 항목의 좋아요 수만 업데이트
-                $('#scrap_count-' + id).html(response.scrap_count);
-                
-                // 좋아요 버튼 아이콘 변경
-                var heartIcon = $('#heart-' + id);
-                if (response.message === "좋아요") {
-                    heartIcon.removeClass("far fa-heart").addClass("fas fa-heart");
-                } else if (response.message === "좋아요 취소") {
-                    heartIcon.removeClass("fas fa-heart").addClass("far fa-heart");
-                }
-                
-                // 좋아요 수에 따라 항목을 정렬 (jQuery 이용)
-                var itemContainer = $('#item-container');  // 항목을 감싸는 컨테이너의 ID
-                var alignMode = $('#align_mode').val(); // 선택된 정렬 모드 가져오기
-    
-                if (alignMode === 'scrap') {
-                    var items = itemContainer.children('.item');  // 항목들을 선택
-        
-                    items.sort(function(a, b) {
-                        var aScrapCount = parseInt($(a).find('.scrap-count').text());
-                        var bScrapCount = parseInt($(b).find('.scrap-count').text());
-                        return bScrapCount - aScrapCount;  // 스크랩 수에 따라 내림차순 정렬
-                    });
-                    
-                    itemContainer.html(items);  // 정렬된 항목을 컨테이너에 적용
-                }
-            }
-        });
-    }
-</script>
 
 {% endblock %}

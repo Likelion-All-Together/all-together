@@ -31,17 +31,21 @@ header > div > div > div{
     background-color: white;
     padding: 10px 0 10px 0;
     font-size: 1.2rem;
+    display: flex; /* 수직 정렬을 위해 Flexbox 사용 */
+    flex-direction: column; /* 요소들을 수직으로 정렬 */
+    align-items: center; /* 수직 정렬을 위해 가운데 정렬 */
 }
 #head > div{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 1200px;
-  
+
 }
 #head #divRight{
     display: flex;
     flex-direction: row;
+    align-items: center; /* 요소들을 수직으로 정렬 */
 }
 #head #divRight > div{
     padding: 0 10px 0 10px;
@@ -61,7 +65,7 @@ header > div > div > div{
     background: #4B2A0B;
 }
 #nav > div{
- 
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -76,4 +80,5 @@ header > div > div > div{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    letter-spacing: -1px;
 }

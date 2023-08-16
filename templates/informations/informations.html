@@ -3,7 +3,6 @@
 {% block title %}정보{% endblock %}
 {% block content %}
 
-<html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'css/screens/informations.css' %}">
     <!-- 최신순/스크랩순 정렬 jquery-->
@@ -23,12 +22,16 @@
             else { $("#align_mode option[value='recently']").prop("selected", true); }
         });
     </script>
+    <style>
+        .number-nav {
+            width: 20%;
+        }
+    </style>
 </head>
 
 <body id="info-body">
-    <div id="header"></div>
-    <script src="/static/js/header.js"></script>
-    <div class="info-title">
+    {% comment %} <script src="/static/js/header.js"></script> {% endcomment %}
+    {% comment %} <div class="info-title">
         <div>
             <h1>000지역 / 000복지</h1>
             <p>000지역 000복지에 관한 설명 000복지에는 무엇이 들어가면 좋을까요<br>
@@ -37,7 +40,7 @@
             </p>
         </div>
         
-    </div>
+    </div> {% endcomment %}
 
     <main class="info-main">
         <div class="info-main-content">
@@ -473,25 +476,26 @@
             </div>
 
             {% endif %}
+            
             <div class="information-footer">
                 {% if page_obj.has_other_pages %}
-                <ul class="number-nav">
-                    {% if page_obj.has_previous %}
-                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
-                    {% endif %}
-
-                    {% for page in paginator.page_range %}
-                        {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
-                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
-                        {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
-                        <li class="number-nav__list" style="color:#977F6A;" ><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
+                    <ul class="number-nav">
+                        {% if page_obj.has_previous %}
+                            <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
                         {% endif %}
-                    {% endfor %}
 
-                    {% if page_obj.has_next %}
-                        <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
-                    {% endif %}
-                </ul>
+                        {% for page in paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
+                            {% else %}
+                                <li class="number-nav__list" style="color:#977F6A;" ><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page}}">{{ page }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="number-nav__list"><a href="?tab={{tab}}&align_mode={{align_mode}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                        {% endif %}
+                    </ul>
                 {% endif%}
             </div>
         </div>

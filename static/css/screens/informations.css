@@ -8,16 +8,7 @@
     position: relative;
     border-bottom: 47px solid #4B2A0B;;
 }
-.info-title::after {
-    content: "";
-    background: url("../../image/information-bg.svg");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 110%;
-    position: absolute;
-    background-size: cover;
-    z-index: -1;
-}
+
 .info-title div {
     width: 60vw;
     position: absolute;

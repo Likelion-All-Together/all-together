@@ -53,7 +53,8 @@ def post_list_view(request):
             
         elif selected_category == '인기글': # 인기글만 보이게
             
-            filter_list = filter_list.order_by('-view_count')
+            # 조회수가 0인 게시글 제외
+            filter_list = filter_list.exclude(view_count=0).order_by('-view_count')
             
             page_obj, paginator = make_page_obj(filter_list, page, 6)
             
