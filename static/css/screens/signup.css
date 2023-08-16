@@ -1,18 +1,18 @@
-.login-main {
+.signup-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 200px 0px;
 }
-.login-title-line {
+.signup-title-line {
     width: 365px;
     height: 3px;
     background: #4B2A0B;
     margin-top: 18px;
     margin-bottom: 30px;
 }
-.login {
+.signup {
     width: 1107px;
     height: 1100px;
     flex-shrink: 0;
@@ -26,7 +26,7 @@
     padding: 130px 277px;
     position: relative;
 }
-.login__title {
+.signup__title {
     color: #4B2A0B;
     text-align: center;
     font-family: Inter;
@@ -37,7 +37,7 @@
     letter-spacing: -1.6px;
     margin-bottom: 29px;
 }
-.login__img {
+.signup__img {
     width: 298px;
     height: 298px;
     flex-shrink: 0;
@@ -51,12 +51,12 @@
     align-items: center;
     margin-bottom: 66px;
 }
-.login__img img {
+.signup__img img {
     width: 90%;
     height: auto;
     flex-shrink: 0;
 }
-.login__form-column {
+.signup__form-column {
     display: flex;
     width: 554px;
     height: 72px;
@@ -66,49 +66,40 @@
     background: #FFF;
     /* box-shadow: 2px 3px 7px 0px rgba(0, 0, 0, 0.20); */
 }
-.login__form-column--margin18 {
+.signup__form-column--margin18 {
     margin-bottom: 18px;
 }
 
-/* 로그인 */
-.login__form {
+/* 회원가입 */
+.signup__form {
     display: flex;
 }
-.login__form label {
+.signup__form label {
     width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: 400px;
 }
-.login__form-username,
-.login__form-pw {
-    /* width: 403px; */
+.signup__form-username,
+.signup__form-pw,
+.signup__form-pw2 {
+    width: 403px;
     display: flex;
     align-items: center;
     outline: none;
     border: none;
 }
 
-.login__form-username::placeholder,
-.login__form-pw::placeholder {
-    color: #4B2A0B;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.login__auto {
+.signup__auto {
     position: absolute;
     bottom: 460px;
     left: 298px;
 }
-.login__auto input[type="checkbox"] {
+.signup__auto input[type="checkbox"] {
     display: none;
 }
-.login__auto input[type="checkbox"] + span {
+.signup__auto input[type="checkbox"] + span {
     cursor: pointer;
     background-image: url("../../image/check-circle.svg");
     background-repeat: no-repeat;
@@ -122,8 +113,8 @@
     line-height: normal;
     letter-spacing: -0.42px;
 }
-.login__auto input[type="checkbox"] + span, 
-.login__search a {
+.signup__auto input[type="checkbox"] + span, 
+.signup__search a {
     color: #4B2A0B;
     font-family: Inter;
     font-size: 14px;
@@ -132,15 +123,15 @@
     line-height: normal;
     letter-spacing: -0.42px;
 }
-.login__search {
+.signup__search {
     position: absolute;
-    bottom: 400px;
+    bottom: 460px;
     right: 302px;
 }
-.login__search a {
+.signup__search a {
     text-decoration: none;
 }
-.login-btn,
+.signup-btn,
 .signup-btn {
     width: 388px;
     height: 70px;
@@ -155,16 +146,29 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: -1px;
+    cursor: pointer;
 }
-.login-btn {
+.signup-btn {
     /* margin-top: 102px; */
     margin-bottom: 15px;
 }
 
-.login__form-btns {
+.signup__form-btns {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
     bottom: 200px;
+}
+
+.signup__form-username::placeholder,
+.signup__form-pw::placeholder,
+.signup__form-pw2::placeholder {
+    color: #929292;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    /* letter-spacing: -0.45px; */
 }
