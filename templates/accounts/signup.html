@@ -1,17 +1,44 @@
 {% extends 'base.html' %}
-{% block title %}회원가입{% endblock %}
 {% load static %}
+{% block title %}회원가입{% endblock %}
 {% block content %}
 
-<h1>회원가입</h1>
-<form action = "" method = "POST" enctype = "multipart/form-data">
-    {% csrf_token %}
-    <div>
-        {{ form.as_p }}
-    </div>
-    <div>
-        <input type="submit">
-    </div>
-</form>
+<head>
+    <link rel="stylesheet" href="{% static 'css/screens/signup.css' %}">
+</head>
 
-{% endblock %} 
+<body>
+    <main class="signup-main">
+        <div class="signup__title">
+            회원가입
+            <div class="signup-title-line"></div>
+        </div>
+        <form method="POST" action="" class="signup__form" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <div class="signup">
+                <div class="signup__img"><img src="{% static 'image/lion.png' %}"></div>
+                <div>
+                    <div>
+                        <p class="signup__form-column signup__form-column--margin18">
+                            <label for="signup-username"><img src="{% static 'image/user.svg' %}"></label>
+                            {{ form.username }}
+                        </p>
+                        <p class="signup__form-column signup__form-column--margin18">
+                            <label for="signup-pw"><img src="{% static 'image/password.svg' %}"></label>
+                            {{ form.password1 }}
+                        </p>
+                        <p class="signup__form-column">
+                            <label for="signup-pw2"><img src="{% static 'image/password.svg' %}"></label>
+                            {{ form.password2 }}
+                        </p>
+                    </div>
+                </div>
+                <div class="signup__form-btns">
+                    <input class="signup-btn" type="submit" value="가입하기">
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+
+{% endblock%}

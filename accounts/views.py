@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, logout
-from .forms import SignUpForm, CustomAuthenticationForm
+from .forms import CustomSignUpForm, CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from posts.models import Post, Comment
 from informations.models import RegionAndMulticultural, Afterschool
@@ -10,13 +10,13 @@ def signup_view(request):
     
     # GET 요청 시 HTML 응답
     if request.method == 'GET':
-        form = SignUpForm()
+        form = CustomSignUpForm()
         context = { 'form' : form }
         return render(request, 'accounts/signup.html', context)
     
     # POST 요청 시 데이터 확인 후 회원 생성
     else:
-        form = SignUpForm(request.POST)
+        form = CustomSignUpForm(request.POST)
         
         if form.is_valid(): # 폼이 유효하다면 회원가입 처리
             instance = form.save()

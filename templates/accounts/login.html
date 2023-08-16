@@ -8,8 +8,6 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <script src="/static/js/header.js"></script>
     <main class="login-main">
         <div class="login__title">
             로그인
@@ -21,7 +19,6 @@
                 <div class="login__img"><img src="{% static 'image/lion.png' %}"></div>
                 <div>
                     <div>
-                        
                         <p class="login__form-column login__form-column--margin18">
                             <label for="login-username"><img src="{% static 'image/user.svg' %}"></label>
                             {{ form.username }}
@@ -49,6 +46,4 @@
     </main>
 </body>
 
-</html>
-
-{% endblock%}
+{% endblock %}

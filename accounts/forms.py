@@ -14,7 +14,22 @@ class UserCreateForm(UserBaseForm):
         fields = [ 'username', 'email', 'password' ]
 
 # 회원가입 폼
-class SignUpForm(UserCreationForm):
+class CustomSignUpForm(UserCreationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'signup__form-username',
+        'placeholder': '아이디를 입력해주세요.',
+    }))
+    
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'signup__form-pw',
+        'placeholder': '6~8자리의 영문, 숫자가 포함된 비밀번호를 입력해주세요.',
+    }))
+
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'signup__form-pw2',
+        'placeholder': '비밀번호를 다시 입력해주세요.',
+    }))
+    
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         fields = ['username', 'email']
@@ -32,13 +47,3 @@ class CustomAuthenticationForm(AuthenticationForm):
             'class': 'login__form-pw',
             'placeholder': 'Password',
         })
-        
-    # username = forms.CharField(
-    #     label='<label class="your-label-class"><img src="{% static "image/user.svg" %}" alt="Username Image"></label>',
-    #     widget=forms.TextInput(attrs={'class': 'your-label-class'}),
-    # )
-    
-    # password = forms.CharField(
-    #     label='<label class="your-password-label-class"><img src="{% static "image/password.svg" %}" alt="Password Image"></label>',
-    #     widget=forms.PasswordInput(attrs={'class': 'your-password-class'}),
-    # )
