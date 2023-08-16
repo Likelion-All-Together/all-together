@@ -133,7 +133,7 @@ def class_apply_view(request, id):
         student_age = request.POST.get('age')
         student_phone = request.POST.get('phone')
         student_email = request.POST.get('email')
-        pay = request.POST.get('pay')
+        pay = request.POST.get('pays')
         student_image = request.FILES.get('image')
         times = request.POST.get('selected_cells') #선택된 시간 (리스트형태)
 

@@ -2,14 +2,106 @@
 {% block title %}수업신청서{% endblock %}
 {% load static %}
 {% block content %}
+
+<head>
+    <script defer src="{% static 'js/payment.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/screens/registration.css' %}">  
+</head>
+
+<body>
+    <div id="header"></div>
+    <script src="/static/js/header.js"></script>
     <main class="registration-main">
+        <form id ="my-form" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="registration-container">
             <h1 class="registration-title">수업 신청서</h1>
             <div class="registration-content">
                 <div class="registration-content__li registration-content__li--margin-right">• 수업 날짜 선택</div>
                 <div class="requirement-mark">* 필수 표기 항목</div>
-                <div class="choice-time"></div>
-
+                <div class = "time-container">
+                <div class="choice-time">
+                    <div class="choice-text"><img class="timecheck-img" src="{% static 'image/timecheck.png' %}" width="45" height="45"> 원하는 수업 날짜를 선택해주세요.</div>
+                    <div>
+                        <table id="schedule-table">
+                            <tr>
+                                <th> </th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                                <th>일</th>
+                            </tr>
+                            {% comment %}test용 - 요일&시간대까지 출력 {% endcomment %}
+                            {% for i in "x"|rjust:"8" %}
+                                {% with date_number=forloop.counter|add:"8" %}
+                                            {% if date_number == 9 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list9 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 10 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list10 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                
+                                            {% elif date_number == 11 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list11 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 12 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list12 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 13 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list13 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 14 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list14 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 15 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list15 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% elif date_number == 16 %}
+                                                <tr>
+                                                <th>{{ date_number }}</th>
+                                                    {% for time in date_list16 %}
+                                                        <td class="{% if time in time_lists %}{{ time }}{% else %} none {% endif %}"></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </table>
+                        <input type="hidden" id="selected-cell" name="selected_cells" value="">
+                    </div>
+                </div>
+                </div>
             </div>
             <div class="registration-content-border"></div>
             <div class="registration-content">
@@ -20,38 +112,38 @@
                             <img src="../../static/image/image.svg">
                             <span>사진을 등록해주세요</span>
                         </div> 
-                        <form>
-                            <input class="hidden" type="file" id="personal-img">
-                        </form>
+                        
+                            <input class="hidden" type="file" id="personal-img" name="image">
+                        
                     </label>
                     <div class="personal-info__detail">
                         <div class="personal-info__detail-name">
                             <span class="requirement-mark">*</span>
                             <div class="personal-info__detail-list">이름</div>
-                            <form class="personal-info__detail-form">
-                                <input type="text" class="personal-info__detail-input" placeholder="이름을 입력해주세요." required>
-                            </form>
+                            {%comment%}<form class="personal-info__detail-form">{%endcomment%}
+                                <input type="text" name="name" class="personal-info__detail-input" placeholder="이름을 입력해주세요." required>
+                            {%comment%}</form>{%endcomment%}
                         </div>
                         <div class="personal-info__detail-age">
                             <span class="requirement-mark">*</span>
                             <div class="personal-info__detail-list">나이</div>
-                            <form class="personal-info__detail-form">
-                                <input type="text" class="personal-info__detail-input" placeholder="나이를 입력해주세요." required>
-                            </form>
+                            {%comment%}<form class="personal-info__detail-form">{%endcomment%}
+                                <input type="text" name="age" class="personal-info__detail-input" placeholder="나이를 입력해주세요." required>
+                            {%comment%}</form>{%endcomment%}
                         </div>
                         <div class="personal-info__detail-tel">
                             <span class="requirement-mark">*</span>
                             <div class="personal-info__detail-list">전화번호</div>
-                            <form class="personal-info__detail-form">
-                                <input type="tel" class="personal-info__detail-input" placeholder="전화번호를 입력해주세요." required>
-                            </form>
+                            {%comment%}<form class="personal-info__detail-form">{%endcomment%}
+                                <input type="tel" name="phone" class="personal-info__detail-input" placeholder="전화번호를 입력해주세요." required>
+                            {%comment%}</form>{%endcomment%}
                         </div>
                         <div class="personal-info__detail-email">
                             <span class="requirement-mark">*</span>
                             <div class="personal-info__detail-list">이메일</div>
-                            <form class="personal-info__detail-form">
-                                <input type="email" class="personal-info__detail-input" placeholder="이메일을 입력해주세요." required>
-                            </form>
+                            {%comment%}<form class="personal-info__detail-form">{%endcomment%}
+                                <input type="email" name="email" class="personal-info__detail-input" placeholder="이메일을 입력해주세요." required>
+                            {%comment%}</form>{%endcomment%}
                         </div>            
                     </div>
                 </div>
@@ -68,24 +160,29 @@
                             <div class="payment-method-block">신용카드</div>
                             <div class="payment-method-block">가상계좌</div>
                             <div class="payment-method-block">계좌이체</div>
-                            <div class="payment-method-block">신용카드</div>
-                            <div class="payment-method-block">신용카드</div>
-                            <div class="payment-method-block">신용카드</div>
-                            <div class="payment-method-block">신용카드</div>
-                            <div class="payment-method-block">신용카드</div>
+                            <div class="payment-method-block">휴대폰결제</div>
+                            <div class="payment-method-block">네이버페이</div>
+                            <div class="payment-method-block">카카오페이</div>
+                            <div class="payment-method-block">토스결제</div>
+                            <div class="payment-method-block">기타결제</div>
                         </div>
                         <div class="payment-container__border"></div>
-                        <div class="registration-content__li">• 결제 정보</div>
-                        <div class="payment__card-info-1"><span></span></div>
-                        <div class="payment__card-info-2">
-                            <div class="">
-                                <div class="">결제 방법</div>
-                                <select>
-                                    <option>신용카드 결제</option>
-                                </select>
+                        <div class="regis">• 결제 정보</div>
+                        <div class="payment__card-info">
+                            <div class="payment__card-info-1"><span></span></div>
+                            <div class="payment__card-info-2">
+                                <div>
+                                    <div class="payment__card-info-2-text">결제 방법</div>
+                                    <div id="pay" name="pays" class ="total-cost-line" value="네이버페이 "></div>
+                                    <input type="hidden" id="pay" name="pays">
+                                </div>
+                                <div>
+                                    <div class="payment__card-info-2-text">결제 비용</div>
+                                    <div id="total-cost" class="total-cost-line"></div>
+
+                                </div>
                             </div>
-                            <div>결제 비용</div>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -93,42 +190,81 @@
             <div class="payment__btn"><button id="payment-button">신청하기</button></div>
 
         </div>
+    </form>
 
     </main>
+    <div id="footer"></div>
+
+    <script src="../../static/js/footer.js"></script>
 
     <script src="https://js.tosspayments.com/v1/payment-widget"></script>
-    <script>
-        const clientKey = 'test_ck_26DlbXAaV0oEjpP6lNd3qY50Q9RB'
-        const secretKey = 'test_sk_6BYq7GWPVv5YA7wNbBa3NE5vbo1d'
-        const customerKey = 'YbX2HuSlsC9uVJW6NMRMj' // 결제 고객을 특정하는 키
-        const amount = 15_000 // 결제 금액
-      
-        /*결제위젯 영역 렌더링*/
-        const paymentWidget = PaymentWidget(
-            "test_ck_26DlbXAaV0oEjpP6lNd3qY50Q9RB",
-            PaymentWidget.ANONYMOUS
-        ) // 회원 결제 초기화
-        // const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS) // 비회원 결제 초기화
-        paymentWidget.renderPaymentMethods('#payment-method', amount);
+    <style>
+        table{
+            font-size: 0.9em;
+            background-color: #F7F6EE;
+            border-collapse: collapse;
+            border-radius: 10px;
+            border-style: hidden;
+            box-shadow: 0 0 0 3px #4B2A0B;
+        }
+        th, td{
+            border: 3px solid #4B2A0B;
+            border-collapse: collapse;
+        }
+        th{
+            height: 5px;
+        }
+        td {
+            width: 150px;
+            height: 80px;
+        }
+        .clicked-cell {
+            background-color: #FFE500;
+        }
+        .none {
+            background-color : #979797; 
+        }
         
+    </style>
+    <script>
+        const cells = document.querySelectorAll('#schedule-table td:not(.none)');
+        const selectedCellInput = document.getElementById('selected-cell');
+        const totalCostElement = document.getElementById('total-cost');
+    
+        cells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                cell.classList.toggle('clicked-cell');
+                updateTotalCost(); 
+            });
+        });
+    
+        const myForm = document.getElementById('my-form');
+        myForm.addEventListener('submit', () => {
+            const selectedCells = Array.from(cells).filter(cell => cell.classList.contains('clicked-cell'));
+            const selectedValues = selectedCells.map(cell => cell.className.replace('clicked-cell', '').trim());
+            selectedCellInput.value = JSON.stringify(selectedValues);
+        });
+    
+        function updateTotalCost() {
+            const selectedCells = Array.from(cells).filter(cell => cell.classList.contains('clicked-cell'));
+            const totalCost = selectedCells.length * {{ teacher.cost }};
+            totalCostElement.textContent = `   ${totalCost}`;
+        }
+    </script>
+    <script>
+        // 모든 버튼 요소를 선택
+        var paymentMethodButtons = document.querySelectorAll(".payment-method-block");
+    
+        // 각 버튼에 클릭 이벤트 추가
+        paymentMethodButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                // 클릭한 버튼의 내용을 가져와서 출력
+                var buttonText = button.textContent;
+                document.getElementById("pay").textContent = buttonText;
+            });
+        });
+    </script>
 
 
-        /*결제요청 함수 정의*/
-        document.querySelector("#payment-button").addEventListener("click",()=>{
-		    paymentWidget.requestPayment({
-		    	orderId: 'AD8aZDpbzXs4EQa-UkIX6',
-		    	orderName: '토스 티셔츠 외 2건',
-		    	successUrl: 'http://localhost:8080/success',
-		    	failUrl: 'http://localhost:8080/fail',
-		    	customerEmail: 'customer123@gmail.com', 
-		    	customerName: '김토스'
-		    }).catch(function (error) {
-		    	if (error.code === 'USER_CANCEL') {
-		    	// 결제 고객이 결제창을 닫았을 때 에러 처리
-		    	} if (error.code === 'INVALID_CARD_COMPANY') {
-	            // 유효하지 않은 카드 코드에 대한 에러 처리
-	          }
-	      })  
-	  })      
-      </script>
+
 {% endblock %}

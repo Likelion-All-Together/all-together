@@ -31,7 +31,7 @@ class Register(models.Model):
     student_age = models.IntegerField(verbose_name='나이')
     student_phone = models.CharField(verbose_name='전화번호',max_length=50)
     student_image = models.ImageField(verbose_name='프로필',null=True,blank = True)
-    student_email = models.EmailField(verbose_name='이메일')
+    student_email = models.TextField(verbose_name='이메일')
     pay = models.TextField(verbose_name='지불방식')
     times =models.TextField(verbose_name='시간대', null=True, blank=True) 
     cost = models.IntegerField(verbose_name='수업비용', default=10000) 
