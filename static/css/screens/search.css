@@ -1,0 +1,431 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#sec1{
+ height: 450px;
+background-image: url(/static/image/교육사진.png);
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
+#sec1>div{
+    height: 450px;
+    background: linear-gradient(270deg, rgba(36, 28, 20, 0.80) 0%, rgba(36, 28, 20, 0.00) 100%);
+}
+
+#serviceMain{
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -4px;
+    padding: 100px 250px 100px 250px ;
+}
+
+#service{
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0px 250px 0px 250px ;
+}
+
+#box{
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    margin-left: 300px;
+    margin-bottom: 30px;
+}
+
+#box1{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.95px;
+}
+
+#box2{
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding: 10px;
+}
+
+.container{
+    display: flex;
+    flex-shrink: 0;
+    margin: auto;
+    width: 700px;
+    height: 300px;
+    border-radius: 30px;
+    background: #E7E7E7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    
+
+}
+
+.container2{
+    display: flex;
+    flex-shrink: 0;
+    margin: auto;
+    width: 700px;
+    height: 300px;
+    border-radius: 30px;
+    background: #E7E7E7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+
+
+
+.imgBox{
+    
+    background-image: url(/static/image/pictureBox1.png);
+    background-size: cover;
+    width: 200px;
+    height: 300px;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.imgBox>img{
+    width: 80px;
+    margin-top: 270px;
+    margin-left: 10px;
+}
+
+.imgBox2>img{
+    width: 80px;
+    margin-top: 270px;
+    margin-left: 100px;
+}
+
+.pictureBox{
+   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   
+}
+
+.pictureBox>h2{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding: 30px 200px;
+}
+
+
+
+    
+    
+.imgBox2{
+    background-image: url(/static/image/pictureBox2.png);
+    background-size: cover;
+    margin-left: 50px;
+    width: 200px;
+    height: 300px;
+}
+
+
+#box{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    justify-content: center;
+}
+
+#box3{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -2.75px;
+    padding: 10px;
+}
+
+
+#box4{
+    color: #000;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -4px;
+   padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+#box5{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -2.75px;
+    padding-top: 8px;
+}
+
+.containerBox{
+    display: flex;
+    width: 1200px;
+    height: 200px;
+    flex-shrink: 0;
+    margin: auto;
+    
+    
+    
+}
+#cb1{
+  
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox1.png');
+    background-size: cover;
+
+ }
+#cb1>h1{
+    margin-top: 130px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.6px;
+}
+ #cb1>p{
+    margin-top: 15px;
+   color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.36px;
+ }
+   
+
+#cb2{
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox3.png');
+    background-size: cover;}
+
+#cb2>h1{
+    margin-top: 130px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.6px;
+}
+
+#cb2>p{
+    margin-top: 15px;
+   color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.36px;
+}
+
+#cb3{
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox2.png');
+    background-size: cover;}
+
+    #cb3>h1{
+        margin-top: 130px;
+        color: #FFF;
+        text-align: center;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.6px;
+    }
+#cb3>p{
+        margin-top: 15px;
+       color: #FFF;
+        text-align: center;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.36px;
+    }
+
+    #cb4{
+        width: 200px;
+        height: 300px;
+        background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox4.png');
+        background-size: cover;}
+    
+
+     #cb4>h1{
+            margin-top: 130px;
+            color: #FFF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: -0.6px;
+        }
+    #cb4>p{
+            margin-top: 15px;
+           color: #FFF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 0.7rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: -0.36px;
+        }
+    
+        #cb5{
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox5.png');
+            background-size: cover;}
+        
+    
+         #cb5>h1{
+                margin-top: 130px;
+                color: #FFF;
+                text-align: center;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.6px;
+            }
+        #cb5>p{
+                margin-top: 15px;
+               color: #FFF;
+                text-align: center;
+                font-family: Inter;
+                font-size: 0.7rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.36px;
+            }
+        
+         #cb6{
+                width: 200px;
+                height: 300px;
+                background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/pictureBox6.png');
+                background-size: cover;}
+            
+        
+             #cb6>h1{
+                    margin-top: 130px;
+                    color: #FFF;
+                    text-align: center;
+                    font-family: Inter;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: -0.6px;
+                }
+            #cb6>p{
+                    margin-top: 15px;
+                   color: #FFF;
+                    text-align: center;
+                    font-family: Inter;
+                    font-size: 0.7rem;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: -0.36px;
+                }
+            
+
+
+
+
+.container2{
+    display: flex;
+    margin-top: 150px
+
+}
+
+#btn{
+    margin-top: 150px;
+    margin-left: 900px;
+    color: #251818;
+    text-align: right;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border: none;
+}
+
+
+.girlcontainer{
+    
+    width: 600px;
+    height: 300px;
+    
+}
+
+#girl{
+    margin: auto;
+    background-image: url(/static/image/girl.png);
+    background-size: cover;
+    width: 600px;
+    height: 300px;
+}

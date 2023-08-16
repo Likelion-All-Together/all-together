@@ -1,0 +1,449 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+#explain{
+    display: flex;
+    flex-direction: row;
+}
+
+img{
+   padding-top: 200px;
+   margin-left: 200px;
+    width: 400px;
+    height: 600px;
+}
+
+
+#boxs{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    width: 400px;
+  
+}
+
+#box1{
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.5px;
+    margin-top: 350px;
+    margin-left:30px;
+    }
+
+    #box2{
+    color: #000;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin-left: 30px;
+    }
+
+    #box3{
+    color: #303030;
+    font-family: Inter;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    margin-top: 20px;
+    margin-left: 30px;
+        }
+
+
+
+     #star>img{
+
+        width: 80px;
+        height: 20px;
+        padding-top: 40px;
+        padding-right: -30px;
+        margin-left: 30px;
+        
+     }
+
+     .rectangles{
+      margin-top: 50px;
+     }
+     #rectangle{
+      
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-top: 20px; 
+       
+     }
+
+   
+     #one{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-right: 5px;
+         width: 70px;
+         height: 30px;
+         flex-shrink: 0;
+         border-radius: 10px;
+         background: #A79C92;
+         color: #FFF;
+         text-align: center;
+         font-family: Inter;
+         font-size: 1rem;
+         font-style: normal;
+         font-weight: 600;
+         line-height: normal;
+         letter-spacing: -0.6px;
+         
+
+
+     }
+
+
+     #two{
+          display: flex;
+         align-items: center;
+         justify-content: center;
+          margin-right: 5px;
+         width: 80px;
+         height: 30px;
+         flex-shrink: 0;
+         border-radius: 10px;
+         background:  #DED5CC;
+         color: #FFF;
+         text-align: center;
+         font-family: Inter;
+         font-size: 1rem;
+         font-style: normal;
+         font-weight: 600;
+         line-height: normal;
+         letter-spacing: -0.6px;
+      
+
+     }
+
+
+     #tree{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       margin-right: 5px;
+      width: 140px;
+      height: 30px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background:  #DED5CC;
+      color: #FFF;
+      text-align: center;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -0.6px;
+   
+     }
+
+     #four{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       margin-right: 5px;
+      width: 80px;
+      height: 30px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background:  #D6C599;
+      color: #FFF;
+      text-align: center;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -0.6px;
+   
+     }
+
+
+  
+
+ 
+     .container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 200px;
+      width: 1250px;
+      height: 400px;
+      background: #44362A;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+     
+     }
+
+     #img-container{
+     
+      display: flex;
+      flex-direction: column;
+      margin-top:-700px;
+      margin-left: 30px;
+      width: 300px;
+      height: 260px; 
+    
+     }
+
+     #img-container>img{
+      width: 170px;
+      height: 500px;
+     }
+
+    #img-container>p{ 
+      width: 130px;
+      margin-left: 220px;
+      color: #FFF;
+      text-align: center;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -1.4px;
+    }
+
+    #sec3>p{
+   margin-left: 200px;
+   margin-top: 70px;
+   font-family: Inter;
+   font-size: 1.5rem;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   letter-spacing: -1.5px;
+    }
+
+    #total-information{
+   
+      display: flex;
+      flex-direction: row;
+      margin-left: 180px;
+      margin-top: 10px;
+      border-radius: 40px;
+      border: 5px solid #9B8A7A;
+      width: 900px; 
+      height: 400px; 
+      flex-shrink: 0;
+    }
+
+    .information{
+     
+      width: 540px;
+      display: flex;
+      flex-direction: column;
+    
+    }
+
+
+   .information>div{
+     
+      display: flex;
+      flex-direction: row;
+      margin-top: 60px;
+      margin-left: 40px;
+
+   }
+
+   #information1{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100px;
+      height: 40px;
+      margin-top: 10px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #7A5532;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -1.25px;
+   }
+
+
+   #information3{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 140px;
+      height: 40px;
+      margin-top: 10px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #7A5532;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -1.25px;
+   }
+
+   #information2{
+     
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 40px;
+      color: #000;
+      font-family: Inter;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 550;
+      line-height: normal;
+      letter-spacing: -1.1px; 
+   }
+
+  
+   #informations{
+     width: 2000px;
+     display: flex;
+     flex-direction: column;
+    
+   }
+
+
+   #informations>div{
+      
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    margin-left: 550px;
+    margin-top: -290px;
+   }
+
+
+   #gender{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100px;
+      height: 40px;
+      margin-top: -35px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #7A5532;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -1.25px;
+   }
+
+   #information4{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 40px;
+      margin-top: 10px;
+      color: #000;
+      font-family: Inter;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 550;
+      line-height: normal;
+      letter-spacing: -1.1px; 
+   }
+
+   #women{
+      margin-top: -25px;
+      margin-left: 30px;
+      color: #000;
+      font-family: Inter;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 550;
+      line-height: normal;
+      letter-spacing: -1.1px; 
+   }
+   
+  
+   #time{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 110px;
+      height: 40px;
+      margin-top: 360px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #7A5532;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -1.25px;
+      
+   }
+
+
+   #timetable{
+  
+      margin-top: 370px;
+      margin-left: 20px;
+      color: #000;
+      font-family: Inter;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 550;
+      line-height: normal;
+      letter-spacing: -1.1px; 
+   }
+
+
+ 
+   .apply{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 230px;
+      margin-left: 400px;
+      width: 150px;
+      height: 80px;
+      flex-shrink: 0;
+      border-radius: 7px;
+      border: 1.5px solid #251A0F;
+      background: #4B2A0B;
+      color: #FFF;
+      text-align: center;
+      font-family: Inter;
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -1.75px;
+   }
+   

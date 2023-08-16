@@ -1,0 +1,187 @@
+.search-jobs-main-img {
+    flex-shrink: 0;
+}
+.search-jobs-main-img img {
+    width: 100%;
+    height: 860px;
+}
+.search-jobs-main__start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 229px 406px 247px;
+}
+.search-jobs-main__start h1 span {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 65px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.95px;
+}
+.search-jobs-main__start h1 {
+    color: #000;
+    font-family: Inter;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.35px;
+}
+
+.search-jobs-main__start-column {
+    display: flex;
+}
+.search-jobs-main__start-column:first-of-type {
+    margin-top: 33px;
+    margin-bottom: 201px;
+}
+.search-jobs-main__start-column img {
+    width: 492px;
+    height: 665px;
+    flex-shrink: 0;
+}
+.search-jobs-main__start-column-txt {
+    width: 638px;
+    height: 665px;
+    flex-shrink: 0;
+    display: center;
+    justify-content: center;
+    text-align: center;
+    padding: 130px 148px 120px;
+    border-radius: 30px;
+    background: #E7E7E7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.search-jobs-main__start-column-txt h4 {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.35px;
+}
+.search-jobs-main__start-column-txt p {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.54px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+.search-jobs-main__middle-img {
+    display: flex;
+    position: relative;
+    margin-top: 75px;
+    margin-bottom: 23px;
+}
+.search-jobs-main__middle-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(29, 24, 19, 0.60);
+}
+.teacher-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.teacher-info img {
+    width: 342px;
+    height: 461px;
+}
+.teacher-info-txt {
+    position: absolute;
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: #FFF;
+}
+.teacher-info-txt--big {
+    font-size: 20px;
+    letter-spacing: -0.6px;
+}
+.teacher-info-txt--small {
+    font-size: 12px;
+    letter-spacing: -0.36px;
+    margin-top: 90px;
+}
+.search-jobs-main__middle a {
+    margin-left: 1343px;
+    text-decoration: none;
+    color: #251818;
+    text-align: right;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.1px;
+}
+.search-jobs-main__middle a img {
+    width: 22px;
+    height: 20.24px;
+    flex-shrink: 0;
+}
+.search-jobs-main__middle-title {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -2.75px;
+}
+.search-jobs-main__middle-title span {
+    color: #000;
+    font-family: Inter;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -4px;
+}
+.search-jobs-main__bottom-img {
+    position: relative;
+    margin-top: 295px;
+    margin-bottom: 408px;
+}
+.search-jobs-main__bottom-img img {
+    width: 1779px;
+    height: 799px;
+    flex-shrink: 0;
+}
+.search-jobs-main__bottom-img button {
+    position: absolute;
+    bottom: 165px;
+    left: 398px;
+    background-color: transparent;
+    color: #fff;   
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    width: 294px;
+    height: 55px;
+    flex-shrink: 0;
+    cursor: pointer;
+}

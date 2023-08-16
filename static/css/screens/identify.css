@@ -1,0 +1,336 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+    border: 50px solid #4B2A0B;
+    width: 1000px;
+    height: 1200px;
+    flex-shrink: 0;
+}
+
+
+#sec1{
+    display: flex;
+    flex-direction: row;
+}
+
+
+#damo{
+    width: 249px;
+    height: 90px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -3.5px;
+    padding: 30px;
+}
+
+#sm{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#service{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: #000;
+    text-align: right;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.12px;
+}
+
+#mobile{
+    
+  
+    color: #4B2A0B;
+    text-align: right;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 13px;
+}
+
+hr{
+    width: 1000px;
+
+}
+
+#hr2{
+    width: 900px;
+
+}
+
+#id{
+    padding: 20px;
+    color: #000;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2px;
+}
+
+.container label{
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    margin: 100px;
+}
+
+.container input{
+   margin : 5px;
+    border-radius: 6px;
+    border: 0px solid #000;
+    background: #000;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.6px;
+}
+
+.container2{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start;
+    height: 100vh;
+    width: 800px;
+    height: 400px;
+    flex-shrink: 0;
+    margin-left: 100px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 12px solid #818181;
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+}
+
+#name{
+    
+    margin-top: -10px;
+    margin-left: 100px;
+}
+
+
+#name>input{
+   
+    margin-left: 85px;
+}
+
+#pNumber{
+  
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+
+#box{
+
+ margin-top: 20px;
+ margin-left: 100px;
+}
+
+
+
+#Num{
+   
+    margin-top: 50px;
+    margin-left: 100px;
+
+}
+
+#Num>input{
+    margin-left: 10px;
+}
+
+#birth{
+    
+    margin-top: 50px;
+    margin-left: 100px;
+
+}
+
+
+#year{
+    color: #929292;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1px;
+    margin-left: 30px;
+}
+
+
+
+#month{
+    color: #929292;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1px;
+    margin-left: 20px;
+}
+
+#births{
+    color: #929292;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1px;
+    margin-left: 5px;
+  
+}
+
+
+#gender{
+
+    margin-top: 20px;
+    margin-left: 100px;
+
+}
+
+
+.container2 input{
+    margin-left: 60px;
+    border-radius: 5px;
+    border: 1.5px solid #575757;
+    background: #FFF; 
+}
+
+
+#box{
+    display: flex;
+    flex-direction: row;
+}
+
+#explain{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 10px;
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: -1px;
+}
+
+#btn{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 10px;
+}
+
+.okay{
+    margin: 10px;
+    width: 80px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #743724;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.15px;
+   
+}
+
+
+.closed{
+    margin-left: 20px;
+    width: 80px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #626262;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.15px;
+
+}
+
+
+#onlineService{
+    margin-top: 20px;
+    width: 1000px;
+    height: 266.852px;
+    flex-shrink: 0;
+    background: linear-gradient(0deg, rgba(29, 24, 19, 0.60), rgba(29, 24, 19, 0.60)), url('/static/image/child.png');
+    background-size: cover;
+}
+
+#onlineService>p{
+   
+    margin-left: 130px;
+    padding-top: 60px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.25px;
+}
+
+#so{
+    margin-left: 140px;
+    margin-top: -10px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+     letter-spacing: -1px;
+}
+

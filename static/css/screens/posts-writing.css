@@ -1,0 +1,177 @@
+.main-right__hr--lighter {
+    height: 1px;
+}
+.main-right__choose-posts {
+    margin-top: 34px;
+}
+.main-right__choose-posts-btn,
+.main-right__input-title-form input,
+.main-right__editor,
+.main-right__input-text textarea {
+    width: 902px;
+    flex-shrink: 0;
+    border: 1px solid #959595;
+    background: #FFF;
+    box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.25);
+}
+.main-right__choose-posts-btn {
+    height: 75px;
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 33px 0 30px;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.main-right__choose-posts-btn img {
+    rotate: -90deg;
+}
+.align_mode--writing-page {
+    width: 821px;
+    height: 28px;
+    flex-shrink: 0;
+    border: none;
+    /* 디폴트 css 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../image/drop-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    padding-right: 5px;
+    background-size: 18px;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+/* 제목 입력칸 */
+.main-right__input-title {
+    margin-top: 18px;
+}
+.main-right__input-title-form input {
+    height: 75px;
+    border-radius: 25px;
+    text-indent: 30px;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.main-right__input-title-form input::placeholder {
+    display: flex;
+    align-items: center;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+/* 에디터 툴 박스 */
+.main-right__editor {
+    height: 119px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #EFEFEF;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 18px;
+}
+.main-right__editor button {
+    border-style: none;
+    cursor:
+    pointer;
+}
+/* 작성칸 */
+.textarea {
+    width: 902px;
+    height: 834px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 1px solid #959595;
+    background: #FFF;
+    box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.20);
+    margin-top: 35px;
+}
+
+.main-right__input-text {
+    height: 834px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    padding: 16px 24px;
+}
+.editor-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.editor-top span {
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.5px;
+}
+.editor-top-image {
+    position: absolute;
+    left: 42px;
+}
+.editor-top-video {
+    position: absolute;
+    left: 118px;
+}
+
+.editor-top-file {
+    position: absolute;
+    left: 199px;
+}
+.editor-top-link {
+    position: absolute;
+    left: 275px;
+}
+.editor-top-save {
+    position: absolute;
+    right: 37px;
+}
+
+.save-form {
+    position: relative;
+    margin-top: 21px;
+}
+/* 저장하기 버튼 */
+.save-form input {
+    width: 87px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 2px solid #9F9F9F;
+    background: #FFF;
+    color: #878787;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.75px;
+    background-color: none;
+    position: absolute;
+    right: 36px;
+    cursor: pointer;
+}

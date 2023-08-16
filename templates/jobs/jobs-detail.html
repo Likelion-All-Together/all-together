@@ -1,24 +1,94 @@
 {% extends 'base.html' %}
-{% block title %}선생님 상세페이지{% endblock %}
+{% block title %} {{teacher.name}} 선생님{% endblock %}
 {% load static %}
 {% block content %}
-    <h3>선생님 상세페이지</h3>
-    <hr>
-    <h4> * 강사 정보 {{teacher.id}} </h4>
-    
-    <div> <img src="{{ teacher.image.url }}"> </div>
-    <div> 선생님 이름 : {{teacher.name}} </div>
-    <div> 성별 : {{teacher.gender}} </div>
-    <div> 비용 : 1시간당 /{{teacher.cost}}원 </div>
-    <div> 나이 : {{teacher.age}} 살 </div>
-    <div> 학력 : {{teacher.school}} 졸업 </div>
-    <div> 국적 : {{teacher.nationality}} </div>
-    <div> 사용 언어 : {{teacher.language}} </div>
-    <div> 강사정보 : {{teacher.info}} </div>
-    <div> 수업대상 : {{teacher.student}} </div>
-    <div> 특이사항 : {{teacher.feature}} </div>
-    <div> 수업분류 : {{teacher.group}} </div>
-    <div> 시간대 : {{teacher.times}} </div>
-    <div> 계좌번호 : {{teacher.account }}</div>
-    <a href = "{% url 'jobs:jobs_apply' teacher.id %}">신청하기</a>
-{% endblock %}
+  <section id ="sec1">
+      <div id="explain">
+        <img src="/static/image/pictureBox1.png" alt="이미지">
+        
+          <div id="boxs">
+            <div id="box1">SADSDA</div>
+            <div id="box2">APKSDOSAJDSAJDSALDJADJAS</div>
+            <div id="box3">APKSDOSAJDSAJDSALDJADJASDFNKSLFXNZJKNV<br>
+                XZJNCJKNCJKZCNJXKCXCKNZXLCZLKCMKC<br>
+                ZCNJXZNCJKZCNXCNZJCNXJCNZCC</div>
+          <div id="star">
+            <img src="/static/image/starlogo.png" alt ="star">
+          </div>
+            <div class="rectangles">
+            <div id ="rectangle">
+                <div id="one">#영어</div>
+                <div id="four">#초급</div>
+                <div id="two">#초등학생</div>
+            </div>
+
+            <div id ="rectangle">
+                <div id="two">#중학생</div>
+                <div id="two">#고등학생</div>
+                <div id="tree">#어린이 맞춤수업</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="sec2">
+        <div class="container">
+            <div id ="img-container">
+              <img src="/static/image/container1.png"  alt="c1" >
+              <p>온라인 비대면 강의</p>
+          </div>
+
+          <div id ="img-container">
+            <img src="/static/image/container2.png"  alt="c2" >
+            <p>어린 아이 맞춤</p>
+         </div>
+
+         <div id ="img-container">
+          <img src="/static/image/container3.png"  alt="c3" >
+          <p>교육 경력 多</p>
+       </div>
+       
+        </div>      
+    </section>
+
+  <section id ="sec3">
+    <p>강사 정보</p>
+        <div id ="total-information">
+          <div class="information">
+            <div>
+              <div id="information1">국적</div>
+              <div id="information2">필리핀 대한민국</div>
+            </div>
+
+            <div>
+              <div id="information3">사용 가능 언어</div>
+              <div id="information2">한국어, 필리핀 전통어</div>
+            </div>
+
+            <div>
+              <div id="information1">특이사항</div>
+              <div id="information4">중학생, 고등학생 자녀가 있어 아이들과의 원활한 소통이 가능합니다.</div>
+            </div>
+
+
+          <div id="informations">
+            <div>
+              <div id="gender">성별</div>
+              <div id="women">여성</div>
+            </div>
+
+            <div>
+              <div id="time">수업시간</div>
+              <div id="timetable">월,금 1시-7시</div>
+            </div>
+        </div>
+
+
+      <button class="apply">신청하기</button>
+
+
+      </section>
+{%endblock%}

@@ -16,7 +16,7 @@ def jobs_creat_view(request):
         return render(request, 'jobs/jobs-create.html')   
     elif request.method == 'POST':
         writer = request.user
-        name = request.POST.get('name') #이름
+        name = request.POST.get('named') #이름
         image = request.FILES.get('image') #프로필 사진
         gender = request.POST.get('gender') #성별
         age = request.POST.get('age') #나이
