@@ -2,7 +2,7 @@
 
 .class{
     margin-top: 70px;
-    margin-left: 230px;
+    margin-left: 690px;
     display: flex;
     flex-direction: row;
     color: #231910;
@@ -16,7 +16,7 @@
 
 #classteacher{
     margin-top: 20px;
-    margin-left: 230px;
+    margin-left: 700px;
     display: flex;
     flex-direction: column;
     color: #4B2A0B;
@@ -31,18 +31,19 @@
 
 
 form {
-    margin-top: 10px;
+   margin-top: 10px; 
+    margin-left:0px;
     width: 350px;
     height: 400px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #D9D9D9;;
-  }
+}
 
 
   #details{
-    margin-left: 700px;
-    margin-top: -350px;
+    margin-left: 1150px;
+    margin-top: -420px;
     display: flex;
     flex-direction: column;
    
@@ -58,7 +59,7 @@ form {
 #name>div{
 padding-top: 7px;
 width: 120px;
-height: 30px;
+height: 33px;
 color: #FFF;
 text-align: center;
 font-family: Inter;
@@ -88,7 +89,7 @@ background: #705134;
     padding-top: 7px;
     margin-top: 40px;
     width: 120px;
-    height: 30px;
+    height: 33px;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -112,7 +113,7 @@ background: #705134;
     padding-top: 7px;
     margin-top: 40px;
     width: 120px;
-    height: 30px;
+    height: 33px;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -148,7 +149,7 @@ background: #705134;
     padding-top: 7px;
     margin-top: 40px;
     width: 120px;
-    height: 30px;
+    height: 33px;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -174,12 +175,11 @@ background: #705134;
 
 
 #classcost{
+    margin-left: 700px;
     display: flex;
     flex-direction: row;
     width: 1000px;
     margin-top: 30px;
-    margin-left: 230px;
-
 }
 
 #classcost>div{
@@ -188,7 +188,7 @@ background: #705134;
     padding-top: 7px;
     margin-top: 40px;
     width: 120px;
-    height: 30px;
+    height: 40px;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -213,6 +213,7 @@ background: #705134;
 }
 
 .keydiv{
+    margin-left: 0px;
     display: flex;
     flex-direction: row;
 }
@@ -230,13 +231,11 @@ background: #705134;
 }
 
 #sec3{
-   
     display: flex;
     flex-direction: column;
-   width: 900px;
+    width: 900px;
     height: 300px;
-    margin-left: 200px;
-   
+    margin-left: 700px;
 }
 
 #item{
@@ -245,11 +244,11 @@ background: #705134;
 }
 
 #classbox{
-    margin-top: 40px;
+    margin-top: 20px;
     padding-top: 7px;
     margin-top: 40px;
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 35px;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -263,7 +262,7 @@ background: #705134;
 }
 
 #classboxs{
-    margin-top: 40px;
+    margin-top: 20px;
     padding-top: 7px;
     width: 230px;
     height: 30px;
@@ -281,8 +280,9 @@ background: #705134;
 
 
 .apply{
-    margin-top: 400px;
-    margin-left: 600px;
+    margin-top: 500px;
+    margin-bottom:109px;
+    margin-left: 1080px;
     padding: 10px;
     border-radius: 10px;
     border: 1.5px solid #251A0F;
@@ -301,8 +301,8 @@ background: #705134;
 
 .radio-gender{
     margin-top: 50px;
-    margin-left: 120px;
-    width: 100px;
+    margin-left: 150px;
+    width: 200px;
     height: 50px;
     
 }
@@ -318,13 +318,11 @@ background: #705134;
     height: 70px;
     margin-top: 50px;
     margin-left: 15px;
-   
-    
 }
 
 .radio-class2{
   
-    width: 700px;
+    width: 1700px;
     height: 70px;
     margin-top: 50px;
     margin-left: 20px;
@@ -339,8 +337,10 @@ background: #705134;
 }
 
 #special>div{
-    width: 130px;
-    height: 33px;
+    margin-top: 20px;
+    padding-top: 2px;
+    width: 120px;
+    height: 35px;
     border-radius: 7px;
     border: 1.5px solid #4B2A0B;
     background: #FBFCF2;
@@ -354,10 +354,118 @@ background: #705134;
     letter-spacing: -1.1px;
 }
 
+
+
+
 #special>input{
+    margin-top: 20px;
     width: 700px;
     margin-left: 20px;
     border-radius: 5px;
     border: 1.5px solid #563617;
     background: #FFF;
+}
+
+
+#classteacher_time{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2px;
+}
+
+.check{
+    margin-right: 15px;
+    padding-right: 10px;
+}
+.check:first-child {
+    margin-left: 20px; 
+}
+
+
+#classpaynum{
+    margin-left:700px;
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    margin-top: 30px;
+
+
+}
+
+#classpaynum>div{
+
+    margin-top: 40px;
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 120px;
+    height: 40px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+
+}
+
+#classpaynum>input{
+    width:600px;
+    height: 35px;
+    margin-left: 100px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}
+
+
+.styled-select {
+    padding: 10px;
+    padding-right: 30px;
+    font-size: 14px;
+}
+.radio-gender input[type="radio"] {
+    margin-right: 10px; /* 선택지 사이의 간격 설정 */
+}
+.genderupdate{
+    margin-left: 30px;
+}
+.class{
+    margin-right:20px;
+}
+
+table{
+    font-size: 0.9em;
+    background-color: #F7F6EE;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    box-shadow: 0 0 0 3px #4B2A0B;
+}
+th, td{
+    border: 3px solid #4B2A0B;
+    border-collapse: collapse;
+}
+th{
+    height: 5px;
+}
+td {
+    width: 100px;
+    height: 60px;
+}
+.clicked-cell {
+    background-color: #4B2A0B;
 }

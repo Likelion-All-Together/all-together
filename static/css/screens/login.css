@@ -9,22 +9,21 @@
     height: 3px;
     background: #4B2A0B;
     margin-top: 18px;
+    margin-bottom: 30px;
 }
 .login {
     width: 1107px;
-    height: 1107px;
+    height: 1162px;
     flex-shrink: 0;
     border-radius: 60px;
     border: 5px solid #FFF;
     background: rgba(255, 255, 255, 0.50);
     box-shadow: 20px 0px 30px 0px rgba(129, 86, 86, 0.20), -20px 4px 30px 0px rgba(129, 86, 86, 0.20);
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 130px 277px 0;
+    padding: 130px 277px;
     position: relative;
-    
 }
 .login__title {
     color: #4B2A0B;
@@ -41,15 +40,20 @@
     width: 298px;
     height: 298px;
     flex-shrink: 0;
-    border-radius: 298px;
+    border-radius: 50%;
+    overflow: hidden;
     border: 1px solid #8C8C8C;
     background: #FFF;
-    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25) inset;
-    
+    /* box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25) inset; */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 66px;
+}
+.login__img img {
+    width: 90%;
+    height: auto;
+    flex-shrink: 0;
 }
 .login__form-column {
     display: flex;
@@ -64,36 +68,39 @@
 .login__form-column--margin18 {
     margin-bottom: 18px;
 }
+
+/* 로그인 */
 .login__form {
     display: flex;
 }
 .login__form label {
-    width: 101px;
+    width: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .login__form-username,
 .login__form-pw {
-    width: 403px;
+    /* width: 403px; */
     display: flex;
     align-items: center;
     outline: none;
     border: none;
 }
+
 .login__form-username::placeholder,
 .login__form-pw::placeholder {
     color: #4B2A0B;
     font-family: Inter;
-    font-size: 23px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: -0.69px;
 }
+
 .login__auto {
     position: absolute;
-    bottom: 400px;
+    bottom: 460px;
     left: 298px;
 }
 .login__auto input[type="checkbox"] {
@@ -125,7 +132,7 @@
 }
 .login__search {
     position: absolute;
-    bottom: 400px;
+    bottom: 460px;
     right: 302px;
 }
 .login__search a {
@@ -148,6 +155,14 @@
     letter-spacing: -1px;
 }
 .login-btn {
-    margin-top: 102px;
+    /* margin-top: 102px; */
     margin-bottom: 15px;
+}
+
+.login__form-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 270px;
 }

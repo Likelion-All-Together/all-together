@@ -1,9 +1,11 @@
 footer{
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
     padding: 15px 0 15px 0;
     background-color: #4B2A0B;;
+   
 }
 footer > div {
     margin-bottom: 2vh;

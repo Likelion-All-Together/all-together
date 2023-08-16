@@ -2,13 +2,17 @@
 {% block title %}수업등록하기{% endblock %}
 {% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static '/css/screens/classregistration.css' %}">
+    <title>수업등록하기</title>
+</head>
+
     <section id ="sec1">
         <div class="class">수업등록하기</div>
         <div id ="classteacher">강사 정보 입력 
             <form id ="my-form" action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type='file' name='image'/>
-            
         </div>
 
         <div id ="details">
@@ -20,8 +24,8 @@
             <div id="gender">
             <div id="gender-box">성별</div>
             <div class="radio-gender">
-                <input type="radio" name="gender" value="남"  >남
-                <input type="radio" name="gender" value="여" checked="checked">여
+                <input type="radio" name="gender" class="genderupdate" value="남" style="vertical-align:"  >남
+                <input type="radio" name="gender" class="genderupdate" value="여" checked="checked">여
             </div>
             </div>
 
@@ -52,13 +56,14 @@
         </div>
     </section>
 
-    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 170px;">
+    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
 
     <section id ="sec2">
         <div id="classteacher">수업 비용</div>
         <div id="classcost">
             <div>수업 비용</div>
             <select name="cost">
+                <option value="" disabled selected hidden>*1시간 당 비용을 선택해주세요.</option>
                 <option value="10000">  1시간/10000 </option>
                 <option value="20000">  1시간/20000</option>
                 <option value="30000">  1시간/30000</option>
@@ -66,13 +71,13 @@
                 <option value="50000">  1시간/50000</option>
             </select>
         </div>
-        <div id="classcost">
+        <div id="classpaynum">
             <div>계좌번호</div>
-            <input type="specai-text" placeholder="  계좌번호을 입력하세요" name="age" size="70" maxlength="6">
+            <input type="specai-text" placeholder="  *강의비를 입금받을 계좌번호을 입력하세요" name="pay" size="70" maxlength="6">
         </div>
     </section>
 
-    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 170px;">
+    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
 
 
         <div class="keydiv">
@@ -82,28 +87,43 @@
         <section id="sec3">
             <div id ="classkeyword"> 
                 <div id ="item">
-                    <div id ="classboxs">수업 대상</div> 
+                    <div id ="classbox">수업 대상</div> 
                         <div class="radio-class">
-                            <input type="checkbox" name="student" value="초등학생">초등학생 
-                            <input type="checkbox" name="student" value="중학생">중학생 
-                            <input type="checkbox" name="student" value="고등학생">고등학생 
-                            <input type="checkbox" name="student" value="대학생">대학생 
-                            <input type="checkbox" name="student" value="직장인">직장인 
-                            <input type="checkbox" name="student" value="기타">기타 
+
+                                <input type="checkbox" name="student" value="초등학생" class="check">
+                                <label class="stu">초등학생</label> 
+
+
+                                <input type="checkbox" name="student" value="중학생" class="check">
+                                <label class="stu">중학생</label>
+
+
+                                <input type="checkbox" name="student" value="고등학생" class="check">
+                                <label class="stu">고등학생</label> 
+
+                                <input type="checkbox" name="student" value="대학생" class="check">
+                                <label class="stu">대학생</label> 
+    
+                                <input type="checkbox" name="student" value="직장인" class="check">
+                                <label class="stu">직장인</label> 
+
+                                <input type="checkbox" name="student" value="기타" class="check">
+                                <label class="stu">기타</label> 
+
                         </div>
                     </div>
                 </div>
 
                 <div id ="item">
-                    <div id ="classboxs">수업 분류</div>
+                    <div id ="classbox">수업 분류</div>
                     <div class="radio-class">
-                        <input type="checkbox" name="class" value="회화">회화 
-                        <input type="checkbox" name="class" value="비지니스">비지니스 영어 
-                        <input type="checkbox" name="class" value="유학">유학 준비
-                        <input type="checkbox" name="class" value="자격증">자격증 준비
-                        <input type="checkbox" name="class" value="초급자">초급자 대상
-                        <input type="checkbox" name="class" value="중급자">중급자 대상
-                        <input type="checkbox" name="class" value="고급자">고급자 대상
+                        <input type="checkbox" name="class" value="회화" class="check">회화 
+                        <input type="checkbox" name="class" value="비지니스" class="check">비지니스
+                        <input type="checkbox" name="class" value="유학" class="check">유학 준비
+                        <input type="checkbox" name="class" value="자격증" class="check">자격증 준비
+                        <input type="checkbox" name="class" value="초급자" class="check">초급자 대상
+                        <input type="checkbox" name="class" value="중급자" class="check">중급자 대상
+                        <input type="checkbox" name="class" value="고급자" class="check">고급자 대상
                     </div>
                     </div>
                 </div>
@@ -112,12 +132,12 @@
                     <div id="classbox">강사 정보</div>
                     <div>
                         <div class="radio-class2">
-                            <input type="checkbox" name="teacher" value="신입">신입 
-                            <input type="checkbox" name="teacher" value="1년 이상">1년 이상 경력
-                            <input type="checkbox" name="teacher" value="3년 이상">3년 이상 경력
-                            <input type="checkbox" name="teacher" value="5년 이상">5년 이상 경력
-                            <input type="checkbox" name="teacher" value="7년 이상">7년 이상 경력
-                            <input type="checkbox" name="teacher" value="10년 이상">10년 이상 경력
+                            <input type="checkbox" name="teacher" value="신입" class="check">신입 
+                            <input type="checkbox" name="teacher" value="1년 이상" class="check">1년 이상 
+                            <input type="checkbox" name="teacher" value="3년 이상" class="check">3년 이상 
+                            <input type="checkbox" name="teacher" value="5년 이상" class="check">5년 이상 
+                            <input type="checkbox" name="teacher" value="7년 이상" class="check">7년 이상 
+                            <input type="checkbox" name="teacher" value="10년 이상" class="check">10년 이상 
                         </div>
                     </div>
                 </div>
@@ -126,140 +146,114 @@
             
             <div id ="special">
                 <div>특이사항</div>
-                <input type="specai-text"name="feature"  placeholder="*특이사항을 입력해주세요.">
+                <input type="specai-text"name="feature"  placeholder="  *특이사항을 입력해주세요.">
 
             </div>
         </section>
 
+        <hr style="border: solid 1px #000; width: 960px; margin-top: 150px; margin-left: 650px;">
 
-        <br><br><br><br><br><br><br><br>
-        <section id ="sec2">
-            <h2> 수업이 가능한 시간을 선택해주세요 </h2>
-    
-    <table id="schedule-table">
-        <tr>
-            <th> </th>
-            <th>월</th>
-            <th>화</th>
-            <th>수</th>
-            <th>목</th>
-            <th>금</th>
-            <th>토</th>
-            <th>일</th>
-        </tr>
-        <tr>
-            <th>9</th>
-            <td class="월9"></td>
-            <td class="화9"> </td>
-            <td class="수9"></td>
-            <td class="목9"></td>
-            <td class="금9"></td>
-            <td class="토9"></td>
-            <td class="일9"></td>
-        </tr>
-        <tr>
-            <th>10</th>
-            <td class="월10"></td>
-            <td class="화10"> </td>
-            <td class="수10"></td>
-            <td class="목10"></td>
-            <td class="금10"></td>
-            <td class="토10"></td>
-            <td class="일10"></td>
-        </tr>
-        <tr>
-            <th>11</th>
-            <td class="월11"></td>
-            <td class="화11"> </td>
-            <td class="수11"></td>
-            <td class="목11"></td>
-            <td class="금11"></td>
-            <td class="토11"></td>
-            <td class="일11"></td>
-        </tr>
-        <tr>
-            <th>12</th>
-            <td class="월12"></td>
-            <td class="화12"> </td>
-            <td class="수12"></td>
-            <td class="목12"></td>
-            <td class="금12"></td>
-            <td class="토12"></td>
-            <td class="일12"></td>
-        </tr>
-        <tr>
-            <th>13</th>
-            <td class="월13"></td>
-            <td class="화13"> </td>
-            <td class="수13"></td>
-            <td class="목13"></td>
-            <td class="금13"></td>
-            <td class="토13"></td>
-            <td class="일13"></td>
-        </tr>
-        <tr>
-            <th>14</th>
-            <td class="월14"></td>
-            <td class="화14"> </td>
-            <td class="수14"></td>
-            <td class="목14"></td>
-            <td class="금14"></td>
-            <td class="토14"></td>
-            <td class="일14"></td>
-        </tr>
-        <tr>
-            <th>15</th>
-            <td class="월15"></td>
-            <td class="화15"> </td>
-            <td class="수15"></td>
-            <td class="목15"></td>
-            <td class="금15"></td>
-            <td class="토15"></td>
-            <td class="일15"></td>
-        </tr>
-        <tr>
-            <th>16</th>
-            <td class="월16"></td>
-            <td class="화16"> </td>
-            <td class="수16"></td>
-            <td class="목16"></td>
-            <td class="금16"></td>
-            <td class="토16"></td>
-            <td class="일16"></td>
-        </tr>
-    </table>
-    <input type="hidden" id="selected-cell" name="selected_cells" value="">
-</section>
+        <section id="sec3">
 
-
+        <div id ="classteacher_time">수업이 가능한 시간을 선택해 주세요.</div>
+            <table id="schedule-table">
+                <tr>
+                    <th> </th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th>토</th>
+                    <th>일</th>
+                </tr>
+                <tr>
+                    <th>9</th>
+                    <td class="월9"></td>
+                    <td class="화9"> </td>
+                    <td class="수9"></td>
+                    <td class="목9"></td>
+                    <td class="금9"></td>
+                    <td class="토9"></td>
+                    <td class="일9"></td>
+                </tr>
+                <tr>
+                    <th>10</th>
+                    <td class="월10"></td>
+                    <td class="화10"> </td>
+                    <td class="수10"></td>
+                    <td class="목10"></td>
+                    <td class="금10"></td>
+                    <td class="토10"></td>
+                    <td class="일10"></td>
+                </tr>
+                <tr>
+                    <th>11</th>
+                    <td class="월11"></td>
+                    <td class="화11"> </td>
+                    <td class="수11"></td>
+                    <td class="목11"></td>
+                    <td class="금11"></td>
+                    <td class="토11"></td>
+                    <td class="일11"></td>
+                </tr>
+                <tr>
+                    <th>12</th>
+                    <td class="월12"></td>
+                    <td class="화12"> </td>
+                    <td class="수12"></td>
+                    <td class="목12"></td>
+                    <td class="금12"></td>
+                    <td class="토12"></td>
+                    <td class="일12"></td>
+                </tr>
+                <tr>
+                    <th>13</th>
+                    <td class="월13"></td>
+                    <td class="화13"> </td>
+                    <td class="수13"></td>
+                    <td class="목13"></td>
+                    <td class="금13"></td>
+                    <td class="토13"></td>
+                    <td class="일13"></td>
+                </tr>
+                <tr>
+                    <th>14</th>
+                    <td class="월14"></td>
+                    <td class="화14"> </td>
+                    <td class="수14"></td>
+                    <td class="목14"></td>
+                    <td class="금14"></td>
+                    <td class="토14"></td>
+                    <td class="일14"></td>
+                </tr>
+                <tr>
+                    <th>15</th>
+                    <td class="월15"></td>
+                    <td class="화15"> </td>
+                    <td class="수15"></td>
+                    <td class="목15"></td>
+                    <td class="금15"></td>
+                    <td class="토15"></td>
+                    <td class="일15"></td>
+                </tr>
+                <tr>
+                    <th>16</th>
+                    <td class="월16"></td>
+                    <td class="화16"> </td>
+                    <td class="수16"></td>
+                    <td class="목16"></td>
+                    <td class="금16"></td>
+                    <td class="토16"></td>
+                    <td class="일16"></td>
+                </tr>
+            </table>
+            <input type="hidden" id="selected-cell" name="selected_cells" value="">
+        </section>
     <button type="submit" class="apply">등록하기</button>
 </form>
 
-    <style>
-        table{
-            font-size: 0.9em;
-            background-color: #F7F6EE;
-            border-collapse: collapse;
-            border-radius: 10px;
-            border-style: hidden;
-            box-shadow: 0 0 0 3px #4B2A0B;
-        }
-        th, td{
-            border: 3px solid #4B2A0B;
-            border-collapse: collapse;
-        }
-        th{
-            height: 5px;
-        }
-        td {
-            width: 100px;
-            height: 60px;
-        }
-        .clicked-cell {
-            background-color: #4B2A0B;
-        }
-        
-    </style>
+    {% comment %} 테이블 색상 변경 & 데이터 넘기는 스크립트 {% endcomment %}
     <script>
         const cells = document.querySelectorAll('#schedule-table td');
         const selectedCellInput = document.getElementById('selected-cell');
@@ -277,4 +271,5 @@
             selectedCellInput.value = JSON.stringify(selectedValues);
         });
     </script>
+
 {% endblock %}

@@ -2,6 +2,11 @@
 {% block title %}과외서비스{% endblock %}
 {% load static %}
 {% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/screens/search-jobs.css' %}">
+</head>
+
         <main class="search-jobs-main">
             <div class="search-jobs-main-img"><img src="{% static 'image/교육사진.svg' %}"></div>
         <div class="search-jobs-main__start">
@@ -68,12 +73,12 @@
                     <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
                 </div>
                 <div class="teacher-info">
-                    <img src="../../static/image/pictureBox5.png">
+                    <img src="{% static 'image/pictureBox5.png' %}">
                     <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
                     <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
                 </div>
                 <div class="teacher-info">
-                    <img src="../../static/image/pictureBox6.png">
+                    <img src="{% static 'image/pictureBox6.png' %}">
                     <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
                     <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
                 </div>

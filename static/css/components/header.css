@@ -1,6 +1,7 @@
 header{
     display: flex;
     flex-direction: column;
+    width: 100%
 }
 header > div > div{
     display: flex;
@@ -22,7 +23,7 @@ header > div > div > div{
     }
 
 
-img{
+.header-img{
     width: 50px;
 }
 
@@ -35,7 +36,7 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1500px;
+    width: 1200px;
   
 }
 #head #divRight{
@@ -76,7 +77,3 @@ img{
     font-weight: 600;
     line-height: normal;
 }
-
-
-
-

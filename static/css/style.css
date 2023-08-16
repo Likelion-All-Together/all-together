@@ -5,14 +5,14 @@
 @import "components/number-nav.css";
 @import "components/drop-down.css";
 /*screens*/
-@import "screens/posts-lists.css";
+/* @import "screens/posts-lists.css";
 @import "screens/posts-writing.css";
 @import "screens/posts-detail.css";
 @import "screens/informations-all.css";
 @import "screens/login.css";
 @import "screens/search-jobs.css";
 @import "screens/signup.css";
-@import "screens/registration.css";
+@import "screens/registration.css"; */
 
 
 *{margin:0;padding:0;box-sizing:border-box;font:inherit;color:inherit;flex-shrink:0;}
@@ -39,7 +39,4 @@ html {
     html {
       width: 100vw;
     }
-  }
-
-
-  
+}
