@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 200px 0px;
 }
 .login-title-line {
     width: 365px;
@@ -13,7 +14,7 @@
 }
 .login {
     width: 1107px;
-    height: 1162px;
+    height: 1100px;
     flex-shrink: 0;
     border-radius: 60px;
     border: 5px solid #FFF;
@@ -63,7 +64,7 @@
     border-radius: 100px;
     border: 1px solid #8C8C8C;
     background: #FFF;
-    box-shadow: 2px 3px 7px 0px rgba(0, 0, 0, 0.20);
+    /* box-shadow: 2px 3px 7px 0px rgba(0, 0, 0, 0.20); */
 }
 .login__form-column--margin18 {
     margin-bottom: 18px;
@@ -78,6 +79,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    bottom: 400px;
 }
 .login__form-username,
 .login__form-pw {
@@ -132,7 +134,7 @@
 }
 .login__search {
     position: absolute;
-    bottom: 460px;
+    bottom: 400px;
     right: 302px;
 }
 .login__search a {
@@ -164,5 +166,5 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    bottom: 270px;
+    bottom: 200px;
 }
