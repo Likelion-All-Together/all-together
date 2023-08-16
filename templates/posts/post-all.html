@@ -1,97 +1,174 @@
 {% extends 'base.html' %}
-{% block title %}게시판 {% endblock %}
+{% block title %}게시판{% endblock %}
 {% load static %}
 {% block content %}
 
-<h1>게시판 페이지</h1>
-<form action = "" method = "GET" enctype = "multipart/form-data">
-    {% csrf_token %}
-    <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
-    <div>
-        <input type="submit" name="category" value="인기글">
-        <input type="submit" name="category" value="전체">
-        <input type="submit" name="category" value="알바">
-        <input type="submit" name="category" value="과외">
-        <input type="submit" name="category" value="취준">
-        <input type="submit" name="category" value="경력단절">
-        <input type="submit" name="category" value="공지">
-        <input type="submit" name="category" value="이벤트">
-        
-    </div>
-    <br>
-</form>
-    <br>
+<head>
+    <link rel="stylesheet" href="{% static 'css/screens/post-all.css' %}">
+    <style>
+        .number-nav {
+            width: 40%;
+        }
+    </style>
+</head>
 
-    {% if category == '공지' or category == '이벤트' or category == '인기글'%}
-        {% for post in page_obj %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-
-    {% else %} 
-        {% for post in notice_list %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-        <hr>
-        {% for post in page_obj %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-    {% endif %}
-
-{% comment %} pagination 관련 코드 {% endcomment %}
-<div>
-    {% comment %} 1 페이지만 있을 때 pagination 기능 없애기 {% endcomment %}
-    {% if page_obj.has_other_pages %}
-        <ul style="display:flex;list-style:none;">
-
-            {% comment %} 이전 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_previous %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page_obj.previous_page_number}}">
-                        <img src="{% static 'image/previous.png' %}" alt="이전 페이지로">
-                    </a>
-                </li>
+<main class="posts-main">
+    <div class="posts-main-content">
+        <div class="main-left">
+            <nav class="main-left__nav">
+                <div class="main-left__nav-yellow"></div>
+                <div class="main-left__nav-bookmark"></div>
+                <div class="main-left__nav-white">
+                    <img src="{% static 'image/main-logo.svg' %}">
+                    <div class="main-left__nav-title"><span>Damo.yeo</span></div><div class="main-left__nav-border"></div>
+                    <ul class="post-nav">
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">전체글</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=인기글">실시간 인기글</a> </li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">게시판 모음</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=알바">알바 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=과외">과외 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=취준">취준 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=경력단절">경력단절 게시판</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=공지">공지사항</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=이벤트">이벤트</a></li><div class="main-left__nav-border"></div>
+                        
+                    </ul>
+                    {% comment %} <form action = "" method = "GET" enctype = "multipart/form-data">
+                        {% csrf_token %}
+                        <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
+                        <div>
+                            <input type="submit" name="category" value="인기글">
+                            <input type="submit" name="category" value="전체">
+                            <input type="submit" name="category" value="알바">
+                            <input type="submit" name="category" value="과외">
+                            <input type="submit" name="category" value="취준">
+                            <input type="submit" name="category" value="경력단절">
+                            <input type="submit" name="category" value="공지">
+                            <input type="submit" name="category" value="이벤트">
+                        </div>
+                        <br>
+                    </form> {% endcomment %}
+                </div>
+            </nav>
+        </div>
+        <div class="main-right">
+            {% if category == '전체' %}
+                <header class="main-right__title">전체글</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">모든 게시판의 글을 볼 수 있는 곳</div>
+            {% elif category == '인기글' %}
+                <header class="main-right__title">인기글</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">실시간으로 인기있는 글을 볼 수 있는 곳</div>
+            {% elif category == '공지' %}
+                <header class="main-right__title">공지사항</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">공지글을 볼 수 있는 곳</div>
+            {% elif category == '알바' %}
+                <header class="main-right__title">알바 게시판</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">알바와 관련된 글을 볼 수 있는 곳</div>
+            {% elif category == '과외' %}
+                <header class="main-right__title">과외 게시판</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">과외와 관련된 글을 볼 수 있는 곳</div>
+            {% elif category == '취준' %}
+                <header class="main-right__title">취준 게시판</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">취준과 관련된 글을 볼 수 있는 곳</div>
+            {% elif category == '경력단절' %}
+                <header class="main-right__title">경력단절 게시판</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">경력단절과 관련된 글을 볼 수 있는 곳</div>
+            {% elif category == '이벤트' %}
+            <header class="main-right__title">이벤트</header>
+            <div class="main-right__column">
+                <div class="main-right__sub-title">이벤트와 관련된 글을 볼 수 있는 곳</div>
             {% endif %}
 
-            {% for page in paginator.page_range %}
-                {% if page == page_obj.number %} {% comment %} 현재 페이지와 동일하다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page}}">{{page}}</a></li>
-                {% else %} {% comment %} 현재 페이지와 동일하지 않다면 {% endcomment %}
-                    <li style="margin:3px;"><a style="text-decoration:none; color:blue;" href="?category={{category}}&page={{page}}">{{page}}</a></li>
+
+
+                <form action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">
+                    <select name="align_mode" id="align_mode" class="align_mode">
+                        <option value="recently">최신순</option>
+                        <option value="scrap">인기순</option>
+                    </select>
+                </form>
+            </div>
+            <div class="main-right__hr main-right__hr--bolder"></div>
+
+            <section class="main-right__posts">
+                <table class="posts-wrap">
+                    <tr class="posts-wrap__top">
+                        <td class="posts-wrap__topic posts-wrap__topic--top">Topic</th>
+                        <th class="posts-wrap__title posts-wrap__title--top">제목</th>
+                        <th class="posts-wrap__writer posts-wrap__writer--top">작성자</th>
+                        <th class="posts-wrap__date posts-wrap__date--top">작성일</th>
+                        <th class="posts-wrap__count posts-wrap__count--top">조회</th>
+                    </tr>
+                    {% if category == '공지' or category == '이벤트' or category == '인기글'%}
+                        {% for post in page_obj %}
+                            <tr class="posts-wrap__worry">
+                                {% if category == '공지' %}
+                                    <td class="posts-wrap__topic"><div class="posts-wrap__topic--notice">{{ post.category }}</div></td>
+                                {% else %}
+                                    <td class="posts-wrap__topic"><span class="posts-wrap__topic--worry">{{ post.category }}</span></td>
+                                {% endif %}
+                                <td class="posts-wrap__title posts-wrap__title--data">{{ post.title }}</td>
+                                <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
+                                <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
+                                <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %} 
+                        {% for post in notice_list %}
+                            <tr class="posts-wrap__notice">
+                                <td class="posts-wrap__topic"><div class="posts-wrap__topic--notice">{{ post.category }}</div></td>
+                                <td class="posts-wrap__title posts-wrap__title--data">{{ post.title }}</td>
+                                <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
+                                <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
+                                <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% for post in page_obj %}
+                            <tr class="posts-wrap__worry">
+                                <td class="posts-wrap__topic"><span class="posts-wrap__topic--worry">{{ post.category }}</span></td>
+                                <td class="posts-wrap__title posts-wrap__title--data">{{ post.title }}</td>
+                                <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
+                                <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
+                                <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                
+                </table>
+            </section>
+            {% comment %} pagination 관련 코드 {% endcomment %}
+            <div class="posts-footer">
+                {% if page_obj.has_other_pages %}
+                    <ul class="number-nav">
+                            {% if page_obj.has_previous %}
+                                <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                            {% endif %}
+
+                            {% for page in paginator.page_range %}
+                                {% if page == page_obj.number %}
+                                    <li class="number-nav__list"><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
+                                {% else %}
+                                    <li class="number-nav__list" style="color:#977F6A;" ><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                            <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                            {% endif %}
+                    </ul>
                 {% endif %}
-            {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
 
-            {% comment %} 다음 페이지가 있다면 {% endcomment %}
-            {% if page_obj.has_next %}
-                <li style="margin:3px;">
-                    <a style="text-decoration:none; color:red;" href="?category={{category}}&page={{page_obj.next_page_number}}">
-                        <img src="{% static 'image/next.png' %}" alt="다음 페이지로">
-                    </a>
-                </li>
-            {% endif %}
 
-        </ul>
-    {% endif %}
-</div>
 
 {% endblock %}

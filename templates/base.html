@@ -18,7 +18,7 @@
                 <div onClick="location.href='{% url 'diamoyeo:home' %}'" style="cursor: pointer;"><img class="header-img" src="{% static 'image/로고.png' %}">다모여</div>
                 <div id="divRight">
                     {% if request.user.is_authenticated %}
-                        <div onClick="location.href='{% url 'accounts:mypage' %}'" style="cursor: pointer;"><img src="/static/imagepng">{{ request.user.username }}님ㅣ마이페이지</div>
+                        <div onClick="location.href='{% url 'accounts:mypage' %}'" style="cursor: pointer;"><img src="/static/image/basic.png">{{ request.user.username }}님ㅣ마이페이지</div>
                         <div onClick="location.href='{% url 'accounts:logout' %}'" style="cursor: pointer;">로그아웃</div>
                     {% else %}
                         <div onClick="location.href='{% url 'accounts:login' %}'" style="cursor: pointer;">로그인</div>|
@@ -46,5 +46,5 @@
         <div style="font-size: 0.7rem; font-family: Inter;color: #FFF;">대표 : 멋쟁이 사자처럼 한성지부  Email : noname****</div>
         <div style="font-size: 0.7rem; font-family: Inter;color: #FFF;">대표번호: 02-760-4219  주소:서울특별시 성북구 삼선교로 16길 116</div>
     </footer>
-
+</body>
 </html>
