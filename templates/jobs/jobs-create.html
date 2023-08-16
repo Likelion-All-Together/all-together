@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{% static '/css/screens/classregistration.css' %}">
     <title>수업등록하기</title>
 </head>
-
+<script src="{% static 'js/header.js'%}"></script>
+<div id="center">
     <section id ="sec1">
         <div class="class">수업등록하기</div>
         <div id ="classteacher">강사 정보 입력 
@@ -154,7 +155,6 @@
         <hr style="border: solid 1px #000; width: 960px; margin-top: 150px; margin-left: 650px;">
 
         <section id="sec3">
-
         <div id ="classteacher_time">수업이 가능한 시간을 선택해 주세요.</div>
             <table id="schedule-table">
                 <tr>
@@ -248,11 +248,14 @@
                     <td class="일16"></td>
                 </tr>
             </table>
+        </div>
             <input type="hidden" id="selected-cell" name="selected_cells" value="">
         </section>
     <button type="submit" class="apply">등록하기</button>
 </form>
-
+<div id="footer"></div>
+</div>
+<script src="{% static 'js/footer.js'%}"></script>
     {% comment %} 테이블 색상 변경 & 데이터 넘기는 스크립트 {% endcomment %}
     <script>
         const cells = document.querySelectorAll('#schedule-table td');

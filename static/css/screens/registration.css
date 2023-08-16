@@ -8,6 +8,7 @@
 .registration-main {
     display: flex;
     justify-content: center;
+    margin-top: 209px;
 }
 .registration-title {
     color: #4B2A0B;
@@ -58,7 +59,7 @@
     color: #FF8F8F;
     text-align: right;
     font-family: Inter;
-    font-size: 30px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -244,6 +245,9 @@
     line-height: normal;
     letter-spacing: -1.4px;
 }
+.payment__card-info {
+    display: flex;
+}
 .payment__card-info-1 {
     width: 259px;
     height: 138px;
@@ -264,4 +268,121 @@
     font-weight: 800;
     line-height: normal;
     letter-spacing: -1.25px;
+    margin-right: 75px;
+    margin-left: 51px;
+}
+.payment__card-info-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.payment__card-info-2 div {
+    display: flex;
+}
+.payment__card-info-2-text {
+    width: 259px;
+    height: 59px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: #4B2A0B;
+    color: #FFF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:23px;
+}
+.payment__select {
+    width: 495px;
+    height: 59px;
+    flex-shrink: 0;
+    border: 1.5px solid #4B2A0B;
+    background: #FFF;
+
+}
+.payment__select--method {
+    padding: 5px; /* 내부 여백 */
+    border-radius: 3px;
+    appearance: none;
+    -webkit-appearance: none; 
+    background-image: url('../../image/down-btn-white.svg');
+    background-repeat: no-repeat;
+    background-position: right 20px ; 
+    background-size: 10px; /* 화살표 크기 */
+
+}
+.payment__option {
+    color: #2E2E2E;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1px;
+
+}
+.choice-time{
+    margin-left:50px;
+    margin-top: -80px;
+}
+
+.choice-text{
+
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.4px;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 190px;
+    margin-bottom: 80px;
+
+}
+
+
+.timecheck-img{
+    margin-top:100px;
+    margin-right:50px;
+}
+
+.time-container {
+    margin-top:40px;
+    width: 1174px;
+    height: 920px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 2px solid #4B2A0B;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.regis {
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-left:45px;
+}
+.total-cost-line{
+    margin-top:0px;
+    width: 500px;
+    height: 59px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 2px solid #4B2A0B;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    padding : 15px;
+    font-size: 20px;
+
 }

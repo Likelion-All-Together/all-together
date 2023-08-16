@@ -469,3 +469,9 @@ td {
 .clicked-cell {
     background-color: #4B2A0B;
 }
+
+#center {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+
+}
