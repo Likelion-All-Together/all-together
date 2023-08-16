@@ -1,0 +1,24 @@
+.align_mode {
+    width: 88px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 2px solid #4B2A0B;
+    background: #FFF;
+    /* 디폴트 css 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../image/drop-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    padding-right: 4px;
+
+    text-align: center;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+ }
