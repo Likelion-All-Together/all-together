@@ -1,0 +1,96 @@
+.signup__form-column--margin31 {
+    margin-bottom: 31px;
+}
+.signup-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signup-title-line {
+    width: 365px;
+    height: 3px;
+    background: #4B2A0B;
+    margin-top: 18px;
+}
+.signup {
+    width: 1107px;
+    height: 1107px;
+    flex-shrink: 0;
+    border-radius: 60px;
+    border: 5px solid #FFF;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 20px 0px 30px 0px rgba(129, 86, 86, 0.20), -20px 4px 30px 0px rgba(129, 86, 86, 0.20);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 130px 277px 0;
+    position: relative;
+    
+}
+.signup__title {
+    color: #4B2A0B;
+    text-align: center;
+    font-family: Inter;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.6px;
+    margin-bottom: 29px;
+}
+.signup__img {
+    width: 298px;
+    height: 298px;
+    flex-shrink: 0;
+    border-radius: 298px;
+    border: 1px solid #8C8C8C;
+    background: #FFF;
+    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25) inset;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 66px;
+}
+.signup__form-column {
+    display: flex;
+    width: 554px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #8C8C8C;
+    background: #FFF;
+    box-shadow: 2px 3px 7px 0px rgba(0, 0, 0, 0.20);
+}
+.signup__form {
+    display: flex;
+}
+.signup__form label {
+    width: 101px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup__form-username,
+.signup__form-pw {
+    width: 403px;
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+.signup__form-username::placeholder,
+.signup__form-pw::placeholder {
+    color: #929292;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.45px;
+}
+.signup-btn--margin88 {
+    margin-top: 88px;
+}

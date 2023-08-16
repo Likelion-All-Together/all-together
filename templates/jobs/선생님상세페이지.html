@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}선생님 상세페이지{% endblock %}
+{% load static %}
+{% block content %}
+    <h3>선생님 상세페이지</h3>
+    <hr>
+    <h4> * 강사 정보 {{teacher.id}} </h4>
+    
+    <div> <img src="{{ teacher.image.url }}"> </div>
+    <div> 선생님 이름 : {{teacher.name}} </div>
+    <div> 성별 : {{teacher.gender}} </div>
+    <div> 비용 : 1시간당 /{{teacher.cost}}원 </div>
+    <div> 나이 : {{teacher.age}} 살 </div>
+    <div> 학력 : {{teacher.school}} 졸업 </div>
+    <div> 국적 : {{teacher.nationality}} </div>
+    <div> 사용 언어 : {{teacher.language}} </div>
+    <div> 강사정보 : {{teacher.info}} </div>
+    <div> 수업대상 : {{teacher.student}} </div>
+    <div> 특이사항 : {{teacher.feature}} </div>
+    <div> 수업분류 : {{teacher.group}} </div>
+    <div> 시간대 : {{teacher.times}} </div>
+    <div> 계좌번호 : {{teacher.account }}</div>
+    <a href = "{% url 'jobs:jobs_apply' teacher.id %}">신청하기</a>
+{% endblock %}

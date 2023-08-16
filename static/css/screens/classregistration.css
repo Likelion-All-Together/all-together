@@ -1,0 +1,363 @@
+
+
+.class{
+    margin-top: 70px;
+    margin-left: 230px;
+    display: flex;
+    flex-direction: row;
+    color: #231910;
+    font-family: Inter;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.4px;
+}
+
+#classteacher{
+    margin-top: 20px;
+    margin-left: 230px;
+    display: flex;
+    flex-direction: column;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2px;
+}
+
+
+
+form {
+    margin-top: 10px;
+    width: 350px;
+    height: 400px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #D9D9D9;;
+  }
+
+
+  #details{
+    margin-left: 700px;
+    margin-top: -350px;
+    display: flex;
+    flex-direction: column;
+   
+    width: 500px;
+  }
+
+  #name{
+ display: flex;
+ flex-direction: row;
+  }
+
+
+#name>div{
+padding-top: 7px;
+width: 120px;
+height: 30px;
+color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -1.1px;
+border-radius: 7px;
+background: #705134;
+}
+
+#name>input{
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}
+
+#gender{
+    display: flex;
+    flex-direction: row;
+}
+
+#gender-box{
+   
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 120px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+
+}
+
+#age{
+    display: flex;
+    flex-direction: row;
+}
+
+#age>div{
+    margin-top: 40px;
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 120px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+
+}
+
+#age>input{
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}
+
+
+#educational{
+    display: flex;
+    flex-direction: row;
+
+}
+
+#educational>div{
+
+    margin-top: 40px;
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 120px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+
+}
+
+#educational>select{
+    width: 270px;
+    height: 35px;
+    margin-left: 20px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}
+
+
+#classcost{
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    margin-top: 30px;
+    margin-left: 230px;
+
+}
+
+#classcost>div{
+
+    margin-top: 40px;
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 120px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+
+}
+
+#classcost>select{
+    width:600px;
+    height: 35px;
+    margin-left: 100px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}
+
+.keydiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.keydiv>p{
+    margin-top: 30px;
+    margin-left: 10px;
+    color: #9F8267;
+    font-family: Inter;
+    font-size:0.8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1px;
+}
+
+#sec3{
+   
+    display: flex;
+    flex-direction: column;
+   width: 900px;
+    height: 300px;
+    margin-left: 200px;
+   
+}
+
+#item{
+    display: flex;
+    flex-direction: row;
+}
+
+#classbox{
+    margin-top: 40px;
+    padding-top: 7px;
+    margin-top: 40px;
+    width: 100px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+}
+
+#classboxs{
+    margin-top: 40px;
+    padding-top: 7px;
+    width: 230px;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+    border-radius: 7px;
+    background: #705134;
+}
+
+
+.apply{
+    margin-top: 400px;
+    margin-left: 600px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1.5px solid #251A0F;
+    background: #4B2A0B;
+    width: 130px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.4px;
+
+}
+
+.radio-gender{
+    margin-top: 50px;
+    margin-left: 120px;
+    width: 100px;
+    height: 50px;
+    
+}
+
+#radio-none{
+    margin-top: 20px;
+   margin-left: 300px;
+}
+
+.radio-class{
+ 
+    width: 1700px;
+    height: 70px;
+    margin-top: 50px;
+    margin-left: 15px;
+   
+    
+}
+
+.radio-class2{
+  
+    width: 700px;
+    height: 70px;
+    margin-top: 50px;
+    margin-left: 20px;
+   
+    
+}
+
+#special{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#special>div{
+    width: 130px;
+    height: 33px;
+    border-radius: 7px;
+    border: 1.5px solid #4B2A0B;
+    background: #FBFCF2;
+    color: #4B2A0B;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.1px;
+}
+
+#special>input{
+    width: 700px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 1.5px solid #563617;
+    background: #FFF;
+}

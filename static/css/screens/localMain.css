@@ -1,0 +1,277 @@
+#local-title{
+    margin-top: 150px;
+    margin-left: 150px;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#more{
+    margin-top: 20px;
+    margin-left: 900px;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.slider{
+    
+    width: 1250px;
+    height: 400px;
+}
+
+.item-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: -360px;
+    overflow: hidden;
+    width: 1250px;
+   
+   }
+   
+   .item{
+    margin-left: 30px;
+    width: 350px;
+    height: 245px;
+    flex-shrink: 0;
+    background-image: url(/static/image/dance.jpg);
+    background-size: cover;
+    }
+
+    #text1{
+      margin-top: -10px;
+      background: rgba(55, 38, 38, 0.60);
+      width: 200px;
+      height: 245px;
+    }
+   
+    #text1>h1{
+      padding-top: 20px;
+      padding-left: 20px;
+      color: #FFF;
+      font-family: Inter;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      letter-spacing: -0.65px;
+    }
+
+   #text1>h2{
+   margin-top: 100px;
+   margin-left: 20px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.5px;
+   }
+
+   #text1>h3{
+    margin-top: -20px;
+   margin-left: 20px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -1.5px;
+    }
+
+   #text1>h4{
+    width: 180px;
+    margin-top: -15px;
+    margin-left: 20px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.4px;
+   }
+
+   .item1{
+    margin-left: 30px;
+    width: 350px;
+    height: 250px;
+    flex-shrink: 0;
+    background-image: url(/static/image/student.png);
+    background-size: cover;
+    }
+
+    .item2{
+      margin-left: 30px;
+      width: 350px;
+      height: 250px;
+      flex-shrink: 0;
+      background-image: url(/static/image/indian.png);
+      background-size: cover;
+      }
+  
+
+      .item3{
+        margin-left: 30px;
+        width: 350px;
+        height: 250px;
+        flex-shrink: 0;
+        background-image: url(/static/image/forest.jpg);
+        background-size: cover;
+        }
+    
+
+
+        #btns{
+          display: flex;
+          justify-content: space-between;
+         width: 1200px;
+          margin-left: 40px;
+          margin-top: -150px;
+          
+        }
+        #left-btn  #right-btn{
+          border:none;
+          width: 5px;
+          height: 5px;
+          margin-top:200px;
+        }
+
+        #left-btn >img{
+         
+          width: 40px;
+          height: 40px;
+        }
+        
+        #right-btn >img{
+      
+          width: 40px;
+          height: 40px;
+        }
+        
+      .sec2{
+        margin-top: 350px;
+      }
+
+      #item-more{
+        margin-top: 10px;
+        margin-left: 150px;
+        color: rgba(75, 42, 11, 0.80);
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -1.1px;
+      }
+
+
+      #rectangle{
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+      margin-left: 200px;
+      width: 800px;
+      
+      }
+
+      #rectangle>div{
+        margin-bottom: 40px;
+      }
+
+      #localbtn{
+        width: 700px;
+        height: 70px;
+        border: none;
+        border-radius: 80px;
+        background: #4B2A0B;
+        color: #FFFCDD;
+        font-family: Inter;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.75px;
+        
+      }
+
+      .localboxs{
+        display: flex;
+        flex-direction: column;
+      }
+   
+
+      #item-boxs{
+        display: flex;
+        flex-direction: row;
+        margin: 30px;
+        
+       
+      }
+
+      #item-box1 , #item-box2 ,#item-box3, #item-box4{
+        width: 600px;
+        height: 250px;
+        border-radius: 40px;
+        border: 3px solid #4B2A0B;
+        background: #F9FBE3;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        margin-right: 60px;
+        margin-left: 70px;
+      }
+   
+      #offline{
+        margin-top: 20px;
+        margin-left: 40px;
+        border-radius: 40px;
+        border: 2px solid #4B2A0B;
+        background: #D9D9D9;
+        color: #4B2A0B;
+        text-align: center;
+        font-family: Inter;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.5px;
+      }
+
+
+      #online{
+        border-radius: 40px;
+        border: 2px solid #4B2A0B;
+        background: #8B4400;
+        color: #FFF;
+        text-align: center;
+        font-family: Inter;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.5px;
+      }
+
+      #item-explain{
+        display: flex;
+        flex-direction: column;
+        margin-left: 40px;
+      }
+
+      #item-explain>h1 , h2 ,h3 ,h4{
+        color: #4B2A0B;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.6px;
+      }
+

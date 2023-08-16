@@ -1,34 +1,50 @@
+{% load static %}
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
+    <script src="/static/js/includeHTML.js"></script>
+    <title>Document</title>
+</head>
 <body>
-    <ul>
-        <li><a href = "{% url 'diamoyeo:home' %}">메인</a></li>
-      <li><a href = "{% url 'jobs:jobs_main'%}">과외하기</a></li>
-        <li><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1">지역정보</a></li>
-        <li><a href = "{% url 'posts:post-list-all'%}?page=1">게시판</a></li>
-        <li><a href = "{% url 'accounts:mypage' %}">마이페이지</a></li>
-    </ul>
+    <header>
+        <div id="head">
+            <div>
+                <div onClick="location.href='{% url 'diamoyeo:home' %}'" style="cursor: pointer;"><img class="header-img" src="{% static 'image/로고.png' %}">다모여</div>
+                <div id="divRight">
+                    {% if request.user.is_authenticated %}
+                        <div onClick="location.href='{% url 'accounts:mypage' %}'" style="cursor: pointer;"><img src="/static/imagepng">{{ request.user.username }}님ㅣ마이페이지</div>
+                        <div onClick="location.href='{% url 'accounts:logout' %}'" style="cursor: pointer;">로그아웃</div>
+                    {% else %}
+                        <div onClick="location.href='{% url 'accounts:login' %}'" style="cursor: pointer;">로그인</div>|
+                        <div onClick="location.href='{% url 'accounts:signup' %}'" style="cursor: pointer;">회원가입</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>    
+        <div id="nav">
+            <div>
+                <div onClick="location.href='{% url 'diamoyeo:home' %}'" style="cursor: pointer;">메인</div>
+                <div onClick="location.href='{% url 'jobs:jobs_main' %}'" style="cursor: pointer;">과외</div>
+                <div onClick="location.href='{% url 'informations:information' %}?tab=region&align_mode=recently&page=1'" style="cursor: pointer;">지역정보</div>
+                <div onClick="location.href='{% url 'posts:post-list-all' %}?page=1'" style="cursor: pointer;">게시판</div>
+            </div>
+        </div>
+    </header>
     
-    <span>
-        {% comment %} 로그인 된 상태 {% endcomment %}
-        {% if request.user.is_authenticated %}
-            로그인 상태 <br>
-            닉네임 : {{ request.user.username }} <br>
-            이메일 : {{ request.user.email }} <br>
-            <button type="button" onclick="location.href='{% url 'accounts:logout' %}'">로그아웃</button>
-            {% comment %} 혹은 {% endcomment %}
-            {% comment %} <a href = "{% url 'accounts:logout' %}">로그아웃</a> {% endcomment %}
-        {% else %}
-            비로그인 상태 <br>
-            <button type="button" onclick="location.href='{% url 'accounts:login' %}'">로그인</button>
-            <button type="button" onclick="location.href='{% url 'accounts:signup' %}'">회원가입</button>
-            {% comment %} 혹은 {% endcomment %}
-            {% comment %} <a href = "{% url 'accounts:login' %}">로그인</a> {% endcomment %}
-            {% comment %} <a href = "{% url 'accounts:signup' %}">회원가입</a> {% endcomment %}
-        {% endif %}
-    </span>
+    {% block content %}
+
+    {% endblock %}
+
+    <footer>
+        <div style="font-size: 1rem; font-family: Inter; color: #FFF; font-weight: 600;"><img src="/static/image/하단 로고.png">DIAMO.YEA</div>
+        <div style="font-size: 0.7rem; font-family: Inter;color: #FFF;">대표 : 멋쟁이 사자처럼 한성지부  Email : noname****</div>
+        <div style="font-size: 0.7rem; font-family: Inter;color: #FFF;">대표번호: 02-760-4219  주소:서울특별시 성북구 삼선교로 16길 116</div>
+    </footer>
+
 </html>
-
-{% block content %}
-
-{% endblock %}
-</body>
