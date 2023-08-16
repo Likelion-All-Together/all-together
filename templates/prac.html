@@ -1,17 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}회원가입{% endblock %}
+{% load static %}
+{% block content %}
 
-<h1>로그인</h1>
+<h1>회원가입</h1>
 <form action = "" method = "POST" enctype = "multipart/form-data">
     {% csrf_token %}
     <div>
-        <label for="login-username"><img src="{% static 'image/user.svg' %}"></label>
-        {{ form.username }}
-        <br>
-        <label for="login-pw"><img src="{% static 'image/password.svg' %}"></label>
-        {{ form.password }}
-
+        {{ form.as_p }}
     </div>
-    <div class="login__form-btns">
-        <input class="login-btn" type="submit" value="로그인">
-        <button class="signup-btn">회원가입</button>
+    <div>
+        <input type="submit">
     </div>
 </form>
+
+{% endblock %} 
