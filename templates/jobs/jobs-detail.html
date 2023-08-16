@@ -1,94 +1,104 @@
 {% extends 'base.html' %}
-{% block title %} {{teacher.name}} 선생님{% endblock %}
 {% load static %}
-{% block content %}
-  <section id ="sec1">
-      <div id="explain">
-        <img src="/static/image/pictureBox1.png" alt="이미지">
-        
-          <div id="boxs">
-            <div id="box1">SADSDA</div>
-            <div id="box2">APKSDOSAJDSAJDSALDJADJAS</div>
-            <div id="box3">APKSDOSAJDSAJDSALDJADJASDFNKSLFXNZJKNV<br>
-                XZJNCJKNCJKZCNJXKCXCKNZXLCZLKCMKC<br>
-                ZCNJXZNCJKZCNXCNZJCNXJCNZCC</div>
-          <div id="star">
-            <img src="/static/image/starlogo.png" alt ="star">
-          </div>
-            <div class="rectangles">
-            <div id ="rectangle">
-                <div id="one">#영어</div>
-                <div id="four">#초급</div>
-                <div id="two">#초등학생</div>
-            </div>
 
-            <div id ="rectangle">
-                <div id="two">#중학생</div>
-                <div id="two">#고등학생</div>
-                <div id="tree">#어린이 맞춤수업</div>
-            </div>
-          </div>
-          </div>
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/screens/detail.css' %}">
+</head>
+<br>
+<section id ="sec1">
+  <div id="explain">
+      <img class="img-profile" src="{{ teacher.image.url }}" alt="이미지">
+    
+      <div id="boxs">
+        <div id="box1">{{teacher.name}} 선생님</div>
+        <div id="box2">{{teacher.language}} 과외를 집에서 받을 수 있어요! </div>
+        <div id="box3">{{teacher.language}}과외 경력 {%for i in info_list%}{{i}},{%endfor%}<br>
+            {{teacher.nationality}} 출신 선생님<br>
+            {{teacher.language}} 과외를 1시간 당 {{teacher.cost}}원에 받아보세요!</div>
+            <img class="img-star" src="{% static 'image/starlogo.png'%}" width="80px" height="20px">
+      
+        <div class="rectangles">
+        <div id ="rectangle">
+          <div id="one">#{{teacher.language}}</div>
+          <div id="four">#{{teacher.cost}}원</div>
+          {% for group in group_list%}
+            <div id="two">#{{group}}</div>
+            {%endfor%}
+        </div>
+
+        <div id ="rectangle">
+          {% for stu in stu_list%}
+            <div id="tree">#{{stu}} 맞춤수업</div>
+            {%endfor%}
         </div>
       </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-    <section id="sec2">
-        <div class="container">
-            <div id ="img-container">
-              <img src="/static/image/container1.png"  alt="c1" >
-              <p>온라인 비대면 강의</p>
-          </div>
+<section id="sec2">
+    <div class="container">
+        <div id ="img-container">
+          <img class = "container-img"src="{% static 'image/container1.png' %}"  alt="c1" >
+          <p>{{teacher.language}} 강의</p>
+        </div>
 
-          <div id ="img-container">
-            <img src="/static/image/container2.png"  alt="c2" >
-            <p>어린 아이 맞춤</p>
-         </div>
+      <div id ="img-container">
+          <img class = "container-img" src="{% static 'image/container2.png' %}"  alt="c2" >
+          <p>{%for i in stu_list%}{{i}} , {%endfor%} 맞춤</p>
+      </div>
 
-         <div id ="img-container">
-          <img src="/static/image/container3.png"  alt="c3" >
-          <p>교육 경력 多</p>
-       </div>
-       
-        </div>      
-    </section>
+      <div id ="img-container">
+        <img class = "container-img" src="{% static 'image/container3.png' %}"  alt="c3" >
+        <p>교육 경력 {%for i in info_list%}{{i}}{%endfor%}</p>
+      </div>  
+    </div>    
+</section>
 
-  <section id ="sec3">
-    <p>강사 정보</p>
-        <div id ="total-information">
-          <div class="information">
-            <div>
-              <div id="information1">국적</div>
-              <div id="information2">필리핀 대한민국</div>
-            </div>
+<section id ="sec3">
+<p>* 강사 정보</p>
+    <div id ="total-information">
+      <div class="information">
+        <div>
+          <div id="information1">국적</div>
+          <div id="information2">{{teacher.nationality}}</div>
+        </div>
 
-            <div>
-              <div id="information3">사용 가능 언어</div>
-              <div id="information2">한국어, 필리핀 전통어</div>
-            </div>
+        <div>
+          <div id="information3">사용 가능 언어</div>
+          <div id="information2">{{teacher.language}}</div>
+        </div>
 
-            <div>
-              <div id="information1">특이사항</div>
-              <div id="information4">중학생, 고등학생 자녀가 있어 아이들과의 원활한 소통이 가능합니다.</div>
-            </div>
-
-
-          <div id="informations">
-            <div>
-              <div id="gender">성별</div>
-              <div id="women">여성</div>
-            </div>
-
-            <div>
-              <div id="time">수업시간</div>
-              <div id="timetable">월,금 1시-7시</div>
-            </div>
+        <div>
+          <div id="information1">특이사항</div>
+          <div id="information4">{{teacher.feature}}</div>
         </div>
 
 
-      <button class="apply">신청하기</button>
+      <div id="informations">
+        <div>
+          <div id="gender">성별</div>
+          <div id="women">{{teacher.gender}}성</div>
+        </div>
 
+        <div>
+          <div id="time">수업시간</div>
+          <div id="timetable">
+          {% if time <= 3 %}
+          {% for time in time_list %} 
+            {{ time }}
+          {% endfor %}
+          {% else %}
+          신청하기 버튼을 누르면 볼 수 있어요
+          {%endif %}
+          </div>
+        </div>
 
-      </section>
+    </div>
+  </section>
+  <button class="apply"onclick="location.href='{% url 'jobs:jobs_apply' teacher.id %}'">신청하기</button>
+
 {%endblock%}

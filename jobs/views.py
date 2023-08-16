@@ -71,9 +71,27 @@ def jobs_teacher_view(request): # 선생님 전체 페이지
 
 def jobs_teacher_detail_view(request,id): #선생님 상세 페이지
     teacher = get_object_or_404(Class, id=id)
+    
     if request.method == 'GET':
+        time_list = (teacher.times).split("'")
+        info_list = (teacher.info).split("'")
+        stu_list = (teacher.student).split("'")
+        group_list = (teacher.group).split("'")
+        remove_list = {', ','[',']'}
+        time_lists = [i for i in time_list if i not in remove_list]
+        time = len(time_lists)
+        info_lists = [i for i in info_list if i not in remove_list]
+        stu_lists = [i for i in stu_list if i not in remove_list]
+        group_lists = [i for i in group_list if i not in remove_list]
+        print(time_lists)
         context = {
             'teacher':teacher,
+            'time_list':time_lists, #시간대
+            'info_list':info_lists, #경력
+            'stu_list':stu_lists,   #학생
+            'group_list':group_lists, #수업 종류(비지니스, 유학 등)
+            'time':time
+            
         }
         return render(request, 'jobs/jobs-detail.html',context)
     
