@@ -33,21 +33,6 @@
                         <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=이벤트">이벤트</a></li><div class="main-left__nav-border"></div>
                         
                     </ul>
-                    {% comment %} <form action = "" method = "GET" enctype = "multipart/form-data">
-                        {% csrf_token %}
-                        <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
-                        <div>
-                            <input type="submit" name="category" value="인기글">
-                            <input type="submit" name="category" value="전체">
-                            <input type="submit" name="category" value="알바">
-                            <input type="submit" name="category" value="과외">
-                            <input type="submit" name="category" value="취준">
-                            <input type="submit" name="category" value="경력단절">
-                            <input type="submit" name="category" value="공지">
-                            <input type="submit" name="category" value="이벤트">
-                        </div>
-                        <br>
-                    </form> {% endcomment %}
                 </div>
             </nav>
         </div>
@@ -85,8 +70,6 @@
             <div class="main-right__column">
                 <div class="main-right__sub-title">이벤트와 관련된 글을 볼 수 있는 곳</div>
             {% endif %}
-
-
 
                 <form action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">
                     <select name="align_mode" id="align_mode" class="align_mode">

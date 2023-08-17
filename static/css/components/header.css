@@ -82,3 +82,7 @@ header > div > div > div{
     line-height: normal;
     letter-spacing: -1px;
 }
+
+#divRight > div:nth-child(2){
+    margin-top: 15px;
+}
