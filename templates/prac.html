@@ -1,86 +1,29 @@
-{% extends 'base.html' %}
-{% block title %}게시판{% endblock %}
+{% extends 'base.html'%}
+{% block title %}글쓰기{% endblock %}
 {% load static %}
 {% block content %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'css/screens/post-all.css' %}">
-</head>
-<h1>게시판 페이지</h1>
-<form action = "" method = "GET" enctype = "multipart/form-data">
+<h1>글쓰기</h1>
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <a href = "{% url 'posts:post-create'%}"> 고민 등록하기 </a>
     <div>
-        <input type="submit" name="category" value="인기글">
-        <input type="submit" name="category" value="전체">
-        <input type="submit" name="category" value="알바">
-        <input type="submit" name="category" value="과외">
-        <input type="submit" name="category" value="취준">
-        <input type="submit" name="category" value="경력단절">
-        <input type="submit" name="category" value="공지">
-        <input type="submit" name="category" value="이벤트">
+        게시판을 선택해주세요
     </div>
-    <br>
+    <div>
+        <select name="post_category">
+            <option value="알바">알바게시판</option>
+            <option value="과외">과외게시판</option>
+            <option value="취준">취준게시판</option>
+            <option value="경력단절">경력단절게시판</option>
+        </select>
+    </div>
+    <div>
+        <input type="text" name="post_title" placeholder="제목을 입력하세요">
+    </div>
+    <div>
+        <input type="text" name="post_content" placeholder="내용을 입력하세요">
+    </div>
+    <button type="submit">글 등록하기</button>
 </form>
-    <br>
-
-    {% if category == '공지' or category == '이벤트' or category == '인기글'%}
-        {% for post in page_obj %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-
-    {% else %} 
-        {% for post in notice_list %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-        <hr>
-        {% for post in page_obj %}
-            <div>
-                카테고리 : {{ post.category }}<br>
-                제목 : <a href="{% url 'posts:post-detail' post.id %}">{{ post.title }}</a><br>
-                작성자 : {{ post.writer }}<br>
-                작성일 : {{ post.created_at|date:"Y.m.d" }}<br>
-                조회수 : {{ post.view_count }}<br>
-            </div>
-            <br>
-        {% endfor %}
-    {% endif %}
-
-{% comment %} pagination 관련 코드 {% endcomment %}
-<div class="posts-footer">
-    {% if page_obj.has_other_pages %}
-        <ul style="display:flex;list-style:none;">
-                {% if page_obj.has_previous %}
-                    <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
-                {% endif %}
-
-                {% for page in paginator.page_range %}
-                    {% if page == page_obj.number %}
-                        <li class="number-nav__list"><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
-                    {% else %}
-                        <li class="number-nav__list" style="color:#977F6A;" ><a href="?category={{category}}&page={{page}}">{{ page }}</a></li>    
-                    {% endif %}
-                {% endfor %}
-
-                {% if page_obj.has_next %}
-                <li class="number-nav__list"><a href="?category={{category}}&page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
-                {% endif %}
-        </ul>
-    {% endif %}
-</div>
 
 {% endblock %}
