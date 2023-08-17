@@ -2,32 +2,34 @@
 {% block title %}수업등록하기{% endblock %}
 {% load static %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{% static '/css/screens/classregistration.css' %}">
-    <title>수업등록하기</title>
-</head>
-<script src="{% static 'js/header.js'%}"></script>
+    <head>
+        <link rel="stylesheet" href="{% static '/css/screens/classregistration.css' %}">
+        <title>수업등록하기</title>
+    </head>
+
+    <script src="{% static 'js/header.js'%}"></script>
+    <br><br>
 <div id="center">
     <section id ="sec1">
-        <div class="class">수업등록하기</div>
-        <div id ="classteacher">강사 정보 입력 
-            <form id ="my-form" action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type='file' name='image'/>
-        </div>
-
-        <div id ="details">
-            <div id ="name">
-                <div>이름</div>
-                <input type="text"  name="named" placeholder="  이름을 입력하세요" size="35" maxlength="20">
+            <div class="class">수업등록하기</div>
+            <div id ="classteacher">강사 정보 입력 
+                <form id ="my-form" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type='file' name='image'/>
             </div>
+
+            <div id ="details">
+                <div id ="name">
+                    <div>이름</div>
+                    <input type="text"  name="named" placeholder="  이름을 입력하세요" size="35" maxlength="20">
+                </div>
             
             <div id="gender">
-            <div id="gender-box">성별</div>
-            <div class="radio-gender">
-                <input type="radio" name="gender" class="genderupdate" value="남" style="vertical-align:"  >남
-                <input type="radio" name="gender" class="genderupdate" value="여" checked="checked">여
-            </div>
+                <div id="gender-box">성별</div>
+                <div class="radio-gender">
+                    <input type="radio" name="gender" class="genderupdate" value="남" style="vertical-align:">남
+                    <input type="radio" name="gender" class="genderupdate" value="여" checked="checked">여
+                </div>
             </div>
 
             <div id ="age">
@@ -43,48 +45,56 @@
                 <input type="text" placeholder="  수업 가능한 언어를 입력하세요" name="language" size="35" maxlength="6">
             </div>
 
-            <div id="educational">
-                <div>학력</div>
-                <select name="education">
-                    <option value="없음"> 해당사항없음 </option>
-                    <option value="초등학교"> 초등학교</option>
-                    <option value="중학교"> 중학교</option>
-                    <option value="고등학교"> 고등학교</option>
-                    <option value="대학교"> 대학교</option>
+                <div id="educational">
+                    <div>학력</div>
+                    <select name="education">
+                        <option value="없음"> 해당사항없음 </option>
+                        <option value="초등학교"> 초등학교</option>
+                        <option value="중학교"> 중학교</option>
+                        <option value="고등학교"> 고등학교</option>
+                        <option value="대학교"> 대학교</option>
+                    </select>
+                </div>
+            </div>
+    </div>
+</section>
+    <div id = "center">
+        <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
+    </div>
+    <section id ="sec2">
+        <div id = "center_title">
+            <div id="classteacher">수업 비용</div>
+        </div>
+        <div id = "center_cost">
+            <div id="classcost">
+                <div>수업 비용</div>
+                <select name="cost">
+                    <option value="" disabled selected hidden>*1시간 당 비용을 선택해주세요.</option>
+                    <option value="10000">  1시간/10000 </option>
+                    <option value="20000">  1시간/20000</option>
+                    <option value="30000">  1시간/30000</option>
+                    <option value="40000">  1시간/40000</option>
+                    <option value="50000">  1시간/50000</option>
                 </select>
             </div>
-            </div>
         </div>
-    </section>
-
-    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
-
-    <section id ="sec2">
-        <div id="classteacher">수업 비용</div>
-        <div id="classcost">
-            <div>수업 비용</div>
-            <select name="cost">
-                <option value="" disabled selected hidden>*1시간 당 비용을 선택해주세요.</option>
-                <option value="10000">  1시간/10000 </option>
-                <option value="20000">  1시간/20000</option>
-                <option value="30000">  1시간/30000</option>
-                <option value="40000">  1시간/40000</option>
-                <option value="50000">  1시간/50000</option>
-            </select>
-        </div>
+    <div id = "center_cost">
         <div id="classpaynum">
             <div>계좌번호</div>
             <input type="specai-text" placeholder="  *강의비를 입금받을 계좌번호을 입력하세요" name="pay" size="70" maxlength="6">
         </div>
+    </div>
     </section>
-
-    <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
-
-
+    <div id="center">
+        <hr style="border: solid 1px #000; width: 960px; margin-top: 90px; margin-left: 650px;">
+    </div>
+    <div id="center_key">
         <div class="keydiv">
             <div id ="classteacher">수업 키워드</div>
             <p>중복 선택 가능</p>
         </div>
+    </div>
+    <div id="center">
         <section id="sec3">
             <div id ="classkeyword"> 
                 <div id ="item">
@@ -117,18 +127,16 @@
 
                 <div id ="item">
                     <div id ="classbox">수업 분류</div>
-                    <div class="radio-class">
-                        <input type="checkbox" name="class" value="회화" class="check">회화 
-                        <input type="checkbox" name="class" value="비지니스" class="check">비지니스
-                        <input type="checkbox" name="class" value="유학" class="check">유학 준비
-                        <input type="checkbox" name="class" value="자격증" class="check">자격증 준비
-                        <input type="checkbox" name="class" value="초급자" class="check">초급자 대상
-                        <input type="checkbox" name="class" value="중급자" class="check">중급자 대상
-                        <input type="checkbox" name="class" value="고급자" class="check">고급자 대상
-                    </div>
-                    </div>
+                        <div class="radio-class">
+                            <input type="checkbox" name="class" value="회화" class="check">회화 
+                            <input type="checkbox" name="class" value="비지니스" class="check">비지니스
+                            <input type="checkbox" name="class" value="유학" class="check">유학 준비
+                            <input type="checkbox" name="class" value="자격증" class="check">자격증 준비
+                            <input type="checkbox" name="class" value="초급자" class="check">초급자 대상
+                            <input type="checkbox" name="class" value="중급자" class="check">중급자 대상
+                            <input type="checkbox" name="class" value="고급자" class="check">고급자 대상
+                        </div>
                 </div>
-
                 <div id ="item">
                     <div id="classbox">강사 정보</div>
                     <div>
@@ -142,18 +150,24 @@
                         </div>
                     </div>
                 </div>
-            </div>   
             
-            
-            <div id ="special">
-                <div>특이사항</div>
-                <input type="specai-text"name="feature"  placeholder="  *특이사항을 입력해주세요.">
-
+                <div id ="special">
+                    <div>특이사항</div>
+                    <input type="specai-text"name="feature"  placeholder="  *특이사항을 입력해주세요.">
+                </div>
             </div>
         </section>
+    </div>
 
-        <hr style="border: solid 1px #000; width: 960px; margin-top: 150px; margin-left: 650px;">
 
+
+
+
+    <div id="center">
+            <hr style="border: solid 1px #000; width: 960px; margin-top: 180px; margin-left: 650px;">
+    </div>
+    
+    <div id="center_table">
         <section id="sec3">
         <div id ="classteacher_time">수업이 가능한 시간을 선택해 주세요.</div>
             <table id="schedule-table">
@@ -251,11 +265,21 @@
         </div>
             <input type="hidden" id="selected-cell" name="selected_cells" value="">
         </section>
+    </div>
+
+    <div id="center_submit">
     <button type="submit" class="apply">등록하기</button>
+    </div>
 </form>
 <div id="footer"></div>
-</div>
-<script src="{% static 'js/footer.js'%}"></script>
+
+
+
+
+
+
+
+    <script src="{% static 'js/footer.js'%}"></script>
     {% comment %} 테이블 색상 변경 & 데이터 넘기는 스크립트 {% endcomment %}
     <script>
         const cells = document.querySelectorAll('#schedule-table td');
