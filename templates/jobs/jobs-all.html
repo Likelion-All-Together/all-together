@@ -74,25 +74,38 @@
      
      
   <div class="containerBox"> 
-     
-        <div id="cb1"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+    {% for teacher in teacher_list %}
+        {% if forloop.counter == 1 %}
+        <div id="cb1"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
-        <div id="cb2"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+        {% endif %}
+        {% if forloop.counter == 2 %}
+        <div id="cb2"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
-        <div id="cb3"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+        {% endif %}
+        {% if forloop.counter == 3 %}
+        <div id="cb3"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
-        <div id="cb4"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+        {% endif %}
+        {% if forloop.counter == 4 %}
+        <div id="cb4"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
-        <div id="cb5"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+        {% endif %}
+        {% if forloop.counter == 5 %}
+        <div id="cb5"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
-        <div id="cb6"><h1>SJFSDJFJKADJDSA</h1>
-          <p>SJFSDJFJKADJD</p>
+        {% endif %}
+        {% if forloop.counter == 6 %}
+        <div id="cb6"><h1>{{teacher.name}}</h1>
+          <p>{{teacher.language}}</p>
         </div>
+        {% endif %}
+        {% endfor %}
       </div>
       <button onclick="location.href='{% url 'jobs:teacher' %}'" id="btn">선생님 만나러가기 <img class="polygon"src="{% static 'image/Polygon 7.png'%}"></button>
     
