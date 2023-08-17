@@ -48,6 +48,7 @@ class RegionAndMulticultural(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE, null = True, blank = True)
     scrap = models.ManyToManyField(User, related_name = 'scrap1', null = True, blank = True)
     created_at = models.DateTimeField(default = timezone.now)
+    url = models.CharField(verbose_name = 'URL', max_length = 250, default = None, null = True) 
 
 class Afterschool(models.Model):
     region = models.CharField(verbose_name = '동 명', max_length = 20, null = False, blank = False)
@@ -63,3 +64,4 @@ class Afterschool(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE, null = True, blank = True) # 추가
     scrap = models.ManyToManyField(User, related_name = 'scrap2', null = True, blank = True) # 추가
     created_at = models.DateTimeField(default=timezone.now)
+    url = models.CharField(verbose_name = 'URL', max_length = 250, default = None, null = True)
