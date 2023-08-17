@@ -131,10 +131,12 @@ def post_create_view(request):
 
 def post_detail_view(request, id):
     post = get_object_or_404(Post, id=id)
+    comments = post.comment_set.all().order_by('-created_at')
     if request.method == 'GET':
         context = {
             'post': post,
             'commentForm': CommentForm(),
+            'comments':comments,
         }
 
         # 쿠키
@@ -190,3 +192,8 @@ def make_page_obj(post_list, page, num_of_post,):
         page = paginator.num_pages
         page_obj = paginator.page(page)
         return page_obj, paginator
+
+def delete_comment(request, id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    return redirect('posts:post-detail', id=id)
