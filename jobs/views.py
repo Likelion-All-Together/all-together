@@ -3,12 +3,20 @@ from .models import Class, Register
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 import json
+import random
 
 # Create your views here.
 
 def jobs_main_view(request):
     if request.method == 'GET':
-        return render(request, 'jobs/jobs-all.html')
+        teacher_list = Class.objects.all()
+        random_teacher_list = random.sample(list(teacher_list), 6)
+
+        context = {
+            'teacher_list': random_teacher_list,
+
+        }
+        return render(request, 'jobs/jobs-all.html',context)
     return render(request, 'jobs/jobs-all.html')
 
 def jobs_creat_view(request):
@@ -63,8 +71,14 @@ def jobs_creat_view(request):
 def jobs_teacher_view(request): # 선생님 전체 페이지
     if request.method == 'GET':
         teacher_list = Class.objects.all()
+        teacher_list1 = teacher_list[:3]
+        teacher_list2 = teacher_list[3:6]
+        teacher_list3 = teacher_list[6:9]
         context = {
             'teacher_list':teacher_list,
+            'teacher_list1':teacher_list1,
+            'teacher_list2':teacher_list2,
+            'teacher_list3':teacher_list3,
         }
         return render(request, 'jobs/jobs-teacher.html',context)
     return render(request, 'jobs/jobs-teacher.html',context)
