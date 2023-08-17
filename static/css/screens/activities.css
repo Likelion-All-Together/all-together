@@ -1,0 +1,201 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+}
+.post-nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+    padding-inline-start: 0px;
+}
+
+.nav__list1, .nav__list2 {
+    list-style-type: none;
+}
+
+.nav__list1 a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #462C14;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.05px;
+   
+}
+
+.nav__list2 a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #462C14;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+
+}
+
+.mypageWrite{
+    
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    height: 1000px;
+    
+}
+
+#mytitle{
+margin-left: -1000px;  
+margin-top: 140px;
+color: #462C14;
+font-family: Inter;
+font-size: 3rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -1.65px;
+}
+
+
+h1{
+    margin-left: -600px;  
+    margin-top: -40px;
+    margin-bottom: 40px;
+    color: #9A846F;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.84px;
+}
+
+
+#leftnav{
+    width: 210px;
+    height: 1100px;
+    background: #FBFCEC;
+    box-shadow: 4px -4px 15px rgba(0, 0, 0, 0.10);
+}
+
+
+#rightform{
+width: 1000px;
+height: 1100px;
+border-radius: 0 30px 30px 0;
+box-shadow: 4px -4px 15px rgba(0, 0, 0, 0.10);
+/* box-shadow: 5px 5px 4px 4px rgba(126, 122, 122, 0.5) inset; */
+
+
+}
+
+
+input{
+    margin-left: 780px;
+    margin-top: 20px;
+}
+
+#rightform span{
+
+margin-left: 800px;
+color: #4B2A0B;
+font-family: Inter;
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.6px;
+}
+
+
+.table {
+    border-collapse: collapse; /* 셀 테두리 분리 설정 */
+    border-spacing: 20px; /* 셀 간격 설정 */
+    width: 80%; /* 테이블 폭 설정 */
+    margin-top: 10px;
+    margin-left: 100px;
+}
+tr th:first-child {
+    display: flex;
+    justify-content: start;
+    width: 600px;
+    color: #977F6A;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+  
+
+}
+
+tr th:nth-child(2) {
+    
+
+width: 100px;
+color: #977F6A;
+text-align: center;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.9px;
+
+
+}
+
+tr th:nth-child(3) {
+
+   
+    width: 100px;
+    color: #977F6A;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+}
+
+/* 테이블 헤더(th) 스타일을 설정합니다. */
+    th {
+       
+      
+        text-align: center; /* 가운데 정렬 설정 */
+        padding: 15px; /* 셀 안쪽 여백 설정 */
+        border-bottom: 1px solid #000000; /* 아래쪽 테두리 설정 */
+    }
+
+/* 날짜 2022.10.08을 오른쪽으로 이동시킵니다. */
+tr td:nth-child(2) {
+    text-align: center;
+    
+}
+ /* 숫자 56을 오른쪽으로 이동시킵니다. */
+ tr td:last-child {
+    text-align: center;
+}
+
+tr td {
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.7px;
+    padding: 13px; /* 셀 안쪽 여백 설정 */
+    border-bottom: 1px solid #000000; /* 아래쪽 테두리 설정 */
+}

@@ -14,6 +14,34 @@
             margin-right: 20px;
         }
     </style>
+    <script>
+        var popup;
+
+        function openPopup(argument) {
+            // 팝업 창의 크기와 위치 설정
+            var width = 1000;
+            var height = 650;
+            var left = (window.innerWidth - width) / 2;
+            var top = (window.innerHeight - height) / 2;
+        
+            var url = "";
+
+            if (argument === 'posts') {
+                url = "{% url 'accounts:activities' %}?category=posts";
+            } else if (argument === 'comments') {
+                url = "{% url 'accounts:activities' %}?category=comments";
+            } else if (argument === 'likes') {
+                url = "{% url 'accounts:activities' %}?category=likes";
+            } else if (argument === 'scraps') {
+                url = "{% url 'accounts:activities' %}?category=scraps";
+            }
+
+             // Django 템플릿 태그를 이용하여 URL 생성
+
+            popup = window.open(url, '새로운 팝업', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
+
+        }
+        </script>
 </head>
 <h1>마이페이지</h1>
 <hr>
@@ -53,28 +81,32 @@
 <br>
 <hr>
 [ 계정 활동 ] <br>
-
 <div class="icon-container">
-    <a href="{% url 'accounts:activities' %}?category=posts">
+
+    <a href="#" onclick="openPopup('posts')">
         <span class="icon">
             <br><img src="{% static 'image/post.png' %}" alt="내가 작성한 글"><br>작성글
         </span>
     </a>
-    <a href="{% url 'accounts:activities' %}?category=comments">
+    <a href="#" onclick="openPopup('comments')">
         <span class="icon">
             <br><img src="{% static 'image/comment.png' %}" alt="내가 작성한 댓글"><br>댓글
         </span>
     </a>
-    <a href="{% url 'accounts:activities' %}?category=likes">
+    <a href="#" onclick="openPopup('likes')">
         <span class="icon">
             <br><img src="{% static 'image/like.png' %}" alt="내가 좋아한 글"><br>좋아요
         </span>
     </a>
-    <a href="{% url 'accounts:activities' %}?category=scraps">
+    <a href="#" onclick="openPopup('scraps')">
         <span class="icon">
             <br><img src="{% static 'image/scrap.png' %}" alt="내가 좋아한 글"><br>스크랩
         </span>
     </a>
 </div>
-
 {% endblock %}
+
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=posts"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=comments"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=likes"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=scraps"> {% endcomment %}

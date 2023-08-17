@@ -1,40 +1,108 @@
-{% extends 'base.html' %}
-{% block title %}나의 활동{% endblock %}
 {% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/screens/activities.css' %}">
+        <script>
+            
+        </script>            
+    </head>
+</head>
+<body>
+    {% if category == 'posts' %}
+        <div id ="mytitle"><img src="{% static 'image/post.png' %}" alt="작성글">   작성 글</div>
+        <h1>내가 작성한 글 보기</h1>
+    {% elif category == 'comments' %}
+        <div id ="mytitle"><img src="{% static 'image/chat.png' %}" alt="작성댓글">   작성 댓글</div>
+        <h1>내가 작성한 댓글 보기</h1>
+    {% elif category == 'likes' %}
+        <div id ="mytitle"><img src="{% static 'image/like.png' %}" alt="좋아요">   좋아요</div>
+        <h1>좋아요 글 보기</h1>
+    {% elif category == 'scraps' %}
+        <div id ="mytitle"><img src="{% static 'image/scrap.png' %}" alt="스크랩">   스크랩</div>
+        <h1>스크랩 글 보기</h1>
+    {% endif %}
 
-<h1>나의 활동</h1>
+  <div class="mypageWrite">
+     <div id="leftnav">
+            <nav class="main-left__nav">
+                    <ul class="post-nav">
+                        {% if category == 'posts' %}
+                            <li class="nav__list1"><a href="{% url 'accounts:activities' %}?category=posts">작성글</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=comments">작성댓글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=likes">좋아요</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=scraps">스크랩</a></li> 
+                        {% elif category == 'comments' %}
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=posts">작성글</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list1"><a href="{% url 'accounts:activities' %}?category=comments">작성댓글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=likes">좋아요</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=scraps">스크랩</a></li> 
+                        {% elif category == 'likes' %}
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=posts">작성글</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=comments">작성댓글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="nav__list1"><a href="{% url 'accounts:activities' %}?category=likes">좋아요</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=scraps">스크랩</a></li> 
+                        {% elif category == 'scraps' %}
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=posts">작성글</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=comments">작성댓글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="nav__list2"><a href="{% url 'accounts:activities' %}?category=likes">좋아요</a></li><div class="main-left__nav-border"></div>
+                            <li class="nav__list1"><a href="{% url 'accounts:activities' %}?category=scraps">스크랩</a></li> 
+                        {% endif %}
+                    </ul>
+            </nav>
+      </div>
 
-<p>카테고리: {{ category }}</p>
+    <div id="rightform">
+        <input type="radio" name="gender" value="male"><span>전체선택 l 삭제하기</span>
+       <table class="table">
+        {% if item_list %}
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th>조회</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for item in item_list %}
+                <tr>
+                    {% if category == 'posts' %}
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                    <td>{{ item.view_count }}</td>
+                    {% elif category == 'likes' %}
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                    <td>{{ item.view_count }}</td>
+                    {% elif category == 'scraps' %}
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                    <td>{{ item.scrap.count }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
 
-{% if item_list %}
-<ul>
-    {% for item in item_list %}
-    <li>
-        {% if category == 'posts' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>조회 : {{ item.view_count }}</p>
-        {% elif category == 'comments' %}
-            <p>게시글 제목 : {{ item.post.title }}</p>  <!-- 댓글이 속한 게시글의 제목 -->
-            <p>댓글 내용: {{ item.content }}</p>  <!-- 댓글 내용 -->
-            <p>작성일: {{ item.created_at|date:"Y.m.d H:i" }}</p>
-        {% elif category == 'likes' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>조회 : {{ item.view_count }}</p>
-        {% elif category == 'scraps' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>스크랩 수 : {{ item.scrap.count }}</p>
+        {% else %}
+        <thead>
+            <tr>
+                <th style="border-bottom: none;">활동 내역이 없습니다.</th>
+            </tr>
+        </thead>
+
         {% endif %}
-        
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>활동 내역이 없습니다.</p>
-{% endif %}
+        </tbody>
+       </table>
 
 
-{% endblock %}
+
+    </div>
+
+
+
+
+
+</div>
+</body>
+</html>
