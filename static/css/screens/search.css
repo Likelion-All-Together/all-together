@@ -1,11 +1,17 @@
-*{
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    padding: 0;
+
 }
 
 #sec1{
+margin-top: 100px;
+width: 1300px;
  height: 450px;
-background-image: url(/static/image/교육사진.png);
+background-image: url(/static/image/교육사진.svg);
 background-repeat: no-repeat;
 background-size: cover;
 
@@ -48,21 +54,23 @@ background-size: cover;
 }
 
 #box1{
+    
     color: #000;
     text-align: center;
     font-family: Inter;
     font-size: 2rem;
-    font-style: normal;
+    font-style: Bold;
     font-weight: 600;
     line-height: normal;
     letter-spacing: -1.95px;
 }
 
 #box2{
+    margin-right: 420px;
     color: #000;
     font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
+    font-size: 1.5rem;
+    font-style: Bold;
     font-weight: 500;
     line-height: normal;
     letter-spacing: -1.35px;
@@ -170,7 +178,7 @@ background-size: cover;
     font-weight: 500;
     line-height: normal;
     letter-spacing: -2.75px;
-    padding: 10px;
+    padding: 8px;
 }
 
 
@@ -182,12 +190,13 @@ background-size: cover;
     font-weight: 600;
     line-height: normal;
     letter-spacing: -4px;
-   padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 13px;
+    padding-left: 13px;
 }
 
 
 #box5{
+    margin-right:100px;
     color: #000;
     text-align: center;
     font-family: Inter;
@@ -412,20 +421,63 @@ background-size: cover;
     line-height: normal;
     letter-spacing: -1.1px;
     border: none;
+    background-color: #FFF;
 }
 
 
 .girlcontainer{
-    
-    width: 600px;
+    margin-top:200px;
+    margin-bottom:400px;
+    width: 1000px;
     height: 300px;
     
 }
 
 #girl{
     margin: auto;
-    background-image: url(/static/image/girl.png);
-    background-size: cover;
-    width: 600px;
-    height: 300px;
+    background-image: url(/static/image/Rectangle.png), url(/static/image/girl.png);
+    background-size: 600px 500px, 800px 600px;
+    background-position: left, right; 
+    width: 1000px;
+    height: 500px;
+    background-repeat: no-repeat;
+
+}
+#girl h2 {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding-top:140px;
+    padding-right: 300px;
+}
+#girl p {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding-top:20px;
+    padding-left:170px;
+}
+
+.polygon{
+    margin-left:10px;
+    margin-top:2px;
+}
+
+.girl-btn{
+    margin-left:170px;
+    margin-top:30px;
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 15px;
+    background-color: transparent;
+    width: 200px;
+    height: 35px;
 }
