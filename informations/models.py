@@ -40,7 +40,7 @@ class RegionAndMulticultural(models.Model):
     title = models.CharField(verbose_name = '제목', max_length = 20, null = False, blank = False)
     content = models.CharField(verbose_name = '내용', max_length = 100, null = False, blank = False)
     phone = models.CharField(verbose_name = '전화번호', max_length = 20, null = False, blank = False)
-    support_cycle = models.CharField(verbose_name = '지원 주기', max_length = 20, choices = SUPPORT_CYCLE_CHOICES ,default = '일')
+    support_cycle = models.CharField(verbose_name = '지원 주기', max_length = 50)
     type = models.CharField(verbose_name = '제공 유형', max_length = 20, null = False, blank = False)
     department = models.CharField(verbose_name = '담당 부서', max_length = 20, null = False, blank = False)
     tag = models.CharField(verbose_name = '태그', max_length = 20, choices = TAG_CHOICES , default = None) 
