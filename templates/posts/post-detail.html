@@ -145,13 +145,18 @@
                                     <span class="post-detail__write-comments-box-dates">{{comment.created_at}}</span>
                                 </div>
                             </div>
+                            {% comment %}
                             <div class="hidden post-detail__write-comments-box-modify-box">
                                 <button>수정하기</button>
                                 <img src="../../static/image/line.svg">
                                 <button>삭제하기</button>
                             </div>
+                            
                             <button class="hamburger-btn"><img src="{% static 'image/hamburger-btn.svg' %}"></button>
-                            {%comment%}<button class="reply-btn reply-btn--whtie-bg">답글작성</button>{% endcomment%}
+                            {% endcomment %}
+                            {% if comment.writer == request.user %}
+                            <button class="reply-btn reply-btn--whtie-bg" onclick="location.href='{% url 'posts:comment_delete' post.id comment.id %}'">삭제하기</button>
+                            {% endif %}
                         </div>
                         {% endfor %}
                         
