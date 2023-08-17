@@ -48,16 +48,16 @@
                 <nav class="info-main-content__nav">
                     <ul>
                         {% if tab == 'region'%}
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="font-size: 20px;">복지제도</a></li>
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="font-size: 20px;">복지 제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">일자리 정보</a></li>
                             <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="color: #977F6A;">방과후 & 교육</a></li>
                         {% elif tab == 'multicultural'%}
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지제도</a></li>
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="font-size: 20px;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지 제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="font-size: 20px;">일자리 정보</a></li>
                             <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="color: #977F6A;">방과후 & 교육</a></li>
                         {% elif tab == 'afterschool'%}
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지제도</a></li>
-                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">다문화 일자리 정보</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="color: #977F6A;">복지 제도</a></li>
+                            <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">일자리 정보</a></li>
                             <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=afterschool&align_mode=recently&page=1" style="font-size: 20px;">방과후 & 교육</a></li>
                         {% endif%}
                     </ul>
@@ -80,7 +80,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -102,7 +102,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -124,7 +124,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -146,7 +146,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -168,7 +168,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -190,7 +190,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -215,7 +215,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -237,7 +237,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -259,7 +259,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -281,7 +281,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -303,7 +303,7 @@
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.content }}
+                                {{ item.content|truncatechars:88 }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -325,7 +325,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -344,13 +344,11 @@
                 <div class="item-container__column">
                     {% for item in first_obj %}
                     <div class="item">
-                        <div class="item__ct">{{ item.tag1 }}</div>
-                        <div class="item__ct">{{ item.tag2 }}</div>
                         <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.region }}동 | 
+                                {{ item.region }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -372,7 +370,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -388,13 +386,11 @@
                 <div class="item-container__column">
                     {% for item in second_obj %}
                     <div class="item">
-                        <div class="item__ct">{{ item.tag1 }}</div>
-                        <div class="item__ct">{{ item.tag2 }}</div>
                         <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.region }}동 | 
+                                {{ item.region }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -416,7 +412,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
@@ -432,13 +428,11 @@
                 <div class="item-container__column">
                     {% for item in third_obj %}
                     <div class="item">
-                        <div class="item__ct">{{ item.tag1 }}</div>
-                        <div class="item__ct">{{ item.tag2 }}</div>
                         <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
-                                {{ item.region }}동 | 
+                                {{ item.region }}
                             </div>
                         </div>
                         <table class="item__table">
@@ -460,7 +454,7 @@
                             </tr>
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
-                            <a href="{{ item.url }}">자세히 보기</a>
+                            <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                             {% if request.user in item.scrap.all %}
                                 <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                                 <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
