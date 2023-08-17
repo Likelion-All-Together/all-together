@@ -1,7 +1,7 @@
 
 
 .class{
-    margin-top: 70px;
+    margin-top: 50px;
     margin-left: 690px;
     display: flex;
     flex-direction: row;
@@ -473,5 +473,59 @@ td {
 #center {
     display: flex;
     justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:650px;
+
+
+}
+#center_title {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:1500px;
+    padding-top: 20px;
+    padding-bottom: -40px;
+
+
+}
+#center_cost {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:580px;
+    padding-bottom: -300px;
+
+
+}
+#center_key {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:1400px;
+    padding-top: 20px;
+    padding-bottom: -40px;
+
+
+}
+#center_submit {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:1070px;
+
+}
+#center_table {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-right:690px;
+
+}
+#center_special{
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    padding-bottom: -40px;
+    padding: 80px;
 
 }
