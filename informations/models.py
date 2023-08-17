@@ -37,8 +37,8 @@ STATUS = (
     ('접수마감', '접수마감'),
 )
 class RegionAndMulticultural(models.Model):
-    title = models.CharField(verbose_name = '제목', max_length = 20, null = False, blank = False)
-    content = models.CharField(verbose_name = '내용', max_length = 100, null = False, blank = False)
+    title = models.CharField(verbose_name = '제목', max_length = 40, null = False, blank = False)
+    content = models.CharField(verbose_name = '내용', max_length = 200, null = False, blank = False)
     phone = models.CharField(verbose_name = '전화번호', max_length = 20, null = False, blank = False)
     support_cycle = models.CharField(verbose_name = '지원 주기', max_length = 50)
     type = models.CharField(verbose_name = '제공 유형', max_length = 20, null = False, blank = False)
@@ -53,7 +53,7 @@ class RegionAndMulticultural(models.Model):
 
 class Afterschool(models.Model):
     region = models.CharField(verbose_name = '동 명', max_length = 20, null = False, blank = False)
-    title = models.CharField(verbose_name = '프로그램명', max_length = 20, null = False, blank = False)
+    title = models.CharField(verbose_name = '프로그램명', max_length = 40, null = False, blank = False)
     receipt_start = models.DateField(verbose_name = '접수 시작 날짜')
     receipt_end = models.DateField(verbose_name = '접수 마감 날짜')
     training_start = models.DateField(verbose_name = '교육 시작 날짜')
