@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}정보{% endblock %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/screens/identify.css' %}">
+    </head>
+   
+
+    <section id="sec1">
+        <div id ="damo">DAMO</div>
+       <div id ="sm">
+        <div id="service">본인인증서비스</div>
+        <div id="mobile">한국모바일인증</div>
+      </div>
+    </section>
+
+
+    <hr style="border: solid 1px #000;">
+
+
+   <section id="sec2"> 
+      <div class ="container">
+        <div id ="id">휴대폰 인증</div>
+
+  
+
+        <label><input type="checkbox" name="color" value="blue">개인정보 인증 동의<input type="submit" value="전문보기"></label>
+        <label><input type="checkbox" name="color" value="red"> 고유식별정보 처리 동의<input type="submit" value="전문보기"></label>
+    </div>
+
+
+    <div class="container2">
+            <div id="name">성명<input type="text"  name="텍스트" value="" size="35" maxlength="6"></div>
+            <div id="pNumber" >휴대번호<input type="text"  name="텍스트" value="" size="35" maxlength="6"></div>
+
+            <div id="box">이동통신사
+                <input type="radio" name="chk_info" value="SKT">SKT
+                <input type="radio" name="chk_info" value="KT" checked="checked">KT
+                <input type="radio" name="chk_info" value="LG U+">LG U+
+            </div>
+        
+
+            
+         <div id="Num">주민등록번호 I  외국인 등록번호<input type="text"  name="텍스트" value="" size="30" maxlength="5"></div>
+        
+            <div id ="birth">생년월일
+        
+                <select id ="year">
+                    <option>2023년</option>
+                    <option>2022년</option>
+                    <option>2021년</option>
+                    <option>2020년</option>
+                    <option>2019년</option>
+                    <option>2018년</option>
+                    <option>2017년</option>
+                    <option>2016년</option>
+                    <option>2015년</option>
+                    <option>2014년</option>
+                    <option>2013년</option>
+                    <option>2012년</option>
+                    <option>2011년</option>
+                    <option>2010년</option>
+                    <option>2009년</option>
+                    <option>2008년</option>
+                    <option>2007년</option>
+                    <option>2006년</option>
+                    <option>2005년</option>
+                    <option>2004년</option>
+                    <option>2003년</option>
+                    <option>2002년</option>
+                    <option>2001년</option>
+                    <option>2000년</option>
+                    <option>1999년</option>
+                    <option>1998년</option>
+                    <option>1997년</option>
+                    <option>1996년</option>
+                    <option>1995년</option>
+                    <option>1994년</option>
+                    <option>1993년</option>
+                    <option>1992년</option>
+                    <option>1991년</option>
+                    <option>1990년</option>
+                    <option>1989년</option>
+                    <option>1988년</option>
+                </select>
+                <select id="month">
+                    <option>월</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+
+
+                <select id="births">
+                    <option>일</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+               
+
+                </select>
+                
+            </div>
+
+        <div id="gender">성별
+            <input type="radio" name="chk_info" value="남">남
+            <input type="radio" name="chk_info" value="여" checked="checked">여
+        </div>
+     
+    </div>
+
+    <div id ="explain">본인 명의의 휴대폰 정보를 정확히 입력하여 주시기 바랍니다.<br>
+        본인인증 5회 실패 시 당일 휴대폰 인증이 제한됩니다.<br>
+        본인인증은 무료 서비스 결제 및 과금이 발생하지 않습니다.</div>
+
+        <hr id ="hr2" style="border: solid 1px #000;">
+
+
+    <div id="btn">
+        <button class="okay">확인</button>
+        <button class="closed">닫기</button>
+    </div>
+
+</section>
+
+<section id ="sec3">
+    <div id ="onlineService"><p>온라인<br>과외서비스</p> 
+        <div id="so">영어, 중국어, 일본어부터 태국어, 베트남어 아랍어까지!<br>
+            ‘다모여’는 의사소통에 어려움을 겪는 다문화 가정을 위해 <br>
+            다양한 언어를 배울 수 있는 기회를 제공합니다.</div>
+    </div>
+</section>
+    
+{% endblock %}

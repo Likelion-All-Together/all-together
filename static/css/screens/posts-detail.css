@@ -6,7 +6,6 @@
 }
 .post-detail {
     width: 893px;
-    height: 1050.014px;
     flex-shrink: 0;
     border-radius: 40px;
     border: 1px solid #959595;
@@ -15,10 +14,6 @@
     padding: 69.31px 43.61px 69.31px 65.77px;
 }
 /* 게시물 디테일 상단 부분 */
-.post-detail__header {
-    height: 160.173px;
-    border-bottom: 1px solid #000000;
-}
 .post-detail__header-title {
     color: #4B2A0B;
     font-family: Inter;
@@ -53,8 +48,7 @@
     border-radius: 40px;
     border: 1px solid #959595;
     background: #FFF;
-    box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.20);
-    display: flex;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25) inset;    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -111,26 +105,49 @@
 /* 댓글5, urul복사 적혀있는 부분 */
 .post-detail__header-comment-url {
     display: flex;
+    align-items: center;
     position: absolute;
     right: 0;
     bottom: 0;
 }
-.post-detail__header-comment-url img {
-    margin-right: 3.34px;
+.post-detail__header-bottom-info-right img {
     width: 12.657px;
     height: 11.273px;
     flex-shrink: 0;
 }
-.post-detail__header-comment-url span {
+.post-detail__header-comment,
+.post-detail__header-url-copy {
     color: #4B2A0B;
     font-family: Inter;
     font-size: 10px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    padding: 0 3.34px;
+}
+.post-detail__header-border {
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+    margin-top: 6.51px;
+    margin-bottom: 20px;
 }
 .post-detail__comment-container {
     width: 838px;
+}
+.post {
+    width: 100%;
+    text-align: center;
+
+}
+.post-txt {
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    
 }
 /* 댓글 접기, 좋아요수 */
 .post-detail__btn-comment-and-like {
@@ -285,7 +302,7 @@
     background-color: transparent; /*버튼 기본 배경색상 제거*/
     cursor: pointer;
 }
-.hamburger-btn {
+.hamburger-btn img {
     position: absolute;
     top: 16px;
     right: 38px;

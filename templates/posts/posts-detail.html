@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <head><link rel="stylesheet" href="{% static 'css/screens/post-detail.css' %}"></head>
+    <script defer src="../../static/js/posts.js"></script>  
+    <title>posts-detail</title>
+</head>
+<body>
+    <div id="header"></div>
+    <script src="/static/js/header.js"></script>
+    <main class="posts-main">
+        <div class="posts-main-content">
+            <div class="main-left">
+                <nav class="main-left__nav">
+                    <div class="main-left__nav-yellow"></div>
+                    <div class="main-left__nav-bookmark"></div>
+                    <div class="main-left__nav-white">
+                        <img src="../../static/image/main-logo.svg">
+                        <div class="main-left__nav-title"><span>Diamo.yeo</span></div><div class="main-left__nav-border"></div>
+                        <ul class="post-nav">
+                            <li class="post-nav__list"><a href="#">전체글</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="#">실시간 인기글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="#">게시판 모음</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="#">알바 게시판</a></li>
+                            <li class="post-nav__list"><a href="#">과외 게시판</a></li>
+                            <li class="post-nav__list"><a href="#">취준 게시판</a></li>
+                            <li class="post-nav__list"><a href="#">경력단절 게시판</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="#">공지사항</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="#">이벤트</a></li><div class="main-left__nav-border"></div>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="main-right main-right--detail">
+                <div class="post-detail">
+                    <div class="post-detail__header">
+                        <div class="post-detail__header-title">다문화 학부모 고민</div>
+                        <div class="post-detail__header-topic">고민상담</div>
+                        <div class="post-detail__header-bottom-info">
+                            <div class="post-detail__header-bottom-info-left">
+                                <div class="post-detail__user-img post-detail__user-img--header"><span>👨‍🦱</span></div>
+                                <div class="post-detail__header-user-date-count">
+                                    <div class="post-detail__header-user">
+                                        <span class="post-detail__header-user-name">Alexsdf</span>
+                                        <span class="post-detail__header-user-membership">학부모 회원</span>
+                                    </div>
+                                    <div class="post-detail__header-date-count">
+                                        <span class="post-detail__header-date">2023.08.15</span>
+                                        <span class="post-detail__header-count">조회 56</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-detail__header-bottom-info-right">
+                                <div class="post-detail__header-comment-url" >
+                                    <img src="../../static/image/bubble.svg">
+                                    <span class="post-detail__header-comment">댓글 5</span>
+                                    <span>I</span>
+                                    <span class="post-detail__header-url-copy">URL 복사</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="post-detail__header-border"></div>
+                    <div class="post">
+                        <img class="post-img" src="../../static/image/학교폭력이미지.png">
+                        <p class="post-txt">
+                            고등학교를 다니는 딸이 있어요.
+                            다문화 학생이라 따돌림을 받고 있대요.
+                            어떻게 해야할까요?
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            다문화 가정 지원금 혜택에는 무엇이 있나요??
+                            
+                            다문화 가정을 위한 한국어 캠프가 있다던데 참가하신분 후기가 궁금합니다!!
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                        </p>
+                    </div>
+                </div>
+                <section class="post-detail__comment-container">
+                    <div class="post-detail__btn-comment-and-like">
+                        <div class="post-detail__btn-comment">
+                            댓글
+                            <img src="../../static/image/up-btn.svg">
+                        </div>
+                        <div class="post-detail__btn-like">
+                            <span>♥</span>
+                            <span>2566666</span>
+                        </div>
+                    </div>
+
+                    <div class="post-detail__write-comments">
+                        <h4>댓글 작성</h4>
+                        <div class="write-comment-input">
+                            <div contenteditable="true"></div>
+                            <button class="reply-btn reply-btn--brown-bg">답글작성</button>
+                        </div>
+                        <div class="post-detail__write-comments-box post-detail__write-comments-box--yellow">
+                            <div class="post-detail__user-img post-detail__user-img--comments"><span>👨‍🦱</span></div>
+                            <div class="post-detail__write-comments-box-column">
+                                <div class="post-detail__write-comments-box-user-name">bbbbbbbbb</div>
+                                <div class="post-detail__write-comments-box-comm">요즘 세상에 왕따라니 .. 아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고</div>
+                                <div class="post-detail__write-comments-box-date">
+                                    <span class="post-detail__write-comments-box-dates">2023.08.11</span>
+                                    <span class="post-detail__write-comments-box-time">15:00</span>
+                                </div>
+                            </div>
+                            <div class="hidden post-detail__write-comments-box-modify-box">
+                                <button>수정하기</button>
+                                <img src="../../static/image/line.svg">
+                                <button>삭제하기</button>
+                            </div>
+                            <button class="hamburger-btn"><img src="../../static/image/hamburger-btn.svg"></button>
+                            <button class="reply-btn reply-btn--whtie-bg">답글작성</button>
+                        </div>
+                        <div class="post-detail__write-comments-box post-detail__write-comments-box--white">
+                            <div class="post-detail__user-img post-detail__user-img--comments"><span>👨‍🦱</span></div>
+                            <div class="post-detail__write-comments-box-column">
+                                <div class="post-detail__write-comments-box-user-name">bbbbbbbbb</div>
+                                <div class="post-detail__write-comments-box-comm">학교에 신고해보는 건 어떤가요???????????????????????????신고해요 당장당장당장당장ㄷ아앙앚아당장</div>
+                                <div class="post-detail__write-comments-box-date">
+                                    <span class="post-detail__write-comments-box-dates">2023.08.11</span>
+                                    <span class="post-detail__write-comments-box-time">15:00</span>
+                                </div>
+                            </div>
+                            <div class="hidden post-detail__write-comments-box-modify-box">
+                                <button>수정하기</button>
+                                <img src="../../static/image/line.svg">
+                                <button>삭제하기</button>
+                            </div>
+                            <button class="hamburger-btn"><img src="../../static/image/hamburger-btn.svg"></button>
+                            <button class="reply-btn reply-btn--whtie-bg">답글작성</button>
+                        </div>
+                        <div class="post-detail__write-comments-box post-detail__write-comments-box--yellow">
+                            <div class="post-detail__user-img post-detail__user-img--comments"><span>👨‍🦱</span></div>
+                            <div class="post-detail__write-comments-box-column">
+                                <div class="post-detail__write-comments-box-user-name">bbbbbbbbb</div>
+                                <div class="post-detail__write-comments-box-comm">요즘 세상에 왕따라니 .. 아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고아이고 아이고 아이고</div>
+                                <div class="post-detail__write-comments-box-date">
+                                    <span class="post-detail__write-comments-box-dates">2023.08.11</span>
+                                    <span class="post-detail__write-comments-box-time">15:00</span>
+                                </div>
+                            </div>
+                            <div class="hidden post-detail__write-comments-box-modify-box">
+                                <button>수정하기</button>
+                                <img src="../../static/image/line.svg">
+                                <button>삭제하기</button>
+                            </div>
+                            <button class="hamburger-btn"><img src="../../static/image/hamburger-btn.svg"></button>
+                            <button class="reply-btn reply-btn--whtie-bg">답글작성</button>
+                        </div>
+
+                    </div>
+                </section>
+        </div>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script src="../../static/js/footer.js"></script>
+</body>
+</html>
+
+
+

@@ -9,6 +9,23 @@
         .number-nav {
             width: 40%;
         }
+        .apply{
+            margin-left: 830px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1.5px solid #251A0F;
+            background: #4B2A0B;
+            width: 100px;
+            color: #FFF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -1.4px;
+        
+        }
     </style>
 </head>
 
@@ -51,7 +68,9 @@
                 </div>
             </nav>
         </div>
+        
         <div class="main-right">
+            <button class="apply" onclick="location.href='{% url 'posts:post-create' %}'">작성하기</button>
             {% if category == '전체' %}
                 <header class="main-right__title">전체글</header>
                 <div class="main-right__column">

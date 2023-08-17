@@ -185,4 +185,5 @@ def class_apply_view(request, id):
     return render(request, 'jobs/jobs-apply.html', context)
 
 
-# 인증 뷰 (해야됨)
+def identify_view(request):
+    return render(request,'jobs/jobs-certify.html' )
