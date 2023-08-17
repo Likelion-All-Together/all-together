@@ -5,6 +5,11 @@
 
 <head>
     <link rel="stylesheet" href="{% static 'css/screens/home.css' %}">
+    <style>
+        .no-underline {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <section id ="sec1">
@@ -24,7 +29,7 @@
 
     <section id ="sec1">
         <div class ="servicediv">
-            <img src="{% static 'image/support_service_background.png' %}" alt=" circle">
+            
         <div id="togetherservice">
             <div id="together">다모여</div>
             <div id="service">지원 서비스</div>
@@ -38,7 +43,7 @@
                 <div id="givetext">알바 및 일자리 경제 활동에 관한 다양한 정보를 제공합니다.</div>
                 </div>
                 
-                <div id="local"><p>지역정보</p>
+                <div id="local"><p>지역 정보</p>
                 <div id="localtext">지역 복지 및 다문화 가정 정보 등 다양한 정보를 제공합니다.</div>
                 </div>
             
@@ -50,45 +55,27 @@
     </div>
 
     <div id="recommend">추천 과외</div>
+
+
     <div class="slider">
-        <div class=" slider-btn-wrapper-left" > <!-- 왼쪽 화살표 -->
-            <button id="left-btn" class="slider-btn"><img src="{% static 'image/왼쪽.png' %}" alt="왼쪽"></button>
-        </div>
-        <div class="item-wrapper">
-            <div class="item">
-                <h2>베트남 선생님을 모집합니다</h2>
-                <h3>0000 중학교</h3>
-        </div>
-        <div class="item">
-                <h2>중국어 선생님을 모집합니다</h2>
-                <h3>0000 고등학교</h3>
-        </div>
-        <div class="item">
-                <h2>00어 통역사를 모집합니다</h2>
-                <h3>000 복지센터</h3>
-        </div>
-        <div class="item">
-                <h2>베트남 선생님을 모집합니다</h2>
-                <h3>0000 중학교</h3>
-        </div>
 
-        <div class="item">
-            <h2>베트남 선생님을 모집합니다</h2>
-            <h3>0000 중학교</h3>
-        </div>
-            
-        <div class="item">
-            <h2>베트남 선생님을 모집합니다</h2>
-            <h3>0000 중학교</h3>
-        </div>
-
-        </div> 
         
-        <div class="slider-btn-wrapper slider-btn-wrapper-right"> <!-- 오른쪽 화살표 -->
-            <button id="right-btn" class="slider-btn"><img src="{% static 'image/오른쪽.png' %}" alt="오른쪽"></button>
+        <div class="item-wrapper">
+            {% for teacher in teacher_list%}
+            <div class="item">
+                
+                <h2><a href="{% url 'jobs:teacher_detail' teacher.id %}" class = "no-underline"> {{teacher.language}}과외 진행합니다. <br> {{teacher.nationality}}출신 선생님</a></h2>
+
+                <h3>{{teacher.name}} 선생님</h3>
+                
+            </div>
+            {% endfor%}
         </div>
-    </div>
-    
+
+    </div> 
+        
+
+
 
     <div id="teach">오늘의 지역 정보</div>
     <div id ="localdiv">
@@ -125,10 +112,10 @@
 <section id="sec3">
     <div id="recommend">인기 게시물</div>
     <div id="rectangle">
-        <div><button id="mainbtn"><p>고등학생 딸이 왕따를 당하는 것 같아요. 어떡하죠?<img src="{% static 'image/vector.png' %}" alt="vector"></p></button></div>
-        <div><button id="mainbtn"><p>고등학생 딸이 왕따를 당하는 것 같아요. 어떡하죠?<img src="{% static 'image/vector.png' %}" alt="vector"></p></button></div>
-        <div><button id="mainbtn"><p>고등학생 딸이 왕따를 당하는 것 같아요. 어떡하죠?<img src="{% static 'image/vector.png' %}" alt="vector"></p></button></div>
-</div>
+        {% for post in post_list %}
+        <div><button id="mainbtn"  onclick="location.href='{% url 'posts:post-detail' post.id %}'"><p>{{post.title}}</p></button></div>
+        {% endfor %}
+    </div>
 </section>
 
 
