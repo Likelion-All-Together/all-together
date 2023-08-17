@@ -3,17 +3,7 @@
 {% load static %}
 {% block content %}
 <head>
-    <style>
-        .icon-container {
-            display: flex;
-        }
-        
-        .icon {
-            text-align: center; /* 내부 요소들 가운데 정렬 */
-            display: inline-block;
-            margin-right: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/screens/mypage.css' %}">
     <script>
         var popup;
 
@@ -42,71 +32,213 @@
 
         }
         </script>
+        <style>
+            .icon-container {
+                display: flex;
+            }
+            
+            .icon {
+                text-align: center; /* 내부 요소들 가운데 정렬 */
+                display: inline-block;
+            }
+        </style>
 </head>
-<h1>마이페이지</h1>
-<hr>
-[ 유저 정보 정상 출력 테스트 ] <br>
-닉네임 : {{ request.user.username }} <br>
-이메일 : {{ request.user.email }} <br>
-소개 : {{ request.user.introduction }} <br>
-{% if request.user.profile_image %}
-    프로필 이미지 : <img class="mypage-img" src="{{ request.user.profile_image.url }}" width="50" height="50"><br>
-{% else %}
-    이미지 안넣음<br>
-{% endif %}
 
-인증 여부 : {{ request.user.is_verified }} <br>
-<hr>
-[ 수정 테스트 ]
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div>
-        {% if request.user.profile_image %}
-        <label for="id_image">이미지</label>
-        기존 : {{ request.user.profile_image }}
-        <input type="file" name="image" accept="image/*" id="id_image">
-        {% else %}
-        기존 : 이미지 안넣음
-        <input type="file" name="image" accept="image/*" id="id_image">
-        {% endif %}
-    </div>
-    <div>
-        <label for="id_introduction">소개</label>
-        <textarea name="introduction" id="introduction" cols="30" rows="10">{{ request.user.introduction }}</textarea>
-    </div>
-    <div>
-        <input type="submit">
-    </div>
-</form>
-<br>
-<hr>
-[ 계정 활동 ] <br>
-<div class="icon-container">
+<body> 
+    
+    <div id="header"></div>
+    <script src="/static/js/header.js"></script>
 
-    <a href="#" onclick="openPopup('posts')">
-        <span class="icon">
-            <br><img src="{% static 'image/post.png' %}" alt="내가 작성한 글"><br>작성글
-        </span>
-    </a>
-    <a href="#" onclick="openPopup('comments')">
-        <span class="icon">
-            <br><img src="{% static 'image/comment.png' %}" alt="내가 작성한 댓글"><br>댓글
-        </span>
-    </a>
-    <a href="#" onclick="openPopup('likes')">
-        <span class="icon">
-            <br><img src="{% static 'image/like.png' %}" alt="내가 좋아한 글"><br>좋아요
-        </span>
-    </a>
-    <a href="#" onclick="openPopup('scraps')">
-        <span class="icon">
-            <br><img src="{% static 'image/scrap.png' %}" alt="내가 좋아한 글"><br>스크랩
-        </span>
-    </a>
+
+    <div class="mypage-main">
+    <h1>마이페이지</h1>
+    <div class="total-section">
+        <section id="sec1">
+            
+                <div id="title1">Profile</div>
+                <div id="title2">내 프로필</div>
+        <div class="bigbox">
+            <div class="Profile-box">
+                <div id="Profile-img">
+                    <img src="{% static 'image/profile.png' %}"> 
+                    
+                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
+                    <div id="image_container"></div>
+                    <button id="change">프로필 변경</button>
+                </div>
+
+                <div class="profile-explain">
+                    <div id="assada">{{ request.user.username }} </div>
+                    <div id="korea">대한민국 & 다른 국가</div>
+                    
+                <div class="An">
+                <div id="Age">
+
+                    <div>자기소개</div>
+                </div>
+
+                <div id="number">
+                    {% if request.user.introduction %}
+                        <div >{{ request.user.introduction }} </div>
+                    {% else %}
+                    <div >소개글이 아직 없습니다.</div>
+                    {% endif %}
+                </div>
+                </div>
+                <hr style="border: solid 0.1px #000; width: 60%; margin-top: 30px; margin-left: 350px;">
+                    <div id="imo">
+                        <table class="activity-table" border="0">
+                            <tr>
+                                <td onclick="openPopup('posts')" class="activity-td"><img class="note_img" src="{% static 'image/post.png' %}"></td>
+                                <td onclick="openPopup('comments')" class="activity-td"><img class="chat_img"src="{% static 'image/chat.png' %}"></td>
+                                <td onclick="openPopup('likes')" class="activity-td"><img class="like_img" src="{% static 'image/like.png' %}"></td>
+                                <td onclick="openPopup('scraps')" class="activity-td"><img class="scrap_img"src="{% static 'image/scrap.png' %}"></td>
+                            </tr>
+                            <tr>
+                                <td onclick="openPopup('posts')" class="activity-td">작성글</td>
+                                <td onclick="openPopup('comments')" class="activity-td">댓글</td>
+                                <td onclick="openPopup('likes')" class="activity-td">좋아요</td>
+                                <td onclick="openPopup('scraps')" class="activity-td">스크랩</td>
+                            </tr>
+                        </table>
+
+
+                    {% comment %} <div>
+                        <div id="item-imo1"  onClick="openPopup('posts')" style="cursor: pointer;"><img src="{% static 'image/post.png' %}" ><p>작성글</p></div>
+                        <div id="item-imo2"  onClick="openPopup('comments')" style="cursor: pointer;"><img src="{% static 'image/chat.png' %}"><p>댓글</p></div>
+                        <div id="item-imo3"  onClick="openPopup('likes')" style="cursor: pointer;"><img src="{% static 'image/like.png' %}"><p>좋아요</p></div>
+                        <div id="item-imo4"  onClick="openPopup('scrap')" style="cursor: pointer;"><img src="{% static 'image/scrap.png' %}"><p>스크랩</p></div>
+                    </div> {% endcomment %}
+                    </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <hr style="border: solid 0.2px #000; width: 90%; margin-left: 40px;">
+    <section id="sec2">
+        
+            <div id="work">work</div>
+            <div id ="ing">진행중인 수업</div>
+    
+        <div class="container">
+        <div class ="imgBox"></div>
+            <div class="pictureBox">
+                <h2>SADSDA</h2>
+                <h3>aaaaaaaaaaaaaaaaaaaaaaaa</h3>
+                
+            </div>
+            <div class="squares">
+                <div id ="square">
+                    <div id="eno">#영어</div>
+                    <div id="eno">#초급</div>
+                    <div id="owt">#초등학생</div>
+                </div>
+    
+                <div id ="square">
+                    <div id="owt">#중학생</div>
+                    <div id="owt">#고등학생</div>
+                    <div id="eert">#어린이 맞춤수업</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mydivRight">
+        <div id="leftmini">
+            <div>강의명</div>
+            <div>수강인원</div>
+            <div>강의 기한</div>
+            <div>강의 날짜</div>
+            <div>강의 비용</div>
+        </div>
+
+        <div id="rightmini">
+            <div>SADSDA</div>
+            <div>16명</div>
+            <div>2023.8.02 ~ 2023.09.10 </div>
+            <div>월, 금 1시 - 7시</div>
+            <div>1시간 기준 10,000원</div>
+        </div>
+        </div>
+    </section>
+    <section id="sec3">
+        <div id ="card"><img src="{% static 'image/credit-card.png' %}">결제내역
+            <hr style="border: solid 0.2px #000; width: 90%; margin-left: 40px; margin-bottom: 50px;">
+        </div>
+        
+        <div class="money">
+            <button id="credit">결제내역</button>
+            <button id="credit-day">결제일</button>
+            <button id="credit-day">결제 방법</button>
+            <button id="credit-day">결제 비용</button>
+        </div>
+    <table class="ttable">
+        <tbody>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            <tr>
+                <td>영어과외(anna)</td>
+                <td>2022-09-15</td>
+                <td>인터넷 뱅킹</td>
+                <td>120,000</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
 </div>
-{% endblock %}
 
-    {% comment %} <a href="{% url 'accounts:activities' %}?category=posts"> {% endcomment %}
-    {% comment %} <a href="{% url 'accounts:activities' %}?category=comments"> {% endcomment %}
-    {% comment %} <a href="{% url 'accounts:activities' %}?category=likes"> {% endcomment %}
-    {% comment %} <a href="{% url 'accounts:activities' %}?category=scraps"> {% endcomment %}
+</body>
+
+
+{% endblock %}

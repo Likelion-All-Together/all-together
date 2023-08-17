@@ -1,0 +1,597 @@
+
+
+
+.mypage-main {
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 30px;
+    height: 2600px;
+
+}
+
+.mypage-main>h1{
+    margin-left: -900px;
+    color: #462C14;
+    font-family: Inter;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.4px;
+}
+
+.total-section{
+    border-radius: 40px;
+    border: 1.5px solid #4B2A0B;
+    background: #F6F6F6;
+    width:1200px;
+    height: 2300px;
+}
+
+
+#sec1{
+    background-color:#F6F6F6;
+    width: 1000px;
+    height: 500px;
+    margin-top: 60px;
+    margin-left: 90px;
+}
+#title1{
+ color: #4B2A0B;
+font-family: Inter;
+font-size: 2rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -1.05px;
+}
+
+#title2{
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.05px;
+    margin-left: 95px;
+    margin-top: -20px;
+}
+
+.bigbox{
+   
+    width: 1000px;
+    height: 300px;
+    border-radius: 40px;
+    background: #FCEC5F;
+    margin-top: 20px;
+    box-shadow: 4px 4px 4px 0px rgba(83, 48, 48, 0.25) inset;
+}
+
+.profile-box{
+ display: flex;
+ flex-direction: row;
+
+}
+
+
+#Profile-img>img{
+    width: 220px;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+#change{
+margin-left: 80px;
+width: 120px;
+border-radius: 7px;
+border: 2px solid #8B4400;
+background: #8B4400;
+color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.75px;
+}
+
+
+
+#image {
+    display: none; /* 기본 파일 업로드 버튼 숨김 */
+  }
+
+  .profile-explain{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #assada{
+color: #4B2A0B;
+font-family: Inter;
+font-size: 3rem;
+font-style: normal;
+font-weight: 1000;
+line-height: normal;
+letter-spacing: -2.5px;
+margin-left: 350px;
+margin-top: -250px;
+  }
+
+  #korea{
+color: #8B4400;
+font-family: Inter;
+font-size: 0.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.75px;
+margin-left: 350px;
+
+  }
+
+
+  .An{
+    display: flex;
+    flex-direction: row;
+  }
+
+  #Age{
+    display: flex;
+    flex-direction: column;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    margin-left: 350px;
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  #number{
+    display: flex;
+    flex-direction: column;
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+     margin-top: 10px;
+     margin-left: 20px;
+     gap: 6px;
+  }
+
+  #imo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 340px;
+  }
+
+  #item-imo1>img{
+    width: 40px;
+    display: flex;
+   margin-top: 10px;
+  }
+ 
+  #item-imo2>img{
+    width: 40px;
+    display: flex;
+   margin-top: 23px;
+  }
+
+  #item-imo3>img{
+    width: 40px;
+    display: flex;
+   margin-top: 23px;
+  }
+  #item-imo4>img{
+    width: 40px;
+    display: flex;
+   margin-top: 23px;
+  }
+  #item-imo1>p{
+
+color: #4B2A0B;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.6px;
+margin-left: 40px;
+  }
+
+  #item-imo2>p{
+
+    color: #4B2A0B;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    margin-left: 50px;
+      }
+    
+      #item-imo3>p{
+
+        color: #4B2A0B;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: -0.6px;
+        margin-left: 40px;
+          }
+
+          #item-imo4>p{
+
+            color: #4B2A0B;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: -0.6px;
+            margin-left: 40px;
+              }
+        
+        
+        
+        #sec2{
+          
+          height: 700px;
+        }
+        
+        #work{
+          color: #4B2A0B;
+        font-family: Inter;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -1.05px;
+        margin-left: 80px;
+        margin-top: 30px;
+
+        }
+        
+        #ing{
+          color: rgba(75, 42, 11, 0.87);
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.6px;
+        margin-top: -25px;
+        margin-left: 170px;
+        }
+        
+    
+    
+
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-top: 50px;
+    margin-left: 70px;
+    width: 750px;
+    height: 500px;
+    border-radius: 30px;
+    background: #E7E7E7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    
+
+}
+
+
+.imgBox{
+    
+    background-image: url(/static/image/we.png);
+    background-size: cover;
+    width: 400px;
+    height: 500px;
+    flex-shrink: 0;
+    gap: 10px;
+    margin-left: -40px;
+}
+
+.pictureBox{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+ }
+
+ .pictureBox>h2{
+
+    color: #000;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.66px;
+    margin-top: -450px;
+    margin-left: 150px;
+}
+.pictureBox>h3{
+  background-color: #FCEC5F;
+  margin-left: 330px;
+  margin-top: 20px;
+  width:300px;
+  height: 250px;
+  color: #000;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
+.squares{
+  margin-top: -130px;
+  margin-left: -30px;
+}
+#square{
+ 
+   width: 400px;
+   margin-left: 330px;
+   margin-top: -10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 20px; 
+ }
+
+
+ #eno{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-right: 5px;
+     width: 50px;
+     height: 20px;
+     color: #FFF;
+     text-align: center;
+     font-family: Inter;
+     font-size: 0.7rem;
+     font-style: normal;
+     font-weight: 600;
+     line-height: normal;
+     letter-spacing: -0.45px;
+     border-radius: 4px;
+     background: #CBBBAC;
+     
+ }
+
+
+ #owt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  width: 70px;
+  height: 20px;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.45px;
+  border-radius: 4px;
+  background: #CBBBAC;
+  
+}
+
+
+
+#eert{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  width: 120px;
+  height: 20px;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.45px;
+  border-radius: 4px;
+  background: #CBBBAC;
+  
+}
+
+.mydivRight{
+  display: flex;
+  flex-direction: row;
+  margin-left: 850px;
+  margin-top: -400px;
+
+}
+
+#leftmini{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#leftmini> div{
+  width: 100px;
+  height: 30px;
+  border-radius: 4px;
+  background: #7A5532;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.6px;
+  padding-top: 5px;
+  margin-bottom: 30px;
+}
+ 
+#rightmini >div{
+  color: #4B2A0B;
+font-family: Inter;
+font-size: 0.8rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.3px;
+margin-bottom: 45px;
+margin-left: 15px;
+
+}
+
+#card>img{
+  width: 60px;
+  margin-bottom: -10px;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+#card{
+  color: #462C14;
+font-family: Inter;
+font-size: 3rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -1.65px;
+}
+
+.money{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  margin-left: 220px;
+  
+}
+
+#credit{
+  width: 120px;
+  height: 40px;
+border-radius: 7px;
+background: #705134;
+color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -1.1px;
+
+
+}
+
+#credit-day{
+
+  width: 120px;
+  height: 40px;
+border-radius: 7px;
+border: 1.5px solid #705134;
+background: #FFF;
+color: #4B2A0B;
+text-align: center;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -1.1px;
+}
+
+.ttable{
+  border-collapse: collapse; /* 셀 테두리 분리 설정 */
+  border-spacing: 20px; /* 셀 간격 설정 */
+  width: 900px;
+  height: 700px;
+  margin-left: 150px;
+  margin-top: 30px;
+  border-radius: 40px;
+  border: 2px solid #4B2A0B;
+  background: #FFF;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.20) inset;
+  }
+
+
+
+td{
+  color: #4B2A0B;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.1px;
+  border-bottom: 1px solid #000000;
+  padding-left: 30px;
+}
+
+.activity-table {
+  border-collapse: collapse;
+}
+
+.activity-td  {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-right: 22px;
+  color: #4B2A0B;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.6px;
+  margin-left: 40px;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.note_img {
+  width: 44.67px;
+  height: 56.67px;
+}
+.chat_img {
+  width: 52px;
+  height: 45.76px;
+}
+.like_img {
+  width: 50px;
+  height: 43px;
+}
+.scrap_img {
+  width: 55px;
+  height: 52.31px;
+}
