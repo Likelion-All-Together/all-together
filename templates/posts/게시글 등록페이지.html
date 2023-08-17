@@ -40,11 +40,10 @@
                     <form class="main-right__choose-posts-btn" action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">
                         <select name="align_mode" id="align_mode" class="align_mode--writing-page">
                             <option value="recently">게시판을 선택해 주세요.</option>
-                            <option value="recently">실시간 인기글</option>
-                            <option value="recently">알바 게시판</option>
-                            <option value="recently">과외 게시판</option>
-                            <option value="recently">취준 게시판</option>
-                            <option value="recently">경력단절 게시판</option>
+                            <option value="알바">알바 게시판</option>
+                            <option value="과외">과외 게시판</option>
+                            <option value="취준">취준 게시판</option>
+                            <option value="경력단절">경력단절 게시판</option>
 
                         </select>
                     </form>
@@ -52,7 +51,7 @@
                 </div>
                 <div class="main-right__input-title">
                     <form class="main-right__input-title-form">
-                        <input type="text" placeholder="제목을 입력해 주세요.">
+                        <input type="text" name="post_title" placeholder="제목을 입력해 주세요.">
                     </form>
                 </div>
                 <div class="main-right__editor">
@@ -81,11 +80,11 @@
                     </button>
                 </div>
                 <div class="textarea">
-                    <div  id="textarea" class="main-right__input-text" contenteditable="true"></div>
+                    <div  id="textarea" name="post_content" class="main-right__input-text" contenteditable="true"></div>
                 </div>
 
                 <form class="save-form" style="background-color: antiquewhite;">
-                    <input type="button" value="저장하기">
+                    <button type="submit" value="저장하기">
                 </form>
 
     

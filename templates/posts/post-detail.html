@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block title %}게시판 상세보기 페이지{% endblock %}
+{% load static%}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/screens/posts-detail.css' %}"></link>
+        <link rel="stylesheet" href="{% static 'css/screens/post-create.css' %}">
+    </head> 
+    <script>
+        function sendRequest(bid, event) {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+                    console.log(httpRequest.responseText);
+    
+                    var json_data = JSON.parse(httpRequest.responseText);
+                    if (json_data['message'] === 'ok') {
+                        event.innerText = "♥" + json_data['like_count'];
+                    }else{
+                        event.innerText = "♡" + json_data['like_count'];
+                    }
+                }
+            };
+            httpRequest.open("GET", "/posts/like/" + bid, true);
+            httpRequest.send();
+        }
+    </script>
+
+    <main class="posts-main">
+        <div class="posts-main-content">
+            <div class="main-left">
+                <nav class="main-left__nav">
+                    <div class="main-left__nav-yellow"></div>
+                    <div class="main-left__nav-bookmark"></div>
+                    <div class="main-left__nav-white">
+                        <img src="../../static/image/main-logo.svg">
+                        <div class="main-left__nav-title"><span>Diamo.yeo</span></div><div class="main-left__nav-border"></div>
+                        <ul class="post-nav">
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">전체글</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=인기글">실시간 인기글</a> </li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">게시판 모음</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=알바">알바 게시판</a></li>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=과외">과외 게시판</a></li>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=취준">취준 게시판</a></li>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=경력단절">경력단절 게시판</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=공지">공지사항</a></li><div class="main-left__nav-border"></div>
+                            <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=이벤트">이벤트</a></li><div class="main-left__nav-border"></div>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="main-right main-right--detail">
+                <div class="post-detail">
+                    <div class="post-detail__header">
+                        <div class="post-detail__header-title">{{post.title}}</div>
+                        {% if post.category == '공지' %}
+                        <div class="post-detail__header-topic"> 공지사항 </div>
+                        {% elif post.category == '이벤트' %}
+                        <div class="post-detail__header-topic"> 이벤트 </div>
+                        {% else %}
+                        <div class="post-detail__header-topic"> 고민상담 > {{post.category}} 게시판 </div>
+                        {% endif %}
+                        <div class="post-detail__header-bottom-info">
+                            <div class="post-detail__header-bottom-info-left">
+                                {% if post.writer.image %}
+                                <div class="post-detail__user-img post-detail__user-img--header"><img class="post-img" src="{{comment.writer.image.url}}" width="35x" height="35px"></div>
+                                {% else %}
+                                <div class="post-detail__user-img post-detail__user-img--header"><span>👨‍🦱</span></div>
+                                {% endif%}
+                                <div class="post-detail__header-user-date-count">
+                                    <div class="post-detail__header-user">
+                                        <span class="post-detail__header-user-name">{{post.writer}}</span>
+                                        {% if post.writer == "alltogether" %}
+                                        <span class="post-detail__header-user-membership">운영자</span>
+                                        {% else %}
+                                        <span class="post-detail__header-user-membership">일반회원</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="post-detail__header-date-count">
+                                        <span class="post-detail__header-date">{{post.created_at}}</span>
+                                        <span class="post-detail__header-count">조회 {{post.view_count}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-detail__header-bottom-info-right">
+                                <div class="post-detail__header-comment-url" >
+                                    <img src="{% static 'image/bubble.svg' %}">
+                                    <span class="post-detail__header-comment">댓글 {{post.comment_set.all.count}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="post-detail__header-border"></div>
+                    <div class="post">
+                        {% if post.image%}
+                        <img class="post-img" src="{{post.image.url}}" width="780px" height="400px">
+                        {% endif %}
+                        <p class="post-txt">
+                            {{post.content}}
+                        </p>
+                    </div>
+                </div>
+                <section class="post-detail__comment-container">
+                    <div class="post-detail__btn-comment-and-like">
+                        <div class="post-detail__btn-comment">
+                            댓글
+                            <img src="../../static/image/up-btn.svg">
+                        </div>
+                        <div class="post-detail__btn-like">
+                            
+                            {% if request.user in post.like.all %}
+                            <div onclick="sendRequest({{post.id}}, this)">♥{{ post.like.all.count }}</div>
+                            {% else %}
+                            <div onclick="sendRequest({{post.id}}, this)">♡{{ post.like.all.count }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="post-detail__write-comments">
+                        <h4>댓글 작성</h4>
+                        <input type-"text" name="comment_content" class="write-comment-input">
+                        <button type="submit" onclick="location.href="{% url 'posts:post-detail' post.id %}"" class="commentbtn ">답글작성</button>
+                        </input>
+                            <div contenteditable="true"></div>
+                        
+                        </div>
+                        </form>
+
+
+                        {% for comment in post.comment_set.all %}
+                        <div class="post-detail__write-comments-box post-detail__write-comments-box--yellow">
+                            {% if comment.writer.image %}
+                            <div class="post-detail__user-img post-detail__user-img--comments"><span><img class="post-img" src="{{comment.writer.image.url}}" width="35x" height="35px"></span></div>
+                            {% else%}
+                            <div class="post-detail__user-img post-detail__user-img--comments"><span>👨‍🦱</span></div>
+                            {% endif%}
+                            <div class="post-detail__write-comments-box-column">
+                                <div class="post-detail__write-comments-box-user-name">{{comment.writer}}</div>
+                                <div class="post-detail__write-comments-box-comm">{{comment.content}}</div>
+                                <div class="post-detail__write-comments-box-date">
+                                    <span class="post-detail__write-comments-box-dates">{{comment.created_at}}</span>
+                                </div>
+                            </div>
+                            <div class="hidden post-detail__write-comments-box-modify-box">
+                                <button>수정하기</button>
+                                <img src="../../static/image/line.svg">
+                                <button>삭제하기</button>
+                            </div>
+                            <button class="hamburger-btn"><img src="{% static 'image/hamburger-btn.svg' %}"></button>
+                            {%comment%}<button class="reply-btn reply-btn--whtie-bg">답글작성</button>{% endcomment%}
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </section>
+        </div>
+        </div>
+    </main>
+
+
+
+
+
+    {% endblock %}
+

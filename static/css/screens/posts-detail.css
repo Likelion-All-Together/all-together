@@ -147,6 +147,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-align: left;
     
 }
 /* 댓글 접기, 좋아요수 */
@@ -368,4 +369,24 @@
     outline: 0px solid transparent;
     width: 700px;
     height: 85px;
+}
+.commentbtn{
+    border: 1px solid #8B4400;
+    background: #8B4400;
+    color: #FFF;
+    bottom: 70px;
+    right: 18px;
+    width: 63px;
+    height: 21px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    margin-left:750px;
 }

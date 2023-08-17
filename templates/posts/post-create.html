@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}글쓰기{% endblock %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/screens/post-create.css' %}">
+</link>
+</head>
+
+
+<main class="posts-main">
+    <div class="posts-main-content">
+        <div class="main-left">
+            <nav class="main-left__nav">
+                <div class="main-left__nav-yellow"></div>
+                <div class="main-left__nav-bookmark"></div>
+                <div class="main-left__nav-white">
+                    <img src="{% static 'image/main-logo.svg' %}">
+                    <div class="main-left__nav-title"><span>Damo.yeo</span></div><div class="main-left__nav-border"></div>
+                    <ul class="post-nav">
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">전체글</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=인기글">실시간 인기글</a> </li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=전체">게시판 모음</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=알바">알바 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=과외">과외 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=취준">취준 게시판</a></li>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=경력단절">경력단절 게시판</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=공지">공지사항</a></li><div class="main-left__nav-border"></div>
+                        <li class="post-nav__list"><a href="{% url 'posts:post-list-all' %}?page=1&align_mode=recently&page=1&category=이벤트">이벤트</a></li><div class="main-left__nav-border"></div>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </div>
+            <div class="main-right">
+                <header class="main-right__title">글쓰기</header>
+                <div class="main-right__hr main-right__hr--lighter"></div>
+
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="main-right__choose-posts">
+                        {% comment%}<form class="main-right__choose-posts-btn" action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">{% endcomment %}
+                            <div class = "main-right__choose-posts-btn">
+                            <select name="align_mode" id="align_mode" class="align_mode--writing-page">
+                                <option value="알바">게시판을 선택해 주세요.</option>
+                                <option value="알바">알바 게시판</option>
+                                <option value="과외">과외 게시판</option>
+                                <option value="취준">취준 게시판</option>
+                                <option value="경력단절">경력단절 게시판</option>
+                            </select>
+                            </div>
+                        {% comment %} </form>{% endcomment %}
+
+                    </div>
+                    <div class="main-right__input-title">
+                        {% comment %} <form class="main-right__input-title-form">{% endcomment %}
+                            <div class = "main-right__input-title-form">
+                            <input type="text" name="post_title" placeholder="제목을 입력해 주세요.">
+                            </div>
+                        {% comment %} <</form>{% endcomment %}
+                    </div>
+                
+                    <div class="main-right__editor">
+                        <label for="btn-image" class="editor-top editor-top-image">
+                            <div><input type="file" name="image" id="btn-image" style="display: none;"></div>
+                            <img height="34px" src="../../static/image/image.svg">
+                            <span>사진</span>
+                        </label>
+                        <label for="btn-video" class="editor-top editor-top-video">
+                            <div><input type="file" name="file" id="btn-video" style="display: none;"></div>
+                            <img src="../../static/image/video.svg">
+                            <span>동영상</span>
+                        </label>
+                        {%comment%}
+                        <button id="btn-file" class="editor-top editor-top-file">
+                            <img height="34px" src="../../static/image/file.svg">
+                            <span>파일</span>
+                        </button>
+                        {%endcomment%}
+                        {% comment %}
+                        <button id="btn-save" class="editor-top editor-top-save">
+                            <img src="../../static/image/save.svg">
+                            <span>저장하기</span>
+                        </button>
+                        {% endcomment %}
+                    </div>
+                    <div>
+                        <input type="text" class="textarea" name="post_content" class="main-right__input-text" contenteditable="true"></div>
+                    </div>
+                    {% comment%} <form class="save-form" style="background-color: antiquewhite;">
+                        {% comment%}<input type="button" value="저장하기">
+                    </form>
+                    {% endcomment%}
+
+                <div class = "save-form" style="background-color: antiquewhite;">
+                    <button type="submit" value="저장하기"> 저장하기 </button>
+                </div>
+
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

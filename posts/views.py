@@ -89,14 +89,42 @@ def post_create_view(request):
     elif request.method == 'POST':
         title = request.POST.get("post_title")
         content = request.POST.get("post_content")
-        category = request.POST.get("post_category")
+        category = request.POST.get("align_mode")
+        image = request.FILES.get("image")
+        file = request.FILES.get("file")
         writer = request.user
-        post = Post.objects.create(
-            title = title,
-            content = content,
-            writer = writer,
-            category = category,
-        )
+        if image and file :
+            post = Post.objects.create(
+                title = title,
+                content = content,
+                writer = writer,
+                category = category,
+                image = image,
+                file = file,
+            )
+        elif image :
+            post = Post.objects.create(
+                title = title,
+                content = content,
+                writer = writer,
+                category = category,
+                image = image,
+            )
+        elif file :
+            post = Post.objects.create(
+                title = title,
+                content = content,
+                writer = writer,
+                category = category,
+                file = file
+            )
+        else:
+            post = Post.objects.create(
+                title = title,
+                content = content,
+                writer = writer,
+                category = category,
+            )            
         return redirect('posts:post-list-all')
     else:
         return redirect('posts:post-list-all')
@@ -109,13 +137,13 @@ def post_detail_view(request, id):
             'commentForm': CommentForm(),
         }
 
-        # 쿠키 처리
+        # 쿠키
         cookie_name = f'cookie_{id}'
         if cookie_name not in request.COOKIES:
             post.view_count +=1
             post.save()
             
-            expires = datetime.utcnow() + timedelta(seconds=30)  # 쿠키 만료 시간 (1일로 설정할 경우 days=1, 일단 테스트하기 위해 30초마다 쿠키 만료)
+            expires = datetime.utcnow() + timedelta(seconds=30)  # 쿠키 만료 시간 (30초마다 쿠키 만료)
             expires = expires.strftime('%a, %d-%b-%Y %H:%M:%S GMT')
             response = HttpResponse(render(request, 'posts/post-detail.html',context))
             response.set_cookie(cookie_name, 'true', expires=expires)

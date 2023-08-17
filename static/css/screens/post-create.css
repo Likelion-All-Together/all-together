@@ -199,10 +199,10 @@
 
 .save-form {
     position: relative;
-    margin-top: 21px;
+    margin-top: 1350px;
 }
 /* 저장하기 버튼 */
-.save-form input {
+.save-form button {
     width: 87px;
     height: 32px;
     flex-shrink: 0;
