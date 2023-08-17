@@ -1,40 +1,112 @@
-{% comment %} {% extends 'base.html' %} {% endcomment %}
-{% comment %} {% block title %}나의 활동{% endblock %} {% endcomment %}
+{% extends 'base.html' %}
+{% block title %}마이페이지{% endblock %}
 {% load static %}
-{% comment %} {% block content %} {% endcomment %}
-
-<h1>나의 활동</h1>
-
-<p>카테고리: {{ category }}</p>
-
-{% if item_list %}
-<ul>
-    {% for item in item_list %}
-    <li>
-        {% if category == 'posts' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>조회 : {{ item.view_count }}</p>
-        {% elif category == 'comments' %}
-            <p>게시글 제목 : {{ item.post.title }}</p>  <!-- 댓글이 속한 게시글의 제목 -->
-            <p>댓글 내용: {{ item.content }}</p>  <!-- 댓글 내용 -->
-            <p>작성일: {{ item.created_at|date:"Y.m.d H:i" }}</p>
-        {% elif category == 'likes' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>조회 : {{ item.view_count }}</p>
-        {% elif category == 'scraps' %}
-            <p>제목 : {{ item.title }}</p>
-            <p>작성일 : {{ item.created_at|date:"Y.m.d" }}</p>
-            <p>스크랩 수 : {{ item.scrap.count }}</p>
-        {% endif %}
+{% block content %}
+<head>
+    <style>
+        .icon-container {
+            display: flex;
+        }
         
-    </li>
-    {% endfor %}
-</ul>
+        .icon {
+            text-align: center; /* 내부 요소들 가운데 정렬 */
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        var popup;
+
+        function openPopup(argument) {
+            // 팝업 창의 크기와 위치 설정
+            var width = 1000;
+            var height = 650;
+            var left = (window.innerWidth - width) / 2;
+            var top = (window.innerHeight - height) / 2;
+        
+            var url = "";
+
+            if (argument === 'posts') {
+                url = "{% url 'accounts:activities' %}?category=posts";
+            } else if (argument === 'comments') {
+                url = "{% url 'accounts:activities' %}?category=comments";
+            } else if (argument === 'likes') {
+                url = "{% url 'accounts:activities' %}?category=likes";
+            } else if (argument === 'scraps') {
+                url = "{% url 'accounts:activities' %}?category=scraps";
+            }
+
+             // Django 템플릿 태그를 이용하여 URL 생성
+
+            popup = window.open(url, '새로운 팝업', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
+
+        }
+        </script>
+</head>
+<h1>마이페이지</h1>
+<hr>
+[ 유저 정보 정상 출력 테스트 ] <br>
+닉네임 : {{ request.user.username }} <br>
+이메일 : {{ request.user.email }} <br>
+소개 : {{ request.user.introduction }} <br>
+{% if request.user.profile_image %}
+    프로필 이미지 : <img class="mypage-img" src="{{ request.user.profile_image.url }}" width="50" height="50"><br>
 {% else %}
-<p>활동 내역이 없습니다.</p>
+    이미지 안넣음<br>
 {% endif %}
 
+인증 여부 : {{ request.user.is_verified }} <br>
+<hr>
+[ 수정 테스트 ]
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {% if request.user.profile_image %}
+        <label for="id_image">이미지</label>
+        기존 : {{ request.user.profile_image }}
+        <input type="file" name="image" accept="image/*" id="id_image">
+        {% else %}
+        기존 : 이미지 안넣음
+        <input type="file" name="image" accept="image/*" id="id_image">
+        {% endif %}
+    </div>
+    <div>
+        <label for="id_introduction">소개</label>
+        <textarea name="introduction" id="introduction" cols="30" rows="10">{{ request.user.introduction }}</textarea>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+<br>
+<hr>
+[ 계정 활동 ] <br>
+<div class="icon-container">
 
-{% comment %} {% endblock %} {% endcomment %}
+    <a href="#" onclick="openPopup('posts')">
+        <span class="icon">
+            <br><img src="{% static 'image/post.png' %}" alt="내가 작성한 글"><br>작성글
+        </span>
+    </a>
+    <a href="#" onclick="openPopup('comments')">
+        <span class="icon">
+            <br><img src="{% static 'image/comment.png' %}" alt="내가 작성한 댓글"><br>댓글
+        </span>
+    </a>
+    <a href="#" onclick="openPopup('likes')">
+        <span class="icon">
+            <br><img src="{% static 'image/like.png' %}" alt="내가 좋아한 글"><br>좋아요
+        </span>
+    </a>
+    <a href="#" onclick="openPopup('scraps')">
+        <span class="icon">
+            <br><img src="{% static 'image/scrap.png' %}" alt="내가 스크랩 한 글"><br>스크랩
+        </span>
+    </a>
+</div>
+{% endblock %}
+
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=posts"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=comments"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=likes"> {% endcomment %}
+    {% comment %} <a href="{% url 'accounts:activities' %}?category=scraps"> {% endcomment %}

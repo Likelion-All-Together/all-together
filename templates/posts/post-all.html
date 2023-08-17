@@ -120,7 +120,7 @@
                                 {% else %}
                                     <td class="posts-wrap__topic"><span class="posts-wrap__topic--worry">{{ post.category }}</span></td>
                                 {% endif %}
-                                <td class="posts-wrap__title posts-wrap__title--data"> <a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title }}</a>{{ post.title }}</td>
+                                <td class="posts-wrap__title posts-wrap__title--data"> <a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title|truncatechars:44 }}</a></td>
                                 <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
                                 <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
                                 <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
@@ -131,7 +131,7 @@
                         {% for post in notice_list %}
                             <tr class="posts-wrap__notice">
                                 <td class="posts-wrap__topic"><div class="posts-wrap__topic--notice">{{ post.category }}</div></td>
-                                <td class="posts-wrap__title posts-wrap__title--data"><a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title }}</td>
+                                <td class="posts-wrap__title posts-wrap__title--data"><a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title|truncatechars:44 }}</td>
                                 <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
                                 <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
                                 <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
@@ -142,7 +142,7 @@
                         {% if post.category != '공지' %}
                             <tr class="posts-wrap__worry">
                                 <td class="posts-wrap__topic"><span class="posts-wrap__topic--worry">{{ post.category }}</span></td>
-                                <td class="posts-wrap__title posts-wrap__title--data"><a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title }}</td>
+                                <td class="posts-wrap__title posts-wrap__title--data"><a href="{% url 'posts:post-detail' post.id %}" class = "no-underline">{{ post.title|truncatechars:44 }}</td>
                                 <td class="posts-wrap__writer posts-wrap__writer--data">{{ post.writer }}</td>
                                 <td class="posts-wrap__date posts-wrap__date--data">{{ post.created_at|date:"Y.m.d" }}</td>
                                 <td class="posts-wrap__count posts-wrap__count--data">{{ post.view_count }}</td>
