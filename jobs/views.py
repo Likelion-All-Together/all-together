@@ -184,6 +184,16 @@ def class_apply_view(request, id):
         return redirect('jobs:jobs_main')
     return render(request, 'jobs/jobs-apply.html', context)
 
+def scrap_view(request, bid):
+    teacher = get_object_or_404(Class, id=bid)
+    user = request.user
+    if teacher.scrap.filter(id =user.id).exists():
+        teacher.scrap.remove(user)
+        return JsonResponse({'message':'delete','like_count':teacher.scrap.count()})
+    else:
+        teacher.scrap.add(user)
+        return JsonResponse({'message':'ok','like_count':teacher.scrap.count()})
+
 
 def identify_view(request):
     return render(request,'jobs/jobs-certify.html' )

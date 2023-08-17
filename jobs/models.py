@@ -20,6 +20,7 @@ class Class (models.Model):
     nationality = models.TextField(verbose_name='국적',null=True, blank=True)
     language = models.TextField(verbose_name='언어',null=True, blank=True)
     account = models.IntegerField(verbose_name='계좌번호', default=0,null=True, blank=True) 
+    scrap = models.ManyToManyField(User, related_name='스크랩',blank = True)
     
     # 지불방식
     
