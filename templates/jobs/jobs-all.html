@@ -2,96 +2,118 @@
 {% block title %}과외서비스{% endblock %}
 {% load static %}
 {% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/screens/search.css' %}">
+    </head>
+    
 
-<head>
-    <link rel="stylesheet" href="{% static 'css/screens/search-jobs.css' %}">
-</head>
 
-        <main class="search-jobs-main">
-            <div class="search-jobs-main-img"><img src="{% static 'image/교육사진.svg' %}"></div>
-        <div class="search-jobs-main__start">
-            <h1><span>다양한 언어,</span>관심있으신가요?</h1>
-            <div class="search-jobs-main__start-column">
-                <img src="{% static 'image/Group 56.png' %}">
-                <div class="search-jobs-main__start-column-txt">
-                    <h4>SAMANDAA</h4>
-                    <p>DSKNFKJSDNFJKNADMSDKFML
-                        SDAFMKDFASDSADASDSASADA
-                        ASDASADAADKFMLFJDLJALSAD
-                        AKDMDASDASIASFLDSAFFSDAS
-                        
-                        DASFDSFADASDASAADFADSFDS
-                        AAFDSAFDSAFASAAASASFDFS
-                        AFDSDFADFDSAFDASSAASAAS
-                    </p>
-                    <p>
-                        AKDMSFLDSAFFSDAS
-                    </p>
-                </div>
-            </div>
-            <div class="search-jobs-main__start-column">
-                <div class="search-jobs-main__start-column-txt">
-                    <h4>SAMANDAA</h4>
-                    <p>DSKNFKJSDNFJKNADMSDKFML
-                        SDAFMKDFASDSADASDSASADA
-                        ASDASADAADKFMLFJDLJALSAD
-                        AKDMDASDASIASFLDSAFFSDAS
-                        
-                        DASFDSFADASDASAADFADSFDS
-                        AAFDSAFDSAFASAAASASFDFS
-                        AFDSDFADFDSAFDASSAASAAS
-                    </p>
-                    <p>
-                        AKDMSFLDSAFFSDAS
-                    </p>
-                </div>
-                <img src="{% static 'image/Group 57.png' %}">
-            </div>
+  <div id="header"></div>
+  <script src="{%  static 'js/header.js' %}"></script>
 
+  <section id="sec1">
+    <div>
+      <div id="serviceMain">온라인 
+        <br>과외서비스</div> 
+      <div id="service">영어, 중국어, 일본어부터 태국어, 베트남어 아랍어까지!<br>
+        ‘다모여’는 다문화 가정의 경제적 활동을 지원합니다.<br>
+        온라인 과외를 통해 다양한 언어를 배울 수 있는 기회를 제공합니다.
         </div>
-        <div class="search-jobs-main__middle">
-            <div class="search-jobs-main__middle-title">더 많은 <span>원어민 선생님을</span>만나보세요!</div>
-            <div class="search-jobs-main__middle-img">
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox1.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox2.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox3.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox4.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox5.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
-                <div class="teacher-info">
-                    <img src="{% static 'image/pictureBox6.png' %}">
-                    <span class="teacher-info-txt teacher-info-txt--big">SJFSDJFJKADJDSA</span>
-                    <span class="teacher-info-txt teacher-info-txt--small">dfsdfsdf</span>
-                </div>
+    </div>
+  </section>
 
-            </div>
-            <a href="{% url 'jobs:teacher' %}">선생님 만나러가기 <img src="{% static 'image/오른쪽.png'%}"></a>
-        </div>
-        <div class="search-jobs-main__bottom">
-            <div class="search-jobs-main__bottom-img">
-                <img src="{% static 'image/선생님이 되어주세요.svg' %}">
-                <button onclick="location.href='{% url 'jobs:jobs_create' %}'">수업 등록하러가기</button>
-            </div>
 
+  <sect id="sec2">
+   <div id="box">
+     <div id="box1">다양한 언어,</div>
+     <div id="box2">관심 있으신가요?</div>
+   </div>
+    
+    <div class="container">
+        <div class ="imgBox"><img src="/static/image/Groupstar.png"></div>
+        <div class="pictureBox">
+            <h2>SADSDA</h2>
+            <p>DSKNFKJSDNFJKNADMSDKFML<br>
+              SDAFMKDFASDSADASDSASADA<br>
+              ASDASADAADKFMLFJDLJALSAD<br>
+              AKDMDASDASIASFLDSAFFSDAS<br>
+              DASFDSFADASDASAADFADSFDS<br>
+              AAFDSAFDSAFASAAASASFDFS<br>
+              AFDSDFADFDSAFDASSAASAAS</p>
+              <br>
+            <P>AKDMSFLDSAFFSDAS</P>
+          </div>
         </div>
-        </main>
+
+    <div class="container2">
+      
+      <div class="pictureBox">
+          <h2>SADSDA</h2>
+          <p>DSKNFKJSDNFJKNADMSDKFML<br>
+            SDAFMKDFASDSADASDSASADA<br>
+            ASDASADAADKFMLFJDLJALSAD<br>
+            AKDMDASDASIASFLDSAFFSDAS<br>
+            DASFDSFADASDASAADFADSFDS<br>
+            AAFDSAFDSAFASAAASASFDFS<br>
+            AFDSDFADFDSAFDASSAASAAS</p>
+            <br>
+          <P>AKDMSFLDSAFFSDAS</P>
+        </div>
+
+        <div class ="imgBox2"><img src="/static/image/Groupstar.png"></div>
+      </div>
+
+   
+
+     <div id="box">
+      <div id="box3">더 많은</div>
+      <div id="box4">원어민 선생님을 </div>
+      <div id="box5">만나보세요!</div>
+      </div>
+    
+     
+     
+  <div class="containerBox"> 
+     
+        <div id="cb1"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+        <div id="cb2"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+        <div id="cb3"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+        <div id="cb4"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+        <div id="cb5"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+        <div id="cb6"><h1>SJFSDJFJKADJDSA</h1>
+          <p>SJFSDJFJKADJD</p>
+        </div>
+      </div>
+      <button onclick="location.href='{% url 'jobs:teacher' %}'" id="btn">선생님 만나러가기 <img class="polygon"src="{% static 'image/Polygon 7.png'%}"></button>
+    
+  </section>
+  
+  <div class="girlcontainer">
+    
+    <div id="girl">
+
+        <h2>선생님이 되어주세요!</h2>
+        <p>주부도, 직장인도, 여자도, 남자도 누구나 선생님이 될 수 있습니다.<br>
+        영상통화로 수업을 진행할 수 있어요.</p>
+        <button class="girl-btn" onclick="location.href='{% url 'jobs:jobs_create' %}'">수업 등록하러가기</button>
+    </div>
+</div>
+
+
+    
+</section>
+
+
+
+
 {% endblock %}
