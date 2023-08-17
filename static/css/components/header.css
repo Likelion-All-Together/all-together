@@ -28,7 +28,7 @@ header > div > div > div{
 
 #head{
     background-color: white;
-    padding: 10px 0 10px 0;
+    padding: 50px 0 50px 0;
     font-size: 1.2rem;
     display: flex; /* 수직 정렬을 위해 Flexbox 사용 */
     flex-direction: column; /* 요소들을 수직으로 정렬 */
@@ -39,7 +39,6 @@ header > div > div > div{
     flex-direction: row;
     justify-content: space-between;
     width: 1200px;
-
 }
 #head #divRight{
     display: flex;
