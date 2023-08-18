@@ -10,25 +10,11 @@
         .number-nav {
             width: 40%;
         }
-        .apply{
-            margin-left: 830px;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1.5px solid #251A0F;
-            background: #4B2A0B;
-            width: 100px;
-            color: #FFF;
-            text-align: center;
-            font-family: Inter;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            letter-spacing: -1.4px;
-        
-        }
         .no-underline {
             text-decoration: none;
+        }
+        .align_mode {
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -59,7 +45,7 @@
         </div>
         
         <div class="main-right">
-            <button class="apply" onclick="location.href='{% url 'posts:post-create' %}'">작성하기</button>
+            {% comment %} <button class="apply" onclick="location.href='{% url 'posts:post-create' %}'">작성하기</button> {% endcomment %}
             {% if category == '전체' %}
                 <header class="main-right__title">전체글</header>
                 <div class="main-right__column">
@@ -89,19 +75,20 @@
                 <div class="main-right__column">
                     <div class="main-right__sub-title">경력단절과 관련된 글을 볼 수 있는 곳</div>
             {% elif category == '이벤트' %}
-            <header class="main-right__title">이벤트</header>
-            <div class="main-right__column">
-                <div class="main-right__sub-title">이벤트와 관련된 글을 볼 수 있는 곳</div>
+                <header class="main-right__title">이벤트</header>
+                <div class="main-right__column">
+                    <div class="main-right__sub-title">이벤트와 관련된 글을 볼 수 있는 곳</div>
             {% endif %}
-
-                <form action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">
-                    <select name="align_mode" id="align_mode" class="align_mode">
-                        <option value="recently">최신순</option>
-                        <option value="scrap">인기순</option>
-                    </select>
-                </form>
+            <button class="apply" onclick="location.href='{% url 'posts:post-create' %}'"><img src="{% static 'image/edit-3.svg' %}"></button>
             </div>
             <div class="main-right__hr main-right__hr--bolder"></div>
+            <form action="/informations/region/" method="GET" id="align_mode_form" class="align_mode_form">
+                <select name="align_mode" id="align_mode" class="align_mode">
+                    <option value="recently">최신순</option>
+                    <option value="scrap">인기순</option>
+                </select>
+            </form>
+
 
             <section class="main-right__posts">
                 <table class="posts-wrap">
