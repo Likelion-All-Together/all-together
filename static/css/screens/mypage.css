@@ -328,16 +328,16 @@ margin-left: 40px;
 
     color: #000;
     font-family: Inter;
-    font-size: 25px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 1000;
     line-height: normal;
     letter-spacing: -0.66px;
-    margin-top: -450px;
-    margin-left: 150px;
+    margin-top: -950px;
+    margin-left: 180px;
 }
 .pictureBox>h3{
-  background-color: #FCEC5F;
+  
   margin-left: 330px;
   margin-top: 20px;
   width:300px;
@@ -353,7 +353,7 @@ margin-left: 40px;
 }
 
 .squares{
-  margin-top: -130px;
+  margin-top: -580px;
   margin-left: -60px;
 }
 #square{
@@ -459,7 +459,7 @@ margin-left: 40px;
   line-height: normal;
   letter-spacing: -0.6px;
   padding-top: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
  
 #rightmini >div{
@@ -470,8 +470,9 @@ font-style: normal;
 font-weight: 800;
 line-height: normal;
 letter-spacing: -0.3px;
-margin-bottom: 39px;
+margin-bottom: 40px;
 margin-left: 15px;
+width:200px;
 
 }
 
@@ -599,4 +600,12 @@ td{
 .scrap_img {
   width: 55px;
   height: 52.31px;
+}
+
+
+.post-img{
+ padding-left:50px;
+ padding-top:50px;
+ padding-bottom:50px;
+
 }
