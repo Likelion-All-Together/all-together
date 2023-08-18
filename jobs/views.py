@@ -4,6 +4,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 import json
 import random
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 
@@ -69,16 +70,25 @@ def jobs_creat_view(request):
         
 
 def jobs_teacher_view(request): # 선생님 전체 페이지
+    
+    page = request.GET.get('page')
+    
     if request.method == 'GET':
-        teacher_list = Class.objects.all()
-        teacher_list1 = teacher_list[:3]
-        teacher_list2 = teacher_list[3:6]
-        teacher_list3 = teacher_list[6:9]
+        teacher_list = Class.objects.all().order_by('-created_at')
+        
+        page_obj, paginator = make_page_obj(teacher_list, page, 9)
+        
+        teacher_list1 = page_obj[:3]
+        teacher_list2 = page_obj[3:6]
+        teacher_list3 = page_obj[6:9]
+        
         context = {
             'teacher_list':teacher_list,
             'teacher_list1':teacher_list1,
             'teacher_list2':teacher_list2,
             'teacher_list3':teacher_list3,
+            'page_obj' : page_obj,
+            'paginator' : paginator,
         }
         return render(request, 'jobs/jobs-teacher.html',context)
     return render(request, 'jobs/jobs-teacher.html',context)
@@ -197,3 +207,18 @@ def scrap_view(request, bid):
 
 def identify_view(request):
     return render(request,'jobs/jobs-certify.html' )
+
+# 만들 리스트, 현재 페이지, 한 페이지당 보여줄 포스트 개수
+def make_page_obj(item_list, page, num_of_post,):
+    paginator = Paginator(item_list, num_of_post)
+    try:
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except PageNotAnInteger:
+        page = 1
+        page_obj = paginator.page(page)
+        return page_obj, paginator
+    except EmptyPage:
+        page = paginator.num_pages
+        page_obj = paginator.page(page)
+        return page_obj, paginator
