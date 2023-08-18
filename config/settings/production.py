@@ -3,7 +3,9 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['110.165.19.1'] # 도메인, IP
+ALLOWED_HOSTS = ['110.165.19.1', 
+                
+        'www.all-together.site'] # 도메인, IP
 
 DJANGO_APPS += [
 
