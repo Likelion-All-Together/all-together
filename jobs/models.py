@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 # Create your models here.
 
 User = get_user_model()
@@ -21,7 +22,7 @@ class Class (models.Model):
     language = models.TextField(verbose_name='언어',null=True, blank=True)
     account = models.IntegerField(verbose_name='계좌번호', default=0,null=True, blank=True) 
     scrap = models.ManyToManyField(User, related_name='스크랩',blank = True)
-    
+    created_at = models.DateTimeField(verbose_name = '작성일',default=timezone.now)
     # 지불방식
     
     
@@ -35,6 +36,8 @@ class Register(models.Model):
     student_email = models.TextField(verbose_name='이메일')
     pay = models.TextField(verbose_name='지불방식')
     times =models.TextField(verbose_name='시간대', null=True, blank=True) 
-    cost = models.IntegerField(verbose_name='수업비용', default=10000) 
+    cost = models.IntegerField(verbose_name='수업비용', default=10000)
+    created_at = models.DateTimeField(verbose_name = '등록일',default=timezone.now)
+
     
     

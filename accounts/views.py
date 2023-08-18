@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from .forms import CustomSignUpForm, CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from posts.models import Post, Comment
+from jobs.models import Class, Register
 from informations.models import RegionAndMulticultural, Afterschool
 
 # 회원가입
@@ -59,7 +60,42 @@ def mypage_view(request):
     profile_image = request.user.profile_image
     
     if request.method == 'GET': # GET이면 홈페이지 보여주기
-        return render(request, 'accounts/mypage.html')
+        user = request.user
+        class_list = Class.objects.filter(writer = user)
+        
+        
+        recent_class = class_list.order_by('-created_at').first()
+        registers = Register.objects.filter(class_name = recent_class)
+        register_list = len(registers)
+        
+        time_lists = recent_class.times.split("'")
+        remove_list = {', ','[',']'}
+        
+        times = [i for i in time_lists if i not in remove_list]
+        
+        registers = Register.objects.filter(class_name = recent_class)
+        
+        info = recent_class.info.split("'")
+        infofilter = [i for i in info  if i not in remove_list]
+        
+        
+        stulist = recent_class.student.split("'")
+        stufilter = [i for i in stulist  if i not in remove_list]
+        
+        
+        
+        context = {
+            'recent_class':recent_class,
+            'time_list':times,
+            'registers':register_list,
+            'info':infofilter,
+            'students':stufilter
+            
+        }
+        
+        
+        
+        return render(request, 'accounts/mypage.html', context)
     
     else: # POST이면 유저 정보 업데이트
         

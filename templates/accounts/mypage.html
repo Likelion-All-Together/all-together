@@ -60,7 +60,7 @@
         <div class="bigbox">
             <div class="Profile-box">
                 <div id="Profile-img">
-                    <img src="{% static 'image/profile.png' %}"> 
+                    <img src="{% static 'image/profile.png' %}" width="300px"> 
                     
                     <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
                     <div id="image_container"></div>
@@ -69,7 +69,7 @@
 
                 <div class="profile-explain">
                     <div id="assada">{{ request.user.username }} </div>
-                    <div id="korea">대한민국 & 다른나라</div>
+                    <div id="korea">대한민국 & {{recent_class.nationality}} </div>
                     
                 <div class="An">
                 <div id="Age">
@@ -121,23 +121,28 @@
             <div id ="ing">진행중인 수업</div>
     
         <div class="container">
+            <img class="post-img" src= "{{ recent_class.image.url }}" width="350x" height="500px">
         <div class ="imgBox"></div>
+        
             <div class="pictureBox">
-                <h2>SADSDA</h2>
-                <h3>aaaaaaaaaaaaaaaaaaaaa</h3>
+                <h2>{{request.user.username}}</h2>
+                <h3>{{recent_class.feature}}</h3>
                 
             </div>
             <div class="squares">
                 <div id ="square">
-                    <div id="eno">#영어</div>
-                    <div id="eno">#초급</div>
-                    <div id="owt">#초등학생</div>
+                    {% for student in students%}
+                    <div id="owt">#{{student}}</div>
+                    {% endfor %}
+                    
                 </div>
     
                 <div id ="square">
+                    {% comment %}
                     <div id="owt">#중학생</div>
                     <div id="owt">#고등학생</div>
                     <div id="eert">#어린이 맞춤수업</div>
+                    {% endcomment %}
                 </div>
             </div>
         </div>
@@ -145,18 +150,28 @@
         <div class="mydivRight">
         <div id="leftmini">
             <div>강의명</div>
-            <div>수강인원</div>
-            <div>강의 기한</div>
+            <div>수강 인원</div>
             <div>강의 날짜</div>
             <div>강의 비용</div>
+            <div>과외 경력</div>
+            <div>선생님 출신</div>
         </div>
 
         <div id="rightmini">
-            <div>SADSDA</div>
-            <div>16명</div>
-            <div>2023.8.02 ~ 2023.09.10 </div>
-            <div>월, 금 1시 - 7시</div>
-            <div>1시간 기준 10,000원</div>
+            <div>{{recent_class.language}} 수업</div>
+            <div>{{registers}}명</div>
+            <div>
+                {% for a in time_list%}
+            {{a}},
+            {% endfor %}
+            </div>
+            <div>1시간 기준 : {{recent_class.cost}}원</div>
+            <div>
+                {% for a in info%}
+                {{a}}
+                {% endfor %}
+            </div>
+            <div>{{recent_class.nationality}} 출신</div>
         </div>
         </div>
     </section>
