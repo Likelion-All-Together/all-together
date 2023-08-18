@@ -2,9 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/screens/activities.css' %}">          
-    </head>
+    <link rel="stylesheet" href="{% static 'css/screens/activities.css' %}">    
+    <style>
+        .no-underline {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
 <body>
     {% if category == 'posts' %}
@@ -51,7 +55,6 @@
       </div>
 
     <div id="rightform">
-        <input type="radio" name="gender" value="male"><span>전체선택 l 삭제하기</span>
        <table class="table">
         {% if item_list %}
             <thead>
@@ -66,17 +69,33 @@
                 {% for item in item_list %}
                 <tr>
                     {% if category == 'posts' %}
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
-                    <td>{{ item.view_count }}</td>
+                        <td>
+                            <a href="{% url 'posts:post-detail' item.id %}" class="no-underline">
+                                {{ item.title }}
+                            </a>
+                        </td>
+                        <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                        <td>{{ item.view_count }}</td>
                     {% elif category == 'likes' %}
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
-                    <td>{{ item.view_count }}</td>
+                        <td>
+                            <a href="{% url 'posts:post-detail' item.id %}" class="no-underline">
+                                {{ item.title }}
+                            </a>
+                        </td>
+                        <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                        <td>{{ item.view_count }}</td>
                     {% elif category == 'scraps' %}
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.created_at|date:"Y.m.d" }}</td>
-                    <td>{{ item.scrap.count }}</td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                        <td>{{ item.scrap.count }}</td>
+                    {% elif category == 'comments' %}   
+                        <td>
+                            <a href="{% url 'posts:post-detail' item.post.id %}" class="no-underline">
+                                {{ item.content | truncatechars:44 }}
+                            </a>
+                        </td>
+                        <td>{{ item.created_at|date:"Y.m.d" }}</td>
+                        <td>{{ item.scrap.count }}</td>
                     {% endif %}
                 </tr>
                 {% endfor %}
