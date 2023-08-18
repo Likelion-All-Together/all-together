@@ -498,7 +498,7 @@ letter-spacing: -1.65px;
   display: flex;
   flex-direction: row;
   gap: 100px;
-  margin-left: 200px;
+  margin-left: 220px;
   
 }
 
@@ -534,8 +534,42 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 letter-spacing: -1.1px;
+margin-left:-10px;
 }
+#credit-day--{
+  width: 120px;
+  height: 40px;
+border-radius: 7px;
+border: 1.5px solid #705134;
+background: #FFF;
+color: #4B2A0B;
+text-align: center;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -1.1px;
+margin-left:-10px;
 
+}
+#credit-day-{
+  width: 120px;
+  height: 40px;
+border-radius: 7px;
+border: 1.5px solid #705134;
+background: #FFF;
+color: #4B2A0B;
+text-align: center;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -1.1px;
+margin-left:30px;
+
+}
 .ttable{
   border-collapse: collapse; /* 셀 테두리 분리 설정 */
   border-spacing: 20px; /* 셀 간격 설정 */
@@ -554,13 +588,14 @@ letter-spacing: -1.1px;
 td{
   color: #4B2A0B;
   font-family: Inter;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 1000;
   line-height: normal;
   letter-spacing: -1.1px;
   border-bottom: 1px solid #000000;
-  padding-left: 30px;
+  padding-left: 55px;
+
 }
 
 .activity-table {

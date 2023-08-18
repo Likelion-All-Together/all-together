@@ -82,6 +82,7 @@ def mypage_view(request):
         stulist = recent_class.student.split("'")
         stufilter = [i for i in stulist  if i not in remove_list]
         
+        my_register_list = Register.objects.filter(writer = request.user) # 내가 신청한 글 목록들
         
         
         context = {
@@ -89,7 +90,8 @@ def mypage_view(request):
             'time_list':times,
             'registers':register_list,
             'info':infofilter,
-            'students':stufilter
+            'students':stufilter,
+            'pay_list':my_register_list,
             
         }
         
