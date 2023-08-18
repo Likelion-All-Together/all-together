@@ -182,72 +182,20 @@
         
         <div class="money">
             <button id="credit">결제내역</button>
-            <button id="credit-day">결제일</button>
+            <button id="credit-day-">결제일</button>
             <button id="credit-day">결제 방법</button>
-            <button id="credit-day">결제 비용</button>
+            <button id="credit-day--">결제 비용</button>
         </div>
     <table class="ttable">
         <tbody>
+            {% for regist in pay_list%}
             <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
+                <td>{{regist.class_name.language}} 수업</td>
+                <td>{{regist.created_at|date:"Y.m.d"}}</td>
+                <td>네이버페이</td>
+                <td>{{regist.cost}}원</td>
             </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
-            <tr>
-                <td>영어과외(anna)</td>
-                <td>2022-09-15</td>
-                <td>인터넷 뱅킹</td>
-                <td>120,000</td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
     </section>
