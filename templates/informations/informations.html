@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/screens/informations.css' %}">
     <!-- 최신순/스크랩순 정렬 jquery-->
+    {% comment %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -22,6 +23,53 @@
             else { $("#align_mode option[value='recently']").prop("selected", true); }
         });
     </script>
+    {% endcomment %}
+
+    <script>
+        var imagePath = "{% static 'image/filled_scrap.png' %}";
+        var imagePaths = "{% static 'image/empty_scrap.png' %}";
+        function sendRequest(bid, event) {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+                    console.log(httpRequest.responseText);
+    
+                    var json_data = JSON.parse(httpRequest.responseText);
+                    if (json_data['message'] === 'ok') {
+                        event.innerHTML = '<img class="item__star" src="' + imagePath + '" alt="Filled Scrap">';
+                    }else{
+                        event.innerHTML = '<img class="item__star" src="' + imagePaths + '" alt="Filled Scrap">';
+                    }
+                }
+            };
+            httpRequest.open("GET", "/informations/scrap/after/" + bid, true);
+            httpRequest.send();
+        }
+    </script>
+    <script>
+        var imagePath = "{% static 'image/filled_scrap.png' %}";
+        var imagePaths = "{% static 'image/empty_scrap.png' %}";
+        function sendRequest_region(bid, event) {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+                    console.log(httpRequest.responseText);
+    
+                    var json_data = JSON.parse(httpRequest.responseText);
+                    if (json_data['message'] === 'ok') {
+                        event.innerHTML = '<img class="item__star" src="' + imagePath + '" alt="Filled Scrap">';
+                    }else{
+                        event.innerHTML = '<img class="item__star" src="' + imagePaths + '" alt="Filled Scrap">';
+                    }
+                }
+            };
+            httpRequest.open("GET", "/informations/scrap/region/" + bid, true);
+            httpRequest.send();
+        }
+    </script>
+
+
+
     <style>
         .number-nav {
             width: 20%;
@@ -76,7 +124,13 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -103,14 +157,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                            
                         </button>
                     </div>
                     {% endfor %}
@@ -120,7 +167,17 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+
+
+
+
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
+
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -147,14 +204,6 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
                         </button>
                     </div>
                     {% endfor %}
@@ -164,7 +213,11 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -191,14 +244,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -211,7 +257,11 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -238,14 +288,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -255,7 +298,11 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -282,14 +329,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -299,7 +339,11 @@
                     <div class="item">
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -326,14 +370,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -344,7 +381,11 @@
                 <div class="item-container__column">
                     {% for item in first_obj %}
                     <div class="item">
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -371,14 +412,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -386,7 +420,11 @@
                 <div class="item-container__column">
                     {% for item in second_obj %}
                     <div class="item">
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -413,14 +451,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                        
                         </button>
                     </div>
                     {% endfor %}
@@ -428,7 +459,11 @@
                 <div class="item-container__column">
                     {% for item in third_obj %}
                     <div class="item">
-                        <img class="item__star" src="{% static 'image/empty_scrap.png' %}">
+                        {% if request.user in item.scrap.all %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        {% else %}
+                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        {% endif %}
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -455,14 +490,7 @@
                         </table>
                         <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            {% if request.user in item.scrap.all %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                                <i id="heart-{{ item.id }}" class="fas fa-heart"></i>
-                            {% else %}
-                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                                <i id="heart-{{ item.id }}" class="far fa-heart"></i>
-                            {% endif %}
-                            <span class="scrap-count" id="scrap_count-{{ item.id }}">{{ item.scrap.count }}</span>
+                            
                         </button>
                     </div>
                     {% endfor %}
@@ -497,55 +525,5 @@
 
 </body>
 
-{% comment %} 스크랩 기능 {% endcomment %}
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function item_scrap(id) {
-        var currentTab = "{{ request.GET.tab }}"; // 현재 선택된 탭
-        console.log(currentTab)
-        $.ajax({
-            url: "{%url 'informations:scrap'%}",
-            type: "GET",
-            headers: {
-                "X-Requested-With": "XMLHttpRequest",
-            },
-            data: {
-                'item_id': id,
-                'item_name': currentTab,
-            },
-            dataType: "json",
-            success: function (response) { 
-                
-                // 해당 항목의 좋아요 수만 업데이트
-                $('#scrap_count-' + id).html(response.scrap_count);
-                
-                // 좋아요 버튼 아이콘 변경
-                var heartIcon = $('#heart-' + id);
-                if (response.message === "좋아요") {
-                    heartIcon.removeClass("far fa-heart").addClass("fas fa-heart");
-                } else if (response.message === "좋아요 취소") {
-                    heartIcon.removeClass("fas fa-heart").addClass("far fa-heart");
-                }
-                
-                // 좋아요 수에 따라 항목을 정렬 (jQuery 이용)
-                var itemContainer = $('#item-container');  // 항목을 감싸는 컨테이너의 ID
-                var alignMode = $('#align_mode').val(); // 선택된 정렬 모드 가져오기
-    
-                if (alignMode === 'scrap') {
-                    var items = itemContainer.children('.item');  // 항목들을 선택
-        
-                    items.sort(function(a, b) {
-                        var aScrapCount = parseInt($(a).find('.scrap-count').text());
-                        var bScrapCount = parseInt($(b).find('.scrap-count').text());
-                        return bScrapCount - aScrapCount;  // 스크랩 수에 따라 내림차순 정렬
-                    });
-                    
-                    itemContainer.html(items);  // 정렬된 항목을 컨테이너에 적용
-                }
-            }
-        });
-    }
-</script>
 
 {% endblock %}
