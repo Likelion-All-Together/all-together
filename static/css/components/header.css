@@ -81,6 +81,6 @@ header > div > div > div{
     letter-spacing: -1px;
 }
 
-#divRight > div:nth-child(2){
+.div-div{
     margin-top: 15px;
 }
