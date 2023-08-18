@@ -41,6 +41,7 @@
                 text-align: center; /* 내부 요소들 가운데 정렬 */
                 display: inline-block;
             }
+
         </style>
 </head>
 
@@ -78,7 +79,7 @@
                 </div>
 
                 <div id="number">
-                    {% if request.user.introduction %}
+                    {% if request.user.introduction != "None" %}
                         <div >{{ request.user.introduction }} </div>
                     {% else %}
                     <div >소개글이 아직 없습니다.</div>
@@ -87,16 +88,16 @@
                 </div>
                 <hr style="border: solid 0.1px #000; width: 60%; margin-top: 30px; margin-left: 350px;">
                     <div id="imo">
-                        <table class="activity-table" border="0">
+                        <table class="default-table" border="0">
                             <tr>
-                                <td onclick="openPopup('posts')" class="activity-td"><img class="note_img" src="{% static 'image/post.png' %}"></td>
-                                <td onclick="openPopup('comments')" class="activity-td"><img class="chat_img"src="{% static 'image/chat.png' %}"></td>
-                                <td onclick="openPopup('likes')" class="activity-td"><img class="like_img" src="{% static 'image/like.png' %}"></td>
-                                <td onclick="openPopup('scraps')" class="activity-td"><img class="scrap_img"src="{% static 'image/scrap.png' %}"></td>
+                                <td onclick="openPopup('posts')" ><img class="note_img" src="{% static 'image/post.png' %}"></td>
+                                <td onclick="openPopup('comments')"><img class="chat_img"src="{% static 'image/chat.png' %}"></td>
+                                <td onclick="openPopup('likes')" ><img class="like_img" src="{% static 'image/like.png' %}"></td>
+                                <td onclick="openPopup('scraps')"><img class="scrap_img"src="{% static 'image/scrap.png' %}"></td>
                             </tr>
                             <tr>
                                 <td onclick="openPopup('posts')" class="activity-td">작성글</td>
-                                <td onclick="openPopup('comments')" class="activity-td">댓글</td>
+                                <td onclick="openPopup('comments')" class="activity">댓글</td>
                                 <td onclick="openPopup('likes')" class="activity-td">좋아요</td>
                                 <td onclick="openPopup('scraps')" class="activity-td">스크랩</td>
                             </tr>
@@ -189,12 +190,14 @@
     <table class="ttable">
         <tbody>
             {% for regist in pay_list%}
+
             <tr>
                 <td>{{regist.class_name.language}} 수업</td>
                 <td>{{regist.created_at|date:"Y.m.d"}}</td>
-                <td>네이버페이</td>
+                <td>{{regist.pay }}</td>
                 <td>{{regist.cost}}원</td>
             </tr>
+
             {% endfor %}
             </tbody>
         </table>

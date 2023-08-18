@@ -1,9 +1,11 @@
 import json
 from django.shortcuts import render
 from .models import RegionAndMulticultural, Afterschool
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse 
 import json
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import get_object_or_404
+import json
 
 # 정보 보여주기
 def information_view(request):
@@ -53,28 +55,7 @@ def information_view(request):
     
     return render(request, 'informations/informations.html', context)
 
-# 스크랩 기능
-def scrap(request): 
-    
-    item_name = request.GET['item_name']
-    item_id = request.GET['item_id']
-    
-    if(item_name == 'region' or item_name == 'multicultural'): # [지역] 또는 [다문화] 인 경우
-        item = RegionAndMulticultural.objects.get(id = item_id)
-    
-    elif(item_name == 'afterschool'): # [방과후] 인 경우
-        item = Afterschool.objects.get(id = item_id)
-        
-    user = request.user #request.user : 현재 로그인한 유저
-    if item.scrap.filter(id = user.id).exists(): #이미 좋아요를 누른 유저일 때
-        item.scrap.remove(user) #like field에 현재 유저 추가
-        message = "좋아요 취소" #화면에 띄울 메세지
-    else: #좋아요를 누르지 않은 유저일 때
-        item.scrap.add(user) #like field에 현재 유저 삭제
-        message = "좋아요" #화면에 띄울 메세지 
-    
-    context = {'scrap_count' : item.scrap.count(),"message":message}
-    return HttpResponse(json.dumps(context), content_type='application/json')  
+
 
 # 정렬 처리
 def reflect_alignment(item_list, align_mode):
@@ -97,3 +78,51 @@ def make_page_obj(item_list, page, num_of_post,):
         page = paginator.num_pages
         page_obj = paginator.page(page)
         return page_obj, paginator
+    
+    
+    
+def scrap_view_region(request, bid):
+    user = request.user
+    item =  get_object_or_404(RegionAndMulticultural, id=bid)
+    if item.scrap.filter(id =bid).exists():
+        item.scrap.remove(user)
+        return JsonResponse({'message':'delete','like_count':item.scrap.count()})
+    else:
+        item.scrap.add(user)
+        return JsonResponse({'message':'ok','like_count':item.scrap.count()})
+    
+    
+def scrap_view_after(request, bid):
+    user = request.user
+    item = get_object_or_404(Afterschool, id=bid)
+    if item.scrap.filter(id =bid).exists():
+        item.scrap.remove(user)
+        return JsonResponse({'message':'delete','like_count':item.scrap.count()})
+    else:
+        item.scrap.add(user)
+        return JsonResponse({'message':'ok','like_count':item.scrap.count()})
+    
+    
+    
+    # 스크랩 기능
+def scrap(request): 
+    
+    item_name = request.GET['item_name']
+    item_id = request.GET['item_id']
+    
+    if(item_name == 'region' or item_name == 'multicultural'): # [지역] 또는 [다문화] 인 경우
+        item = RegionAndMulticultural.objects.get(id = item_id)
+    
+    elif(item_name == 'afterschool'): # [방과후] 인 경우
+        item = Afterschool.objects.get(id = item_id)
+        
+    user = request.user #request.user : 현재 로그인한 유저
+    if item.scrap.filter(id = user.id).exists(): #이미 좋아요를 누른 유저일 때
+        item.scrap.remove(user) #like field에 현재 유저 추가
+        message = "좋아요 취소" #화면에 띄울 메세지
+    else: #좋아요를 누르지 않은 유저일 때
+        item.scrap.add(user) #like field에 현재 유저 삭제
+        message = "좋아요" #화면에 띄울 메세지 
+    
+    context = {'scrap_count' : item.scrap.count(),"message":message}
+    return HttpResponse(json.dumps(context), content_type='application/json')  
