@@ -19,7 +19,7 @@
                 <div id="divRight">
                     {% if request.user.is_authenticated %}
                         <div onClick="location.href='{% url 'accounts:mypage' %}'" style="cursor: pointer;"><img src="/static/image/basic.png">{{ request.user.username }}님ㅣ마이페이지</div>
-                        <div onClick="location.href='{% url 'accounts:logout' %}'" style="cursor: pointer;">로그아웃</div>
+                        <div class="div-div" onClick="location.href='{% url 'accounts:logout' %}'" style="cursor: pointer;">로그아웃</div>
                     {% else %}
                         <div onClick="location.href='{% url 'accounts:login' %}'" style="cursor: pointer;">로그인</div>|
                         <div onClick="location.href='{% url 'accounts:signup' %}'" style="cursor: pointer;">회원가입</div>
