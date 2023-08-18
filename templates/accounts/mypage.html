@@ -79,7 +79,7 @@
                 </div>
 
                 <div id="number">
-                    {% if request.user.introduction != "None" %}
+                    {% if request.user.introduction != None %}
                         <div >{{ request.user.introduction }} </div>
                     {% else %}
                     <div >소개글이 아직 없습니다.</div>
