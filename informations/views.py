@@ -84,7 +84,7 @@ def make_page_obj(item_list, page, num_of_post,):
 def scrap_view_region(request, bid):
     user = request.user
     item =  get_object_or_404(RegionAndMulticultural, id=bid)
-    if item.scrap.filter(id =bid).exists():
+    if item.scrap.filter(id =user.id).exists():
         item.scrap.remove(user)
         return JsonResponse({'message':'delete','like_count':item.scrap.count()})
     else:
@@ -93,9 +93,10 @@ def scrap_view_region(request, bid):
     
     
 def scrap_view_after(request, bid):
-    user = request.user
     item = get_object_or_404(Afterschool, id=bid)
-    if item.scrap.filter(id =bid).exists():
+    user = request.user
+     
+    if item.scrap.filter(id =user.id).exists():
         item.scrap.remove(user)
         return JsonResponse({'message':'delete','like_count':item.scrap.count()})
     else:
