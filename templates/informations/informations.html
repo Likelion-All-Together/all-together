@@ -46,6 +46,7 @@
             httpRequest.send();
         }
     </script>
+
     <script>
         var imagePath = "{% static 'image/filled_scrap.png' %}";
         var imagePaths = "{% static 'image/empty_scrap.png' %}";
@@ -136,7 +137,7 @@
                         <div class="item__ct">{{ item.tag2 }}</div>
                         
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
@@ -165,9 +166,8 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            
                         </button>
                     </div>
                     {% endfor %}
@@ -182,10 +182,11 @@
 
 
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
 
 
                         <div class="item__topic">{{ item.title }}</div>
@@ -212,7 +213,7 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
                         </button>
                     </div>
@@ -224,10 +225,11 @@
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -252,9 +254,8 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -268,10 +269,11 @@
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -296,9 +298,8 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -309,10 +310,11 @@
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -337,9 +339,8 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -350,10 +351,11 @@
                         <div class="item__ct">{{ item.tag1 }}</div>
                         <div class="item__ct">{{ item.tag2 }}</div>
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
                         <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -378,9 +380,8 @@
                                 <td class="item__table-ctgory-data">{{ item.department }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -392,10 +393,11 @@
                     {% for item in first_obj %}
                     <div class="item">
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -420,9 +422,8 @@
                                 <td class="item__table-ctgory-data">{{ item.status }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -431,10 +432,11 @@
                     {% for item in second_obj %}
                     <div class="item">
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -459,9 +461,8 @@
                                 <td class="item__table-ctgory-data">{{ item.status }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                        
                         </button>
                     </div>
                     {% endfor %}
@@ -470,10 +471,11 @@
                     {% for item in third_obj %}
                     <div class="item">
                         {% if request.user in item.scrap.all %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/empty_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% else %}
-                        <div onclick="sendRequest({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
+                        <div onclick="sendRequest_region({{item.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                         {% endif %}
+
                         <div class="item__topic">{{ item.title }}</div>
                         <div class="item__description">
                             <div>
@@ -498,9 +500,8 @@
                                 <td class="item__table-ctgory-data">{{ item.status }}</td>
                             </tr>
                         </table>
-                        <button id="scrap-btn-{{ item.id }}" class="item__more-btn" onclick="item_scrap({{ item.id }})">
+                        <button  class="item__more-btn" >
                             <a href="{{ item.url }}" class="no-underline" target="_blank">자세히 보기</a>
-                            
                         </button>
                     </div>
                     {% endfor %}

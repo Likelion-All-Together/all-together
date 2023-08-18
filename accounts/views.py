@@ -67,33 +67,32 @@ def mypage_view(request):
         recent_class = class_list.order_by('-created_at').first()
         registers = Register.objects.filter(class_name = recent_class)
         register_list = len(registers)
-        
-        time_lists = recent_class.times.split("'")
-        remove_list = {', ','[',']'}
-        
-        times = [i for i in time_lists if i not in remove_list]
-        
-        registers = Register.objects.filter(class_name = recent_class)
-        
-        info = recent_class.info.split("'")
-        infofilter = [i for i in info  if i not in remove_list]
-        
-        
-        stulist = recent_class.student.split("'")
-        stufilter = [i for i in stulist  if i not in remove_list]
-        
-        my_register_list = Register.objects.filter(writer = request.user) # 내가 신청한 글 목록들
-        
-        
-        context = {
-            'recent_class':recent_class,
-            'time_list':times,
-            'registers':register_list,
-            'info':infofilter,
-            'students':stufilter,
-            'pay_list':my_register_list,
+        if recent_class :
+            time_lists = recent_class.times.split("'")
+            remove_list = {', ','[',']'}
+            times = [i for i in time_lists if i not in remove_list]
+            registers = Register.objects.filter(class_name = recent_class)
+            info = recent_class.info.split("'")
+            infofilter = [i for i in info  if i not in remove_list]
+            stulist = recent_class.student.split("'")
+            stufilter = [i for i in stulist  if i not in remove_list]
+            my_register_list = Register.objects.filter(writer = request.user) # 내가 신청한 글 목록들
             
-        }
+            context = {
+                'recent_class':recent_class,
+                'time_list':times,
+                'registers':register_list,
+                'info':infofilter,
+                'students':stufilter,
+                'pay_list':my_register_list,
+                
+            }
+        else:
+            context = {
+                
+            }
+        
+        
         
         
         

@@ -116,6 +116,7 @@
     </div>
     </section>
     <hr style="border: solid 0.2px #000; width: 90%; margin-left: 40px;">
+    {% if recent_class %}
     <section id="sec2">
         
             <div id="work">work</div>
@@ -176,6 +177,7 @@
         </div>
         </div>
     </section>
+    {% endif%}
     <section id="sec3">
         <div id ="card"><img src="{% static 'image/credit-card.png' %}">결제내역
             <hr style="border: solid 0.2px #000; width: 90%; margin-left: 40px; margin-top:20px; margin-bottom: 40px;">
