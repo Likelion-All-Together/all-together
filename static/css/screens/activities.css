@@ -121,7 +121,7 @@ letter-spacing: -0.6px;
     border-collapse: collapse; /* 셀 테두리 분리 설정 */
     border-spacing: 20px; /* 셀 간격 설정 */
     width: 80%; /* 테이블 폭 설정 */
-    margin-top: 10px;
+    margin-top: 50px;
     margin-left: 100px;
 }
 tr th:first-child {
