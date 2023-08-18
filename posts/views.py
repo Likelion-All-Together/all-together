@@ -24,7 +24,7 @@ def post_list_view(request):
             
             notice_list = notice_list[:5] # 공지 5개
             
-            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            page_obj, paginator = make_page_obj(filter_list, page, 8) # 일반글 8개
             
             context = {
                 'notice_list' : notice_list, # 공지글 5개
@@ -34,7 +34,7 @@ def post_list_view(request):
             }
         elif selected_category == '공지': # 공지 글만 보이게 (완료)
             
-            page_obj, paginator = make_page_obj(notice_list, page, 6)
+            page_obj, paginator = make_page_obj(notice_list, page, 13)
             
             context = {
                 'page_obj' : page_obj,
@@ -43,7 +43,7 @@ def post_list_view(request):
             }
         elif selected_category == '이벤트': # 이벤트 글만 보이게 (완료)
             
-            page_obj, paginator = make_page_obj(event_list, page, 6)
+            page_obj, paginator = make_page_obj(event_list, page, 13)
             
             context = {
                 'page_obj' : page_obj,
@@ -56,7 +56,7 @@ def post_list_view(request):
             # 조회수가 0인 게시글 제외
             filter_list = filter_list.exclude(view_count=0).order_by('-view_count')
             
-            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            page_obj, paginator = make_page_obj(filter_list, page, 13)
             
             context = {
                 'post_list': filter_list,
@@ -70,7 +70,7 @@ def post_list_view(request):
             notice_list = notice_list[:5] # 공지 5개
             filter_list = filter_list.filter(category=selected_category) # 선택된 카테고리 글
             
-            page_obj, paginator = make_page_obj(filter_list, page, 6)
+            page_obj, paginator = make_page_obj(filter_list, page, 8)
             
             context = {
                 'notice_list' : notice_list,

@@ -103,7 +103,6 @@
                                     <div class="item__ct">{{teacher.nationality}}</div>
                                     <div class="item__ct">{{teacher.language}}</div>
 
-
                                     {% if request.user in teacher.scrap.all %} 
                                     <div onclick="sendRequest({{teacher.id}}, this)"><img class="item__star" src="{% static 'image/filled_scrap.png' %}"></div>
                                     {% else %}
@@ -180,6 +179,29 @@
                         </div>
                         
         </div>
+
+        <div class="information-footer">
+            {% if page_obj.has_other_pages %}
+                <ul class="number-nav">
+                    {% if page_obj.has_previous %}
+                        <li class="number-nav__list"><a href="?page={{page_obj.previous_page_number}}"><img id="left-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                    {% endif %}
+
+                    {% for page in paginator.page_range %}
+                        {% if page == page_obj.number %}
+                            <li class="number-nav__list"><a href="?page={{page}}">{{ page }}</a></li>
+                        {% else %}
+                            <li class="number-nav__list" style="color:#977F6A;" ><a href="?page={{page}}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="number-nav__list"><a href="?page={{page_obj.next_page_number}}"><img id="right-btn" src="{% static 'image/left-btn.svg' %}"></a></li>
+                    {% endif %}
+                </ul>
+            {% endif%}
+        </div>
+
     </main>
 
 
