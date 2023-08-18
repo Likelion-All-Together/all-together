@@ -26,27 +26,37 @@
         .number-nav {
             width: 20%;
         }
+        .list-logo {
+            width: 30px;
+            height: 30px;
+        }
     </style>
 </head>
 
 <body id="info-body">
-    {% comment %} <script src="/static/js/header.js"></script> {% endcomment %}
-    {% comment %} <div class="info-title">
-        <div>
-            <h1>000지역 / 000복지</h1>
-            <p>000지역 000복지에 관한 설명 000복지에는 무엇이 들어가면 좋을까요<br>
-                대상도 나눠서 볼 수 있거나 자신한테 맞는 복지를 검색을 통해 찾는 기능이 추가
-                된다면 더욱 좋을 것 같습니다.
-            </p>
+    
+    <div id="header"></div>
+    <br><br>
+    
+    <div id="center">
+        <div class="info-title">
+
+                <div>
+                    <h1>지역정보</h1>
+                    <p>지역의 복지 정보와 일자리 정보, 방과후 & 교육 정보를 확인해주세요.<br>
+                        다모여는 여러분의 보다 더 윤택한 삶을 위해 유용한 정보를 제공합니다.<br>
+                    </p>
+                </div>
         </div>
-        
-    </div> {% endcomment %}
+    </div>
+
 
     <main class="info-main">
         <div class="info-main-content">
             <div class="info-main-content__top">
                 <nav class="info-main-content__nav">
                     <ul>
+                        <li class="info-main-content__li-img"><img class="list-logo" src="{% static 'image/list-logo.png' %}"></li>
                         {% if tab == 'region'%}
                             <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=region&align_mode=recently&page=1" style="font-size: 20px;">복지 제도</a></li>
                             <li class="info-main-content__li"><a href="{% url 'informations:information' %}?tab=multicultural&align_mode=recently&page=1" style="color: #977F6A;">일자리 정보</a></li>
