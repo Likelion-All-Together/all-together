@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     margin: 0;
-    margin-top: 30px;
+    margin-top: 80px;
     height: 2600px;
 
 }
@@ -19,9 +19,10 @@
     font-family: Inter;
     font-size: 3rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     line-height: normal;
     letter-spacing: -2.4px;
+    margin-bottom:30px;
 }
 
 .total-section{
@@ -58,18 +59,19 @@ letter-spacing: -1.05px;
     font-weight: 600;
     line-height: normal;
     letter-spacing: -1.05px;
-    margin-left: 95px;
-    margin-top: -20px;
+    margin-left: 115px;
+    margin-top: -30px;
 }
 
 .bigbox{
    
     width: 1000px;
-    height: 300px;
+    height: 390px;
     border-radius: 40px;
     background: #FCEC5F;
     margin-top: 20px;
     box-shadow: 4px 4px 4px 0px rgba(83, 48, 48, 0.25) inset;
+    margin-left:10px;
 }
 
 .profile-box{
@@ -81,12 +83,12 @@ letter-spacing: -1.05px;
 
 #Profile-img>img{
     width: 220px;
-    margin-top: 30px;
-    margin-left: 40px;
+    margin-top: 60px;
+    margin-left: 70px;
 }
 
 #change{
-margin-left: 80px;
+margin-left: 120px;
 width: 120px;
 border-radius: 7px;
 border: 2px solid #8B4400;
@@ -99,6 +101,7 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
 letter-spacing: -0.75px;
+margin-top:20px;
 }
 
 
@@ -121,7 +124,7 @@ font-weight: 1000;
 line-height: normal;
 letter-spacing: -2.5px;
 margin-left: 350px;
-margin-top: -250px;
+margin-top: -270px;
   }
 
   #korea{
@@ -259,28 +262,28 @@ margin-left: 40px;
         }
         
         #work{
-          color: #4B2A0B;
+        color: #4B2A0B;
         font-family: Inter;
         font-size: 35px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
         letter-spacing: -1.05px;
-        margin-left: 80px;
+        margin-left: 100px;
         margin-top: 30px;
 
         }
         
         #ing{
-          color: rgba(75, 42, 11, 0.87);
+        color: rgba(75, 42, 11, 0.87);
         font-family: Inter;
         font-size: 1rem;
         font-style: normal;
-        font-weight: 500;
+        font-weight: 1000;
         line-height: normal;
         letter-spacing: -0.6px;
-        margin-top: -25px;
-        margin-left: 170px;
+        margin-top: -28px;
+        margin-left: 200px;
         }
         
     
@@ -291,8 +294,8 @@ margin-left: 40px;
     flex-direction: column;
     flex-shrink: 0;
     margin-top: 50px;
-    margin-left: 70px;
-    width: 750px;
+    margin-left: 100px;
+    width: 720px;
     height: 500px;
     border-radius: 30px;
     background: #E7E7E7;
@@ -325,9 +328,9 @@ margin-left: 40px;
 
     color: #000;
     font-family: Inter;
-    font-size: 22px;
+    font-size: 25px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 1000;
     line-height: normal;
     letter-spacing: -0.66px;
     margin-top: -450px;
@@ -341,16 +344,17 @@ margin-left: 40px;
   height: 250px;
   color: #000;
   font-family: Inter;
-  font-size: 10px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 1000;
   line-height: normal;
   letter-spacing: -0.3px;
+  padding-top:20px;
 }
 
 .squares{
   margin-top: -130px;
-  margin-left: -30px;
+  margin-left: -60px;
 }
 #square{
  
@@ -461,12 +465,12 @@ margin-left: 40px;
 #rightmini >div{
   color: #4B2A0B;
 font-family: Inter;
-font-size: 0.8rem;
+font-size: 1.0rem;
 font-style: normal;
-font-weight: 500;
+font-weight: 800;
 line-height: normal;
 letter-spacing: -0.3px;
-margin-bottom: 45px;
+margin-bottom: 39px;
 margin-left: 15px;
 
 }
@@ -474,25 +478,26 @@ margin-left: 15px;
 #card>img{
   width: 60px;
   margin-bottom: -10px;
-  margin-left: 30px;
+  margin-left: 110px;
   margin-right: 10px;
 }
 
 #card{
-  color: #462C14;
+color: #462C14;
 font-family: Inter;
 font-size: 3rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
 letter-spacing: -1.65px;
+
 }
 
 .money{
   display: flex;
   flex-direction: row;
   gap: 100px;
-  margin-left: 220px;
+  margin-left: 200px;
   
 }
 
@@ -538,7 +543,7 @@ letter-spacing: -1.1px;
   margin-left: 150px;
   margin-top: 30px;
   border-radius: 40px;
-  border: 2px solid #4B2A0B;
+
   background: #FFF;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.20) inset;
   }
