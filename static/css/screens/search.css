@@ -141,14 +141,63 @@ background-size: cover;
     color: #000;
     text-align: center;
     font-family: Inter;
-    font-size: 1rem;
+    font-size: 25px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 1000;
     line-height: normal;
     letter-spacing: -1.35px;
-    padding: 30px 200px;
-}
+    padding-left: 110px;
+    padding-top:45px;
 
+}
+.pictureBox>p{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding-top:30px;
+    padding-left:100px;
+
+}
+.picture_Box{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+ }
+ .picture_Box>h2{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding-left:120px;
+    padding-top:30px;
+
+
+}
+.picture_Box>p{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: normal;
+    letter-spacing: -1.35px;
+    padding-left:130px;
+    padding-top:5px;
+
+
+}
 
 
     
@@ -156,7 +205,7 @@ background-size: cover;
 .imgBox2{
     background-image: url(/static/image/pictureBox2.png);
     background-size: cover;
-    margin-left: 50px;
+    margin-left: 150px;
     width: 200px;
     height: 300px;
 }
