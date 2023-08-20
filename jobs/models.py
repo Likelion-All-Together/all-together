@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-# Create your models here.
 
 User = get_user_model()
 
@@ -25,7 +24,6 @@ class Class (models.Model):
     created_at = models.DateTimeField(verbose_name = '작성일',default=timezone.now)
     # 지불방식
     
-    
 class Register(models.Model):
     class_name = models.ForeignKey(to = 'Class', on_delete=models.CASCADE)
     writer = models.ForeignKey(to=User, on_delete=models.CASCADE,null=True, blank=True)
@@ -38,6 +36,3 @@ class Register(models.Model):
     times =models.TextField(verbose_name='시간대', null=True, blank=True) 
     cost = models.IntegerField(verbose_name='수업비용', default=10000)
     created_at = models.DateTimeField(verbose_name = '등록일',default=timezone.now)
-
-    
-    

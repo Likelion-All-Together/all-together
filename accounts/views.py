@@ -35,7 +35,6 @@ def login_view(request):
         return render(request, 'accounts/login.html', {'form' : CustomAuthenticationForm()}) # 로그인 HTML 응답
     else:
         # 데이터 유효성 검사
-        # form = AuthenticationForm(request, data = request.POST)
         form = CustomAuthenticationForm(request, data = request.POST)
         if form.is_valid(): # 비즈니스 로직 처리 - 로그인 처리
             login(request, form.user_cache)
@@ -62,7 +61,6 @@ def mypage_view(request):
     if request.method == 'GET': # GET이면 홈페이지 보여주기
         user = request.user
         class_list = Class.objects.filter(writer = user)
-        
         
         recent_class = class_list.order_by('-created_at').first()
         registers = Register.objects.filter(class_name = recent_class)
@@ -91,11 +89,6 @@ def mypage_view(request):
             context = {
                 
             }
-        
-        
-        
-        
-        
         return render(request, 'accounts/mypage.html', context)
     
     else: # POST이면 유저 정보 업데이트

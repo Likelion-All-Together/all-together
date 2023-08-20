@@ -1,12 +1,10 @@
 from django.shortcuts import render,redirect
 from .models import Class, Register
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-import json
-import random
+import json, random
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-# Create your views here.
 
 def jobs_main_view(request):
     if request.method == 'GET':
@@ -42,11 +40,6 @@ def jobs_creat_view(request):
         
         if selected_cells:
             selected_cells = json.loads(selected_cells)
-        #테스트용 출력
-        print(student)
-        print(info)
-        print(group)
-        print(selected_cells)
         
         class_name = Class.objects.create(
             writer = writer,
@@ -69,7 +62,8 @@ def jobs_creat_view(request):
     return render(request, 'jobs/jpbs-create.html')
         
 
-def jobs_teacher_view(request): # 선생님 전체 페이지
+# 선생님 전체 페이지
+def jobs_teacher_view(request):
     
     page = request.GET.get('page')
     
@@ -93,7 +87,8 @@ def jobs_teacher_view(request): # 선생님 전체 페이지
         return render(request, 'jobs/jobs-teacher.html',context)
     return render(request, 'jobs/jobs-teacher.html',context)
 
-def jobs_teacher_detail_view(request,id): #선생님 상세 페이지
+#선생님 상세 페이지
+def jobs_teacher_detail_view(request,id):
     teacher = get_object_or_404(Class, id=id)
     
     if request.method == 'GET':

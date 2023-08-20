@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from posts.models import Post
 from jobs.models import Class
-
 import random
+
 def home_view(request):
         teacher_list = Class.objects.all()
         random_teacher_list = random.sample(list(teacher_list), 4)

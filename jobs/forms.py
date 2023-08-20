@@ -6,7 +6,6 @@ class ClassBaseForm(forms.ModelForm):
         model = Class
         fields = '__all__'
         
-
 class ClassCreateForm(ClassBaseForm):
     class Meta(ClassBaseForm.Meta):
         fields = '__all__'

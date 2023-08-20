@@ -2,10 +2,8 @@ import json
 from django.shortcuts import render
 from .models import RegionAndMulticultural, Afterschool
 from django.http import HttpResponse,JsonResponse 
-import json
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import get_object_or_404
-import json
 
 # 정보 보여주기
 def information_view(request):
@@ -55,8 +53,6 @@ def information_view(request):
     
     return render(request, 'informations/informations.html', context)
 
-
-
 # 정렬 처리
 def reflect_alignment(item_list, align_mode):
     if align_mode == 'recently':
@@ -79,8 +75,6 @@ def make_page_obj(item_list, page, num_of_post,):
         page_obj = paginator.page(page)
         return page_obj, paginator
     
-    
-    
 def scrap_view_region(request, bid):
     user = request.user
     item =  get_object_or_404(RegionAndMulticultural, id=bid)
@@ -91,11 +85,10 @@ def scrap_view_region(request, bid):
         item.scrap.add(user)
         return JsonResponse({'message':'ok','like_count':item.scrap.count()})
     
-    
 def scrap_view_after(request, bid):
     item = get_object_or_404(Afterschool, id=bid)
     user = request.user
-     
+    
     if item.scrap.filter(id =user.id).exists():
         item.scrap.remove(user)
         return JsonResponse({'message':'delete','like_count':item.scrap.count()})
@@ -103,9 +96,7 @@ def scrap_view_after(request, bid):
         item.scrap.add(user)
         return JsonResponse({'message':'ok','like_count':item.scrap.count()})
     
-    
-    
-    # 스크랩 기능
+# 스크랩 기능
 def scrap(request): 
     
     item_name = request.GET['item_name']
